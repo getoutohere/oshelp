@@ -1,0 +1,15 @@
+{
+  "store": "Bazaar General Trader (Ivan Kapustanov)",
+  "door": {"scene":"level112","scheduleObject":283938,"doorObject":305626,"openRelay":283937,"closedRelay":283936},
+  "trader": {"scene":"level77","object":40294,"autoOpenClose":true,"opensDaily":8,"closesDaily":18},
+  "hours": [
+    {"day":"Monday","doorOpen":7,"doorClose":15,"tradingOpen":8,"tradingClose":15},
+    {"day":"Tuesday","doorOpen":10,"doorClose":20,"tradingOpen":10,"tradingClose":18},
+    {"day":"Wednesday","doorOpen":10,"doorClose":14,"tradingOpen":10,"tradingClose":14},
+    {"day":"Thursday","doorOpen":6,"doorClose":17,"tradingOpen":8,"tradingClose":17},
+    {"day":"Friday","doorOpen":13,"doorClose":21,"tradingOpen":13,"tradingClose":18},
+    {"day":"Saturday","doorOpen":7,"doorClose":12,"tradingOpen":8,"tradingClose":12},
+    {"day":"Sunday","doorOpen":13,"doorClose":18,"tradingOpen":13,"tradingClose":18}
+  ],
+  "evidence": "RelayWeekdays record decoded to exact object boundary. OpeningTimes.IsOpen maps Monday=0 through Sunday=6, opening inclusive and closing exclusive. Open/closed relays' first UnityEvent calls UnLock/Lock on door 305626. Trade.DeltaSeconds separately applies its daily 08-18 OpeningTimes. Trading column is the overlap of both configured schedules."
+}

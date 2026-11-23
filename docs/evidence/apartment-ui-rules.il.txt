@@ -1,0 +1,626 @@
+﻿ApartmentInfoUI::Void UpdateApartmentInfo(TenementApartment)
+IL_0000  ldarg.1
+IL_0001  callvirt TenementApartment::Boolean IsApartmentAvailable()
+IL_0006  brtrue.s IL_0011
+IL_0008  ldarg.0
+IL_0009  ldarg.1
+IL_000A  call ApartmentInfoUI::Void ApartmentIsNotAvailable(TenementApartment)
+IL_000F  br.s IL_0017
+IL_0011  ldarg.0
+IL_0012  call ApartmentInfoUI::Void ApartmentIsAvailable()
+IL_0017  ldarg.0
+IL_0018  ldarg.1
+IL_0019  call ApartmentInfoUI::Void SetApartmentNameAndSize(TenementApartment)
+IL_001E  ldarg.0
+IL_001F  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentValue
+IL_0024  ldstr "Value: "
+IL_0029  ldarg.1
+IL_002A  callvirt TenementApartment::Int32 GetValue()
+IL_002F  stloc.0
+IL_0030  ldloca.s 0
+IL_0032  call System.Int32::System.String ToString()
+IL_0037  ldstr " RM"
+IL_003C  call System.String::System.String Concat(System.String, System.String, System.String)
+IL_0041  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0046  ldarg.0
+IL_0047  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeOc
+IL_004C  ldarg.1
+IL_004D  ldc.i4.0
+IL_004E  callvirt TenementApartment::Int32 GetOcIncome(Boolean)
+IL_0053  stloc.0
+IL_0054  ldloca.s 0
+IL_0056  call System.Int32::System.String ToString()
+IL_005B  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0060  ldarg.0
+IL_0061  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeRm
+IL_0066  ldarg.1
+IL_0067  ldc.i4.0
+IL_0068  callvirt TenementApartment::Single GetRmIncome(Boolean)
+IL_006D  stloc.1
+IL_006E  ldloca.s 1
+IL_0070  call System.Single::System.String ToString()
+IL_0075  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_007A  ldsfld TenementController::TenementController instance
+IL_007F  ldfld TenementController::Boolean residentOpen
+IL_0084  brfalse IL_01E8
+IL_0089  ldarg.1
+IL_008A  ldc.i4.1
+IL_008B  callvirt TenementApartment::Int32 GetOcIncome(Boolean)
+IL_0090  ldarg.1
+IL_0091  ldc.i4.0
+IL_0092  callvirt TenementApartment::Int32 GetOcIncome(Boolean)
+IL_0097  sub
+IL_0098  stloc.2
+IL_0099  ldarg.1
+IL_009A  ldc.i4.1
+IL_009B  callvirt TenementApartment::Single GetRmIncome(Boolean)
+IL_00A0  ldarg.1
+IL_00A1  ldc.i4.0
+IL_00A2  callvirt TenementApartment::Single GetRmIncome(Boolean)
+IL_00A7  sub
+IL_00A8  stloc.3
+IL_00A9  ldloc.2
+IL_00AA  ldc.i4.0
+IL_00AB  ble.s IL_00E0
+IL_00AD  ldarg.0
+IL_00AE  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeOc
+IL_00B3  dup
+IL_00B4  callvirt TMPro.TMP_Text::System.String get_text()
+IL_00B9  ldstr "{0} +{1}"
+IL_00BE  ldsfld UIColors::System.String greenTextColorCodeLight
+IL_00C3  ldloc.2
+IL_00C4  conv.r4
+IL_00C5  call UnityEngine.Mathf::Int32 RoundToInt(Single)
+IL_00CA  box System.Int32
+IL_00CF  call System.String::System.String Format(System.String, System.Object, System.Object)
+IL_00D4  call System.String::System.String Concat(System.String, System.String)
+IL_00D9  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_00DE  br.s IL_0143
+IL_00E0  ldloc.2
+IL_00E1  ldc.i4.0
+IL_00E2  bge.s IL_0117
+IL_00E4  ldarg.0
+IL_00E5  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeOc
+IL_00EA  dup
+IL_00EB  callvirt TMPro.TMP_Text::System.String get_text()
+IL_00F0  ldstr "{0} {1}"
+IL_00F5  ldsfld UIColors::System.String redTextColorCodeLight
+IL_00FA  ldloc.2
+IL_00FB  conv.r4
+IL_00FC  call UnityEngine.Mathf::Int32 RoundToInt(Single)
+IL_0101  box System.Int32
+IL_0106  call System.String::System.String Format(System.String, System.Object, System.Object)
+IL_010B  call System.String::System.String Concat(System.String, System.String)
+IL_0110  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0115  br.s IL_0143
+IL_0117  ldarg.0
+IL_0118  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeOc
+IL_011D  dup
+IL_011E  callvirt TMPro.TMP_Text::System.String get_text()
+IL_0123  ldstr " +{0}"
+IL_0128  ldloc.2
+IL_0129  conv.r4
+IL_012A  call UnityEngine.Mathf::Int32 RoundToInt(Single)
+IL_012F  box System.Int32
+IL_0134  call System.String::System.String Format(System.String, System.Object)
+IL_0139  call System.String::System.String Concat(System.String, System.String)
+IL_013E  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0143  ldloc.3
+IL_0144  ldc.r4 0
+IL_0149  ble.un.s IL_017F
+IL_014B  ldarg.0
+IL_014C  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeRm
+IL_0151  dup
+IL_0152  callvirt TMPro.TMP_Text::System.String get_text()
+IL_0157  ldstr "{0} +{1}"
+IL_015C  ldsfld UIColors::System.String greenTextColorCodeLight
+IL_0161  ldloc.3
+IL_0162  conv.r8
+IL_0163  ldc.i4.1
+IL_0164  call System.Math::Double Round(Double, Int32)
+IL_0169  box System.Double
+IL_016E  call System.String::System.String Format(System.String, System.Object, System.Object)
+IL_0173  call System.String::System.String Concat(System.String, System.String)
+IL_0178  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_017D  br.s IL_01E8
+IL_017F  ldloc.3
+IL_0180  ldc.r4 0
+IL_0185  bge.un.s IL_01BB
+IL_0187  ldarg.0
+IL_0188  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeRm
+IL_018D  dup
+IL_018E  callvirt TMPro.TMP_Text::System.String get_text()
+IL_0193  ldstr "{0} {1}"
+IL_0198  ldsfld UIColors::System.String redTextColorCodeLight
+IL_019D  ldloc.3
+IL_019E  conv.r8
+IL_019F  ldc.i4.1
+IL_01A0  call System.Math::Double Round(Double, Int32)
+IL_01A5  box System.Double
+IL_01AA  call System.String::System.String Format(System.String, System.Object, System.Object)
+IL_01AF  call System.String::System.String Concat(System.String, System.String)
+IL_01B4  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_01B9  br.s IL_01E8
+IL_01BB  ldarg.0
+IL_01BC  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeRm
+IL_01C1  dup
+IL_01C2  callvirt TMPro.TMP_Text::System.String get_text()
+IL_01C7  ldstr " +{0}"
+IL_01CC  ldloc.3
+IL_01CD  conv.r8
+IL_01CE  ldc.i4.1
+IL_01CF  call System.Math::Double Round(Double, Int32)
+IL_01D4  box System.Double
+IL_01D9  call System.String::System.String Format(System.String, System.Object)
+IL_01DE  call System.String::System.String Concat(System.String, System.String)
+IL_01E3  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_01E8  ldarg.0
+IL_01E9  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeOc
+IL_01EE  dup
+IL_01EF  callvirt TMPro.TMP_Text::System.String get_text()
+IL_01F4  ldstr " OC/"
+IL_01F9  ldsfld DifficultyController::DifficultyController instance
+IL_01FE  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_0203  callvirt DifficultyInfo::System.String GetRentPaymentTimeUnit()
+IL_0208  call System.String::System.String Concat(System.String, System.String, System.String)
+IL_020D  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0212  ldarg.0
+IL_0213  ldfld ApartmentInfoUI::TMPro.TextMeshProUGUI apartmentIncomeRm
+IL_0218  dup
+IL_0219  callvirt TMPro.TMP_Text::System.String get_text()
+IL_021E  ldstr " RM/"
+IL_0223  ldsfld DifficultyController::DifficultyController instance
+IL_0228  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_022D  callvirt DifficultyInfo::System.String GetRentPaymentTimeUnit()
+IL_0232  call System.String::System.String Concat(System.String, System.String, System.String)
+IL_0237  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_023C  ldarg.0
+IL_023D  ldfld ApartmentInfoUI::UpgradeButtonUI electricityUpgrades
+IL_0242  ldnull
+IL_0243  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0248  brfalse.s IL_0278
+IL_024A  ldarg.0
+IL_024B  ldfld ApartmentInfoUI::UpgradeButtonUI electricityUpgrades
+IL_0250  ldstr "Electricity"
+IL_0255  ldarg.1
+IL_0256  ldarg.1
+IL_0257  callvirt TenementApartment::TenementUpgrade GetCurrentElectricity()
+IL_025C  ldarg.1
+IL_025D  ldfld TenementApartment::TenementApartmentType type
+IL_0262  ldfld TenementApartmentType::TenementUpgradeGroup electricity
+IL_0267  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_026C  ldarg.1
+IL_026D  ldfld TenementApartment::TenementUpgradeProgress electricityProgress
+IL_0272  ldarg.0
+IL_0273  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_0278  ldarg.0
+IL_0279  ldfld ApartmentInfoUI::UpgradeButtonUI waterUpgrades
+IL_027E  ldnull
+IL_027F  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0284  brfalse.s IL_02B4
+IL_0286  ldarg.0
+IL_0287  ldfld ApartmentInfoUI::UpgradeButtonUI waterUpgrades
+IL_028C  ldstr "Water"
+IL_0291  ldarg.1
+IL_0292  ldarg.1
+IL_0293  callvirt TenementApartment::TenementUpgrade GetCurrentWater()
+IL_0298  ldarg.1
+IL_0299  ldfld TenementApartment::TenementApartmentType type
+IL_029E  ldfld TenementApartmentType::TenementUpgradeGroup water
+IL_02A3  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_02A8  ldarg.1
+IL_02A9  ldfld TenementApartment::TenementUpgradeProgress waterProgress
+IL_02AE  ldarg.0
+IL_02AF  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_02B4  ldarg.0
+IL_02B5  ldfld ApartmentInfoUI::UpgradeButtonUI heatingUpgrades
+IL_02BA  ldnull
+IL_02BB  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_02C0  brfalse.s IL_02F0
+IL_02C2  ldarg.0
+IL_02C3  ldfld ApartmentInfoUI::UpgradeButtonUI heatingUpgrades
+IL_02C8  ldstr "Heating"
+IL_02CD  ldarg.1
+IL_02CE  ldarg.1
+IL_02CF  callvirt TenementApartment::TenementUpgrade GetCurrentHeating()
+IL_02D4  ldarg.1
+IL_02D5  ldfld TenementApartment::TenementApartmentType type
+IL_02DA  ldfld TenementApartmentType::TenementUpgradeGroup heating
+IL_02DF  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_02E4  ldarg.1
+IL_02E5  ldfld TenementApartment::TenementUpgradeProgress heatingProgress
+IL_02EA  ldarg.0
+IL_02EB  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_02F0  ldarg.0
+IL_02F1  ldfld ApartmentInfoUI::UpgradeButtonUI wallUpgrades
+IL_02F6  ldnull
+IL_02F7  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_02FC  brfalse.s IL_032C
+IL_02FE  ldarg.0
+IL_02FF  ldfld ApartmentInfoUI::UpgradeButtonUI wallUpgrades
+IL_0304  ldstr "Walls"
+IL_0309  ldarg.1
+IL_030A  ldarg.1
+IL_030B  callvirt TenementApartment::TenementUpgrade GetCurrentWall()
+IL_0310  ldarg.1
+IL_0311  ldfld TenementApartment::TenementApartmentType type
+IL_0316  ldfld TenementApartmentType::TenementUpgradeGroup walls
+IL_031B  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_0320  ldarg.1
+IL_0321  ldfld TenementApartment::TenementUpgradeProgress wallProgress
+IL_0326  ldarg.0
+IL_0327  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_032C  ldarg.0
+IL_032D  ldfld ApartmentInfoUI::UpgradeButtonUI bathroomUpgrades
+IL_0332  ldnull
+IL_0333  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0338  brfalse.s IL_0368
+IL_033A  ldarg.0
+IL_033B  ldfld ApartmentInfoUI::UpgradeButtonUI bathroomUpgrades
+IL_0340  ldstr "Bathroom"
+IL_0345  ldarg.1
+IL_0346  ldarg.1
+IL_0347  callvirt TenementApartment::TenementUpgrade GetCurrentBathroom()
+IL_034C  ldarg.1
+IL_034D  ldfld TenementApartment::TenementApartmentType type
+IL_0352  ldfld TenementApartmentType::TenementUpgradeGroup bathroom
+IL_0357  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_035C  ldarg.1
+IL_035D  ldfld TenementApartment::TenementUpgradeProgress bathroomProgress
+IL_0362  ldarg.0
+IL_0363  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_0368  ldarg.0
+IL_0369  ldfld ApartmentInfoUI::UpgradeButtonUI balconyUpgrades
+IL_036E  ldnull
+IL_036F  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0374  brfalse.s IL_03C9
+IL_0376  ldarg.0
+IL_0377  ldfld ApartmentInfoUI::UpgradeButtonUI balconyUpgrades
+IL_037C  ldarg.1
+IL_037D  ldfld TenementApartment::Int32 apartmentNumber
+IL_0382  ldc.i4.1
+IL_0383  beq.s IL_03A1
+IL_0385  ldarg.1
+IL_0386  ldfld TenementApartment::TenementApartmentType type
+IL_038B  ldfld TenementApartmentType::ApartmentType size
+IL_0390  ldc.i4.2
+IL_0391  beq.s IL_039A
+IL_0393  ldstr "Balcony"
+IL_0398  br.s IL_03A6
+IL_039A  ldstr "Balcony front"
+IL_039F  br.s IL_03A6
+IL_03A1  ldstr "Extension front"
+IL_03A6  ldarg.1
+IL_03A7  ldarg.1
+IL_03A8  callvirt TenementApartment::TenementUpgrade GetCurrentBalcony()
+IL_03AD  ldarg.1
+IL_03AE  ldfld TenementApartment::TenementApartmentType type
+IL_03B3  ldfld TenementApartmentType::TenementUpgradeGroup balcony
+IL_03B8  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_03BD  ldarg.1
+IL_03BE  ldfld TenementApartment::TenementUpgradeProgress balconyProgress
+IL_03C3  ldarg.0
+IL_03C4  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_03C9  ldarg.0
+IL_03CA  ldfld ApartmentInfoUI::UpgradeButtonUI balcony2Upgrades
+IL_03CF  ldnull
+IL_03D0  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_03D5  brfalse.s IL_0415
+IL_03D7  ldarg.0
+IL_03D8  ldfld ApartmentInfoUI::UpgradeButtonUI balcony2Upgrades
+IL_03DD  ldarg.1
+IL_03DE  ldfld TenementApartment::Int32 apartmentNumber
+IL_03E3  ldc.i4.1
+IL_03E4  beq.s IL_03ED
+IL_03E6  ldstr "Balcony back"
+IL_03EB  br.s IL_03F2
+IL_03ED  ldstr "Extension back"
+IL_03F2  ldarg.1
+IL_03F3  ldarg.1
+IL_03F4  callvirt TenementApartment::TenementUpgrade GetCurrentBalcony2()
+IL_03F9  ldarg.1
+IL_03FA  ldfld TenementApartment::TenementApartmentType type
+IL_03FF  ldfld TenementApartmentType::TenementUpgradeGroup balcony2
+IL_0404  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_0409  ldarg.1
+IL_040A  ldfld TenementApartment::TenementUpgradeProgress balcony2Progress
+IL_040F  ldarg.0
+IL_0410  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_0415  ldarg.0
+IL_0416  ldfld ApartmentInfoUI::UpgradeButtonUI kitchenUpgrades
+IL_041B  ldnull
+IL_041C  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0421  brfalse.s IL_0451
+IL_0423  ldarg.0
+IL_0424  ldfld ApartmentInfoUI::UpgradeButtonUI kitchenUpgrades
+IL_0429  ldstr "Kitchen"
+IL_042E  ldarg.1
+IL_042F  ldarg.1
+IL_0430  callvirt TenementApartment::TenementUpgrade GetCurrentKitchen()
+IL_0435  ldarg.1
+IL_0436  ldfld TenementApartment::TenementApartmentType type
+IL_043B  ldfld TenementApartmentType::TenementUpgradeGroup kitchen
+IL_0440  ldfld TenementUpgradeGroup::TenementUpgrade[] updateGroup
+IL_0445  ldarg.1
+IL_0446  ldfld TenementApartment::TenementUpgradeProgress kitchenProgress
+IL_044B  ldarg.0
+IL_044C  callvirt UpgradeButtonUI::Void UpdateButton(System.String, TenementApartment, TenementUpgrade, TenementUpgrade[], TenementUpgradeProgress, ApartmentInfoUI)
+IL_0451  ldarg.1
+IL_0452  ldfld TenementApartment::TenementResident resident
+IL_0457  ldarg.1
+IL_0458  ldfld TenementApartment::Boolean onlyFurniture
+IL_045D  ldarg.0
+IL_045E  ldfld ApartmentInfoUI::UnityEngine.GameObject residentsListPanel
+IL_0463  ldarg.0
+IL_0464  ldfld ApartmentInfoUI::UnityEngine.GameObject residentImagePrefab
+IL_0469  ldarg.1
+IL_046A  ldfld TenementApartment::Int32 apartmentNumber
+IL_046F  call ApartmentInfoUI::Void UpdateResidentInfo(TenementResident, Boolean, UnityEngine.GameObject, UnityEngine.GameObject, Int32)
+IL_0474  ldarg.0
+IL_0475  ldfld ApartmentInfoUI::ApartmentRentUI rentUI
+IL_047A  ldnull
+IL_047B  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0480  brfalse.s IL_04A4
+IL_0482  ldarg.0
+IL_0483  ldfld ApartmentInfoUI::ApartmentRentUI rentUI
+IL_0488  ldsfld TenementController::TenementController instance
+IL_048D  ldfld TenementController::TenementResident currentResident
+IL_0492  ldarg.1
+IL_0493  callvirt ApartmentRentUI::Void ShowRentButton(TenementResident, TenementApartment)
+IL_0498  ldarg.0
+IL_0499  ldfld ApartmentInfoUI::ApartmentRentUI rentUI
+IL_049E  ldarg.1
+IL_049F  callvirt ApartmentRentUI::Void ShowEvictButton(TenementApartment)
+IL_04A4  ret
+ApartmentInfoUI::Void UpdateResidentInfo(TenementResident, Boolean, UnityEngine.GameObject, UnityEngine.GameObject, Int32)
+IL_0000  ldarg.2
+IL_0001  ldnull
+IL_0002  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0007  brfalse.s IL_0047
+IL_0009  ldarg.2
+IL_000A  callvirt UnityEngine.GameObject::UnityEngine.Transform get_transform()
+IL_000F  callvirt UnityEngine.Transform::System.Collections.IEnumerator GetEnumerator()
+IL_0014  stloc.0
+IL_0015  br.s IL_002C
+IL_0017  ldloc.0
+IL_0018  callvirt System.Collections.IEnumerator::System.Object get_Current()
+IL_001D  castclass UnityEngine.Transform
+IL_0022  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_0027  call UnityEngine.Object::Void Destroy(UnityEngine.Object)
+IL_002C  ldloc.0
+IL_002D  callvirt System.Collections.IEnumerator::Boolean MoveNext()
+IL_0032  brtrue.s IL_0017
+IL_0034  leave.s IL_0047
+IL_0036  ldloc.0
+IL_0037  isinst System.IDisposable
+IL_003C  stloc.1
+IL_003D  ldloc.1
+IL_003E  brfalse.s IL_0046
+IL_0040  ldloc.1
+IL_0041  callvirt System.IDisposable::Void Dispose()
+IL_0046  endfinally
+IL_0047  ldarg.0
+IL_0048  ldnull
+IL_0049  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_004E  ldarg.1
+IL_004F  or
+IL_0050  brfalse.s IL_006E
+IL_0052  ldarg.s 4
+IL_0054  ldc.i4.1
+IL_0055  bne.un.s IL_006D
+IL_0057  ldarg.3
+IL_0058  ldarg.2
+IL_0059  callvirt UnityEngine.GameObject::UnityEngine.Transform get_transform()
+IL_005E  call UnityEngine.Object::UnityEngine.GameObject Instantiate[GameObject](UnityEngine.GameObject, UnityEngine.Transform)
+IL_0063  callvirt UnityEngine.GameObject::ResidentImageUI GetComponent[ResidentImageUI]()
+IL_0068  callvirt ResidentImageUI::Void UpdateInfoPlayer()
+IL_006D  ret
+IL_006E  newobj System.Collections.Generic.List`1[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void .ctor()
+IL_0073  dup
+IL_0074  ldarg.0
+IL_0075  ldfld TenementResident::NPC.NPCReference resident
+IL_007A  callvirt System.Collections.Generic.List`1[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void Add(NPC.NPCReference)
+IL_007F  dup
+IL_0080  ldarg.0
+IL_0081  ldfld TenementResident::System.Collections.Generic.List`1[NPC.NPCReference] otherResidents
+IL_0086  callvirt System.Collections.Generic.List`1[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void AddRange(System.Collections.Generic.IEnumerable`1[NPC.NPCReference])
+IL_008B  callvirt System.Collections.Generic.List`1[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+IL_0090  stloc.2
+IL_0091  br.s IL_00BA
+IL_0093  ldloca.s 2
+IL_0095  call System.Collections.Generic.List`1+Enumerator[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::NPC.NPCReference get_Current()
+IL_009A  stloc.3
+IL_009B  ldloc.3
+IL_009C  callvirt NPC.NPCReference::NPC.NPCData get_NPC()
+IL_00A1  brfalse.s IL_00BA
+IL_00A3  ldarg.3
+IL_00A4  ldarg.2
+IL_00A5  callvirt UnityEngine.GameObject::UnityEngine.Transform get_transform()
+IL_00AA  call UnityEngine.Object::UnityEngine.GameObject Instantiate[GameObject](UnityEngine.GameObject, UnityEngine.Transform)
+IL_00AF  callvirt UnityEngine.GameObject::ResidentImageUI GetComponent[ResidentImageUI]()
+IL_00B4  ldloc.3
+IL_00B5  callvirt ResidentImageUI::Void UpdateInfo(NPC.NPCReference)
+IL_00BA  ldloca.s 2
+IL_00BC  call System.Collections.Generic.List`1+Enumerator[[NPC.NPCReference, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+IL_00C1  brtrue.s IL_0093
+IL_00C3  leave.s IL_00D3
+IL_00C5  ldloca.s 2
+IL_00C7  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[NPC.NPCReference]
+IL_00CD  callvirt System.IDisposable::Void Dispose()
+IL_00D2  endfinally
+IL_00D3  ret
+ApartmentInfoUI::Void ApartmentIsAvailable()
+IL_0000  ldarg.0
+IL_0001  ldfld ApartmentInfoUI::UnityEngine.GameObject notAvailableBlueprint
+IL_0006  ldc.i4.0
+IL_0007  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_000C  ldarg.0
+IL_000D  ldfld ApartmentInfoUI::UnityEngine.GameObject notAvailableInfo
+IL_0012  ldc.i4.0
+IL_0013  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0018  ldarg.0
+IL_0019  ldfld ApartmentInfoUI::UpgradeButtonUI wallUpgrades
+IL_001E  ldnull
+IL_001F  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0024  brfalse.s IL_0037
+IL_0026  ldarg.0
+IL_0027  ldfld ApartmentInfoUI::UpgradeButtonUI wallUpgrades
+IL_002C  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_0031  ldc.i4.1
+IL_0032  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0037  ldarg.0
+IL_0038  ldfld ApartmentInfoUI::UpgradeButtonUI bathroomUpgrades
+IL_003D  ldnull
+IL_003E  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0043  brfalse.s IL_0056
+IL_0045  ldarg.0
+IL_0046  ldfld ApartmentInfoUI::UpgradeButtonUI bathroomUpgrades
+IL_004B  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_0050  ldc.i4.1
+IL_0051  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0056  ldarg.0
+IL_0057  ldfld ApartmentInfoUI::UpgradeButtonUI balconyUpgrades
+IL_005C  ldnull
+IL_005D  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0062  brfalse.s IL_0075
+IL_0064  ldarg.0
+IL_0065  ldfld ApartmentInfoUI::UpgradeButtonUI balconyUpgrades
+IL_006A  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_006F  ldc.i4.1
+IL_0070  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0075  ldarg.0
+IL_0076  ldfld ApartmentInfoUI::UpgradeButtonUI balcony2Upgrades
+IL_007B  ldnull
+IL_007C  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0081  brfalse.s IL_0094
+IL_0083  ldarg.0
+IL_0084  ldfld ApartmentInfoUI::UpgradeButtonUI balcony2Upgrades
+IL_0089  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_008E  ldc.i4.1
+IL_008F  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0094  ldarg.0
+IL_0095  ldfld ApartmentInfoUI::UpgradeButtonUI kitchenUpgrades
+IL_009A  ldnull
+IL_009B  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00A0  brfalse.s IL_00B3
+IL_00A2  ldarg.0
+IL_00A3  ldfld ApartmentInfoUI::UpgradeButtonUI kitchenUpgrades
+IL_00A8  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_00AD  ldc.i4.1
+IL_00AE  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_00B3  ldarg.0
+IL_00B4  ldfld ApartmentInfoUI::UpgradeButtonUI electricityUpgrades
+IL_00B9  ldnull
+IL_00BA  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00BF  brfalse.s IL_00D2
+IL_00C1  ldarg.0
+IL_00C2  ldfld ApartmentInfoUI::UpgradeButtonUI electricityUpgrades
+IL_00C7  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_00CC  ldc.i4.1
+IL_00CD  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_00D2  ldarg.0
+IL_00D3  ldfld ApartmentInfoUI::UpgradeButtonUI waterUpgrades
+IL_00D8  ldnull
+IL_00D9  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00DE  brfalse.s IL_00F1
+IL_00E0  ldarg.0
+IL_00E1  ldfld ApartmentInfoUI::UpgradeButtonUI waterUpgrades
+IL_00E6  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_00EB  ldc.i4.1
+IL_00EC  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_00F1  ldarg.0
+IL_00F2  ldfld ApartmentInfoUI::UpgradeButtonUI heatingUpgrades
+IL_00F7  ldnull
+IL_00F8  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00FD  brfalse.s IL_0110
+IL_00FF  ldarg.0
+IL_0100  ldfld ApartmentInfoUI::UpgradeButtonUI heatingUpgrades
+IL_0105  callvirt UnityEngine.Component::UnityEngine.GameObject get_gameObject()
+IL_010A  ldc.i4.1
+IL_010B  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0110  ret
+TenementApartment::Boolean HasUpgrades()
+IL_0000  ldarg.0
+IL_0001  ldfld TenementApartment::ApartmentElectricity currentElectricity
+IL_0006  brtrue.s IL_004F
+IL_0008  ldarg.0
+IL_0009  ldfld TenementApartment::ApartmentWater currentWater
+IL_000E  brtrue.s IL_004F
+IL_0010  ldarg.0
+IL_0011  ldfld TenementApartment::ApartmentHeatingMethod currentHeating
+IL_0016  brtrue.s IL_004F
+IL_0018  ldarg.0
+IL_0019  ldfld TenementApartment::BathroomType currentBathroom
+IL_001E  brtrue.s IL_004F
+IL_0020  ldarg.0
+IL_0021  ldfld TenementApartment::ApartmentWallType currentWall
+IL_0026  brtrue.s IL_004F
+IL_0028  ldarg.0
+IL_0029  ldfld TenementApartment::BalconyType currentBalcony
+IL_002E  brtrue.s IL_004F
+IL_0030  ldarg.0
+IL_0031  ldfld TenementApartment::BalconyType currentBalcony2
+IL_0036  brtrue.s IL_004F
+IL_0038  ldarg.0
+IL_0039  ldfld TenementApartment::KitchenType currentKitchen
+IL_003E  brtrue.s IL_004F
+IL_0040  ldarg.0
+IL_0041  call TenementApartment::System.Collections.Generic.List`1[TenementUpgradeProgress] GetApartmentProgresses()
+IL_0046  callvirt System.Collections.Generic.List`1[[TenementUpgradeProgress, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Int32 get_Count()
+IL_004B  ldc.i4.0
+IL_004C  cgt
+IL_004E  ret
+IL_004F  ldc.i4.1
+IL_0050  ret
+TenementApartment::Int32 FurnitureClearPercentPrimary()
+IL_0000  ldarg.0
+IL_0001  ldfld TenementApartment::Int32 preplacedFurnitureAmountPrimary
+IL_0006  brtrue.s IL_000B
+IL_0008  ldc.i4.s 100
+IL_000A  ret
+IL_000B  ldarg.0
+IL_000C  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+IL_0011  call UnityEngine.Object::Boolean op_Implicit(UnityEngine.Object)
+IL_0016  brfalse.s IL_0023
+IL_0018  ldarg.0
+IL_0019  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+IL_001E  callvirt TenementApartmentPrefabs::Void UpdateCurrentFurnitureAmount()
+IL_0023  ldc.i4.s 100
+IL_0025  ldarg.0
+IL_0026  ldfld TenementApartment::Int32 currentFurnitureAmountPrimary
+IL_002B  conv.r4
+IL_002C  ldarg.0
+IL_002D  ldfld TenementApartment::Int32 preplacedFurnitureAmountPrimary
+IL_0032  conv.r4
+IL_0033  div
+IL_0034  ldc.r4 100
+IL_0039  mul
+IL_003A  conv.i4
+IL_003B  sub
+IL_003C  ret
+TenementApartment::Int32 FurnitureClearPercentSecondary()
+IL_0000  ldarg.0
+IL_0001  ldfld TenementApartment::Int32 preplacedFurnitureAmountSecondary
+IL_0006  brtrue.s IL_000B
+IL_0008  ldc.i4.s 100
+IL_000A  ret
+IL_000B  ldarg.0
+IL_000C  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+IL_0011  call UnityEngine.Object::Boolean op_Implicit(UnityEngine.Object)
+IL_0016  brfalse.s IL_0023
+IL_0018  ldarg.0
+IL_0019  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+IL_001E  callvirt TenementApartmentPrefabs::Void UpdateCurrentFurnitureAmount()
+IL_0023  ldc.i4.s 100
+IL_0025  ldarg.0
+IL_0026  ldfld TenementApartment::Int32 currentFurnitureAmountSecondary
+IL_002B  conv.r4
+IL_002C  ldarg.0
+IL_002D  ldfld TenementApartment::Int32 preplacedFurnitureAmountSecondary
+IL_0032  conv.r4
+IL_0033  div
+IL_0034  ldc.r4 100
+IL_0039  mul
+IL_003A  conv.i4
+IL_003B  sub
+IL_003C  ret

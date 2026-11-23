@@ -1,0 +1,12 @@
+﻿{
+    "checkedAt":  "2026-11-23T22:20:47.5042270+00:00",
+    "previousRelease":  "20261123T221701Z-1c43df6e",
+    "currentRelease":  "20261123T222024Z-8f6af4b4",
+    "previewDidNotChangeRelease":  true,
+    "deploymentWhileOldVersionRunning":  true,
+    "oldBinariesAndSupportFilesUnchanged":  true,
+    "stableLauncherHashUnchanged":  true,
+    "launcherDefaultsAndArgumentForwarding":  true,
+    "rollback":  true,
+    "isolatedTestProfiles":  true
+}

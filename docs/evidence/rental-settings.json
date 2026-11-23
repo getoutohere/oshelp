@@ -1,0 +1,37 @@
+﻿{
+    "formatVersion":  2,
+    "baseValue":  5000,
+    "ocDivider":  20,
+    "rmDivider":  200,
+    "presetIncomeEnums":  {
+                              "Custom":  0,
+                              "Default":  0,
+                              "Casual":  8
+                          },
+    "presetPaymentModes":  {
+                               "Custom":  0,
+                               "Default":  0,
+                               "Casual":  1
+                           },
+    "paymentModeNames":  {
+                             "2":  "Weekly",
+                             "3":  "Biweekly",
+                             "4":  "Monthly",
+                             "1":  "Daily",
+                             "0":  "Default"
+                         },
+    "inputs":  [
+                   {
+                       "file":  "Managed/Assembly-CSharp.dll",
+                       "hash":  "C45AE3010158E9C28F2B47CA561F10172133B4EC87D0D33DB13EC5E5C7C3B328"
+                   },
+                   {
+                       "file":  "globalgamemanagers.assets",
+                       "hash":  "3195AC18CCE9141AC0573004FDD00556D13B44824C9B2EE3779F717570EA27B8"
+                   },
+                   {
+                       "file":  "level0",
+                       "hash":  "77718E4F31E067B75EAC6DB12CA2D2054E7861F63DC739418AF043331833AD44"
+                   }
+               ]
+}

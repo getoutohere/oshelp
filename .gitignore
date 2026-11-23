@@ -1,0 +1,35 @@
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+local/
+artifacts/
+app/
+exports/
+oshelp-profile*.json
+
+# Local exports and packaged/build artifacts
+*.dll
+*.exe
+*.pdb
+*.nupkg
+*.zip
+*.7z
+*.tar
+*.gz
+*.tnmt
+*.dialogue
+*.bak
+*.tmp
+*.log
+.env
+.env.*
+
+# Machine-specific SDK diagnostics and screenshots stay private.
+/docs/evidence/dotnet-info.txt
+/docs/assets/*.png
+
+# Game installations and decompiled game source must not enter source releases.
+/Obenseuer_Data/
+/decomp/

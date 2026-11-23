@@ -1,0 +1,2086 @@
+﻿
+TenementResident::Boolean CantUpgradeApartment() [0x06002A4E]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementResident::System.String dialogueActor
+IL_0006  call System.String::Boolean IsNullOrEmpty(System.String)
+IL_000B  brtrue.s IL_0029
+IL_000D  ldarg.0
+IL_000E  ldfld TenementResident::System.String dialogueActor
+IL_0013  ldstr "CanUpgradeApartment"
+IL_0018  call PixelCrushers.DialogueSystem.DialogueLua::Result GetActorField(System.String, System.String)
+IL_001D  stloc.0
+IL_001E  ldloca.s 0
+IL_0020  call PixelCrushers.DialogueSystem.Lua+Result::Boolean get_AsBool()
+IL_0025  ldc.i4.0
+IL_0026  ceq
+IL_0028  ret
+IL_0029  ldarg.0
+IL_002A  ldfld TenementResident::Boolean cantUpgradeApartment
+IL_002F  ret
+
+TenementResident::Void StartRent() [0x06002A50]
+IL_0000  ldsfld TenementController::TenementController instance
+IL_0005  ldarg.0
+IL_0006  callvirt TenementController::Void AddResident(TenementResident)
+IL_000B  ldsfld GameUIController::GameUIController instance
+IL_0010  ldc.i4.1
+IL_0011  ldc.i4.1
+IL_0012  ldc.i4.0
+IL_0013  ldc.i4.4
+IL_0014  ldc.i4.1
+IL_0015  callvirt GameUIController::Void ToggleGameMenu(Boolean, Boolean, MenuPanels, MenuPageNames, Boolean)
+IL_001A  ret
+
+TenementResident::money GetMonthlyRent(TenementApartment) [0x06002A51]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementResident::Int32 incomeOc
+IL_0006  ldarg.0
+IL_0007  ldfld TenementResident::Int32 incomeRm
+IL_000C  conv.r4
+IL_000D  newobj Money+money::Void .ctor(Int32, Single)
+IL_0012  ldarg.1
+IL_0013  callvirt TenementApartment::money GetScaledValue()
+IL_0018  call Money+money::money op_Addition(money, money)
+IL_001D  ret
+
+TenementResident::CantRentReason CheckRequirements(TenementApartment) [0x06002A52]
+IL_0000  ldarg.1
+IL_0001  ldfld TenementApartment::TenementApartmentType type
+IL_0006  ldfld TenementApartmentType::ApartmentType size
+IL_000B  brtrue.s IL_0017
+IL_000D  ldarg.0
+IL_000E  ldfld TenementResident::Boolean smallApartment
+IL_0013  brtrue.s IL_0017
+IL_0015  ldc.i4.4
+IL_0016  ret
+IL_0017  ldarg.1
+IL_0018  ldfld TenementApartment::TenementApartmentType type
+IL_001D  ldfld TenementApartmentType::ApartmentType size
+IL_0022  ldc.i4.1
+IL_0023  bne.un.s IL_002F
+IL_0025  ldarg.0
+IL_0026  ldfld TenementResident::Boolean mediumApartment
+IL_002B  brtrue.s IL_002F
+IL_002D  ldc.i4.4
+IL_002E  ret
+IL_002F  ldarg.1
+IL_0030  ldfld TenementApartment::TenementApartmentType type
+IL_0035  ldfld TenementApartmentType::ApartmentType size
+IL_003A  ldc.i4.2
+IL_003B  bne.un.s IL_0047
+IL_003D  ldarg.0
+IL_003E  ldfld TenementResident::Boolean largeApartment
+IL_0043  brtrue.s IL_0047
+IL_0045  ldc.i4.4
+IL_0046  ret
+IL_0047  ldarg.1
+IL_0048  ldfld TenementApartment::TenementResident resident
+IL_004D  ldnull
+IL_004E  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0053  brfalse.s IL_005F
+IL_0055  ldarg.1
+IL_0056  ldfld TenementApartment::Boolean onlyFurniture
+IL_005B  brtrue.s IL_005F
+IL_005D  ldc.i4.1
+IL_005E  ret
+IL_005F  ldarg.1
+IL_0060  ldfld TenementApartment::ApartmentElectricity currentElectricity
+IL_0065  ldarg.0
+IL_0066  ldfld TenementResident::ApartmentElectricity electricity
+IL_006B  bge.s IL_006F
+IL_006D  ldc.i4.2
+IL_006E  ret
+IL_006F  ldarg.1
+IL_0070  ldfld TenementApartment::ApartmentWater currentWater
+IL_0075  ldarg.0
+IL_0076  ldfld TenementResident::ApartmentWater waterMin
+IL_007B  bge.s IL_007F
+IL_007D  ldc.i4.2
+IL_007E  ret
+IL_007F  ldarg.1
+IL_0080  ldfld TenementApartment::ApartmentHeatingMethod currentHeating
+IL_0085  ldarg.0
+IL_0086  ldfld TenementResident::ApartmentHeatingMethod heatingMin
+IL_008B  bge.s IL_008F
+IL_008D  ldc.i4.2
+IL_008E  ret
+IL_008F  ldarg.1
+IL_0090  ldfld TenementApartment::BathroomType currentBathroom
+IL_0095  ldarg.0
+IL_0096  ldfld TenementResident::BathroomType bathroomMin
+IL_009B  bge.s IL_009F
+IL_009D  ldc.i4.2
+IL_009E  ret
+IL_009F  ldarg.1
+IL_00A0  ldfld TenementApartment::ApartmentWallType currentWall
+IL_00A5  ldarg.0
+IL_00A6  ldfld TenementResident::ApartmentWallType wallMin
+IL_00AB  bge.s IL_00AF
+IL_00AD  ldc.i4.2
+IL_00AE  ret
+IL_00AF  ldarg.1
+IL_00B0  ldfld TenementApartment::BalconyType currentBalcony
+IL_00B5  ldarg.0
+IL_00B6  ldfld TenementResident::BalconyType balconyMin
+IL_00BB  bge.s IL_00BF
+IL_00BD  ldc.i4.2
+IL_00BE  ret
+IL_00BF  ldarg.1
+IL_00C0  ldfld TenementApartment::KitchenType currentKitchen
+IL_00C5  ldarg.0
+IL_00C6  ldfld TenementResident::KitchenType kitchenMin
+IL_00CB  bge.s IL_00CF
+IL_00CD  ldc.i4.2
+IL_00CE  ret
+IL_00CF  ldsfld TenementController::TenementController instance
+IL_00D4  ldfld TenementController::TenementGeneral general
+IL_00D9  ldfld TenementGeneral::TenementElevator currentElevator
+IL_00DE  ldarg.0
+IL_00DF  ldfld TenementResident::TenementElevator elevator
+IL_00E4  bge.s IL_00E8
+IL_00E6  ldc.i4.3
+IL_00E7  ret
+IL_00E8  ldsfld TenementController::TenementController instance
+IL_00ED  ldfld TenementController::TenementGeneral general
+IL_00F2  ldfld TenementGeneral::TenementStairs currentStairs
+IL_00F7  ldarg.0
+IL_00F8  ldfld TenementResident::TenementStairs stairsMin
+IL_00FD  bge.s IL_0101
+IL_00FF  ldc.i4.3
+IL_0100  ret
+IL_0101  ldsfld TenementController::TenementController instance
+IL_0106  ldfld TenementController::TenementGeneral general
+IL_010B  ldfld TenementGeneral::TenementBasement currentBasement
+IL_0110  ldarg.0
+IL_0111  ldfld TenementResident::TenementBasement basementMin
+IL_0116  bge.s IL_011A
+IL_0118  ldc.i4.3
+IL_0119  ret
+IL_011A  ldsfld TenementController::TenementController instance
+IL_011F  ldfld TenementController::TenementGeneral general
+IL_0124  ldfld TenementGeneral::BasementSauna currentSauna
+IL_0129  ldarg.0
+IL_012A  ldfld TenementResident::BasementSauna basementSaunaMin
+IL_012F  bge.s IL_0133
+IL_0131  ldc.i4.3
+IL_0132  ret
+IL_0133  ldsfld TenementController::TenementController instance
+IL_0138  ldfld TenementController::TenementGeneral general
+IL_013D  ldfld TenementGeneral::OuterWalls currentFacade
+IL_0142  ldarg.0
+IL_0143  ldfld TenementResident::OuterWalls outerWallsMin
+IL_0148  bge.s IL_014C
+IL_014A  ldc.i4.3
+IL_014B  ret
+IL_014C  ldsfld TenementController::TenementController instance
+IL_0151  ldfld TenementController::TenementGeneral general
+IL_0156  ldfld TenementGeneral::Courtyard currentCourtyard
+IL_015B  ldarg.0
+IL_015C  ldfld TenementResident::Courtyard courtyardMin
+IL_0161  bge.s IL_0165
+IL_0163  ldc.i4.3
+IL_0164  ret
+IL_0165  ldsfld TenementController::TenementController instance
+IL_016A  ldfld TenementController::TenementGeneral general
+IL_016F  ldfld TenementGeneral::BasementMine currentMine
+IL_0174  ldarg.0
+IL_0175  ldfld TenementResident::BasementMine mineMin
+IL_017A  bge.s IL_017E
+IL_017C  ldc.i4.3
+IL_017D  ret
+IL_017E  ldc.i4.0
+IL_017F  ret
+
+TenementResident::Boolean UpgradeMeetsSizeRequirement(ApartmentType) [0x06002A53]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementResident::Boolean smallApartment
+IL_0006  brfalse.s IL_000D
+IL_0008  ldarg.1
+IL_0009  brtrue.s IL_000D
+IL_000B  ldc.i4.1
+IL_000C  ret
+IL_000D  ldarg.0
+IL_000E  ldfld TenementResident::Boolean mediumApartment
+IL_0013  brfalse.s IL_001B
+IL_0015  ldarg.1
+IL_0016  ldc.i4.1
+IL_0017  bne.un.s IL_001B
+IL_0019  ldc.i4.1
+IL_001A  ret
+IL_001B  ldarg.0
+IL_001C  ldfld TenementResident::Boolean largeApartment
+IL_0021  brfalse.s IL_0029
+IL_0023  ldarg.1
+IL_0024  ldc.i4.2
+IL_0025  bne.un.s IL_0029
+IL_0027  ldc.i4.1
+IL_0028  ret
+IL_0029  ldc.i4.0
+IL_002A  ret
+
+TenementResident::Boolean UpgradeMeetsRequirements(TenementUpgrade) [0x06002A54]
+IL_0000  ldarg.1
+IL_0001  ldfld TenementUpgrade::Boolean upgradeTenementElectricity
+IL_0006  brfalse.s IL_001A
+IL_0008  ldarg.0
+IL_0009  ldfld TenementResident::ApartmentElectricity electricity
+IL_000E  ldarg.1
+IL_000F  ldfld TenementUpgrade::TenementElectricity tenementElectricityType
+IL_0014  cgt
+IL_0016  ldc.i4.0
+IL_0017  ceq
+IL_0019  ret
+IL_001A  ldarg.1
+IL_001B  ldfld TenementUpgrade::Boolean upgradeTenementWater
+IL_0020  pop
+IL_0021  ldarg.1
+IL_0022  ldfld TenementUpgrade::Boolean upgradeHeating
+IL_0027  pop
+IL_0028  ldarg.1
+IL_0029  ldfld TenementUpgrade::Boolean upgradeElevator
+IL_002E  brfalse.s IL_0042
+IL_0030  ldarg.0
+IL_0031  ldfld TenementResident::TenementElevator elevator
+IL_0036  ldarg.1
+IL_0037  ldfld TenementUpgrade::TenementElevator elevatorType
+IL_003C  cgt
+IL_003E  ldc.i4.0
+IL_003F  ceq
+IL_0041  ret
+IL_0042  ldarg.1
+IL_0043  ldfld TenementUpgrade::Boolean upgradeStairs
+IL_0048  brfalse.s IL_005C
+IL_004A  ldarg.0
+IL_004B  ldfld TenementResident::TenementStairs stairsMin
+IL_0050  ldarg.1
+IL_0051  ldfld TenementUpgrade::TenementStairs stairsType
+IL_0056  cgt
+IL_0058  ldc.i4.0
+IL_0059  ceq
+IL_005B  ret
+IL_005C  ldarg.1
+IL_005D  ldfld TenementUpgrade::Boolean upgradeBasement
+IL_0062  brfalse.s IL_0076
+IL_0064  ldarg.0
+IL_0065  ldfld TenementResident::TenementBasement basementMin
+IL_006A  ldarg.1
+IL_006B  ldfld TenementUpgrade::TenementBasement basementType
+IL_0070  cgt
+IL_0072  ldc.i4.0
+IL_0073  ceq
+IL_0075  ret
+IL_0076  ldarg.1
+IL_0077  ldfld TenementUpgrade::Boolean upgradeBasementSauna
+IL_007C  brfalse.s IL_0090
+IL_007E  ldarg.0
+IL_007F  ldfld TenementResident::BasementSauna basementSaunaMin
+IL_0084  ldarg.1
+IL_0085  ldfld TenementUpgrade::BasementSauna basementSaunaType
+IL_008A  cgt
+IL_008C  ldc.i4.0
+IL_008D  ceq
+IL_008F  ret
+IL_0090  ldarg.1
+IL_0091  ldfld TenementUpgrade::Boolean upgradeRoof
+IL_0096  pop
+IL_0097  ldarg.1
+IL_0098  ldfld TenementUpgrade::Boolean upgradeOuterWalls
+IL_009D  brfalse.s IL_00B1
+IL_009F  ldarg.0
+IL_00A0  ldfld TenementResident::OuterWalls outerWallsMin
+IL_00A5  ldarg.1
+IL_00A6  ldfld TenementUpgrade::OuterWalls outerWallType
+IL_00AB  cgt
+IL_00AD  ldc.i4.0
+IL_00AE  ceq
+IL_00B0  ret
+IL_00B1  ldarg.1
+IL_00B2  ldfld TenementUpgrade::Boolean upgradeFence
+IL_00B7  pop
+IL_00B8  ldarg.1
+IL_00B9  ldfld TenementUpgrade::Boolean upgradeCourtyard
+IL_00BE  brfalse.s IL_00D2
+IL_00C0  ldarg.0
+IL_00C1  ldfld TenementResident::Courtyard courtyardMin
+IL_00C6  ldarg.1
+IL_00C7  ldfld TenementUpgrade::Courtyard courtyardType
+IL_00CC  cgt
+IL_00CE  ldc.i4.0
+IL_00CF  ceq
+IL_00D1  ret
+IL_00D2  ldarg.1
+IL_00D3  ldfld TenementUpgrade::Boolean upgradeMine
+IL_00D8  brfalse.s IL_00EC
+IL_00DA  ldarg.0
+IL_00DB  ldfld TenementResident::BasementMine mineMin
+IL_00E0  ldarg.1
+IL_00E1  ldfld TenementUpgrade::BasementMine mineType
+IL_00E6  cgt
+IL_00E8  ldc.i4.0
+IL_00E9  ceq
+IL_00EB  ret
+IL_00EC  ldarg.1
+IL_00ED  ldfld TenementUpgrade::Boolean upgradeSaunaAndPier
+IL_00F2  pop
+IL_00F3  ldarg.1
+IL_00F4  ldfld TenementUpgrade::Boolean upgradeGreenhouse
+IL_00F9  pop
+IL_00FA  ldarg.1
+IL_00FB  ldfld TenementUpgrade::Boolean upgradeElectricity
+IL_0100  brfalse.s IL_0114
+IL_0102  ldarg.0
+IL_0103  ldfld TenementResident::ApartmentElectricity electricity
+IL_0108  ldarg.1
+IL_0109  ldfld TenementUpgrade::ApartmentElectricity electricityType
+IL_010E  cgt
+IL_0110  ldc.i4.0
+IL_0111  ceq
+IL_0113  ret
+IL_0114  ldarg.1
+IL_0115  ldfld TenementUpgrade::Boolean upgradeWater
+IL_011A  brfalse.s IL_012E
+IL_011C  ldarg.0
+IL_011D  ldfld TenementResident::ApartmentWater waterMin
+IL_0122  ldarg.1
+IL_0123  ldfld TenementUpgrade::ApartmentWater waterType
+IL_0128  cgt
+IL_012A  ldc.i4.0
+IL_012B  ceq
+IL_012D  ret
+IL_012E  ldarg.1
+IL_012F  ldfld TenementUpgrade::Boolean upgradeHeatingMethod
+IL_0134  brfalse.s IL_0148
+IL_0136  ldarg.0
+IL_0137  ldfld TenementResident::ApartmentHeatingMethod heatingMin
+IL_013C  ldarg.1
+IL_013D  ldfld TenementUpgrade::ApartmentHeatingMethod heatingMethod
+IL_0142  cgt
+IL_0144  ldc.i4.0
+IL_0145  ceq
+IL_0147  ret
+IL_0148  ldarg.1
+IL_0149  ldfld TenementUpgrade::Boolean upgradeBathroom
+IL_014E  brfalse.s IL_0162
+IL_0150  ldarg.0
+IL_0151  ldfld TenementResident::BathroomType bathroomMin
+IL_0156  ldarg.1
+IL_0157  ldfld TenementUpgrade::BathroomType bathroomType
+IL_015C  cgt
+IL_015E  ldc.i4.0
+IL_015F  ceq
+IL_0161  ret
+IL_0162  ldarg.1
+IL_0163  ldfld TenementUpgrade::Boolean upgradeWalls
+IL_0168  brfalse.s IL_017C
+IL_016A  ldarg.0
+IL_016B  ldfld TenementResident::ApartmentWallType wallMin
+IL_0170  ldarg.1
+IL_0171  ldfld TenementUpgrade::ApartmentWallType wallType
+IL_0176  cgt
+IL_0178  ldc.i4.0
+IL_0179  ceq
+IL_017B  ret
+IL_017C  ldarg.1
+IL_017D  ldfld TenementUpgrade::Boolean upgradeBalcony
+IL_0182  brfalse.s IL_0196
+IL_0184  ldarg.0
+IL_0185  ldfld TenementResident::BalconyType balconyMin
+IL_018A  ldarg.1
+IL_018B  ldfld TenementUpgrade::BalconyType balconyType
+IL_0190  cgt
+IL_0192  ldc.i4.0
+IL_0193  ceq
+IL_0195  ret
+IL_0196  ldarg.1
+IL_0197  ldfld TenementUpgrade::Boolean upgradeBalcony2
+IL_019C  pop
+IL_019D  ldarg.1
+IL_019E  ldfld TenementUpgrade::Boolean upgradeKitchen
+IL_01A3  brfalse.s IL_01B7
+IL_01A5  ldarg.0
+IL_01A6  ldfld TenementResident::KitchenType kitchenMin
+IL_01AB  ldarg.1
+IL_01AC  ldfld TenementUpgrade::KitchenType kitchenType
+IL_01B1  cgt
+IL_01B3  ldc.i4.0
+IL_01B4  ceq
+IL_01B6  ret
+IL_01B7  ldc.i4.1
+IL_01B8  ret
+
+TenementUpgrade::Int32 GetRequiredTimeHours() [0x06002A7F]
+IL_0000  ldsfld DifficultyController::DifficultyController instance
+IL_0005  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_000A  ldarg.0
+IL_000B  ldfld TenementUpgrade::Int32 requiredTimeHours
+IL_0010  conv.r4
+IL_0011  callvirt DifficultyInfo::Single GetRenovationSpeed(Single)
+IL_0016  conv.i4
+IL_0017  ret
+
+TenementUpgrade::Int32 GetPriceStartOC() [0x06002A80]
+IL_0000  ldsfld DifficultyController::DifficultyController instance
+IL_0005  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_000A  ldarg.0
+IL_000B  ldfld TenementUpgrade::Int32 priceStartOC
+IL_0010  conv.r4
+IL_0011  callvirt DifficultyInfo::Single GetRenovationCost(Single)
+IL_0016  conv.i4
+IL_0017  ret
+
+TenementUpgrade::Int32 GetPriceFinalRM() [0x06002A81]
+IL_0000  ldsfld DifficultyController::DifficultyController instance
+IL_0005  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_000A  ldarg.0
+IL_000B  ldfld TenementUpgrade::Int32 priceFinalRM
+IL_0010  conv.r4
+IL_0011  callvirt DifficultyInfo::Single GetRenovationCost(Single)
+IL_0016  conv.i4
+IL_0017  ret
+
+TenementUpgrade::Void TakeRequiredItemsAndMoney() [0x06002A82]
+IL_0000  ldsfld TenementController::TenementController instance
+IL_0005  ldnull
+IL_0006  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_000B  brfalse.s IL_001A
+IL_000D  ldsfld TenementController::TenementController instance
+IL_0012  ldfld TenementController::Boolean ignoreUpgradePricesAndItems
+IL_0017  brfalse.s IL_001A
+IL_0019  ret
+IL_001A  ldsfld Money::Money instance
+IL_001F  ldarg.0
+IL_0020  call TenementUpgrade::Int32 GetPriceStartOC()
+IL_0025  conv.r4
+IL_0026  ldc.i4.0
+IL_0027  callvirt Money::Void RemoveMoney(Single, Boolean)
+IL_002C  ldarg.0
+IL_002D  ldfld TenementUpgrade::UpgradeItem[] requiredItems
+IL_0032  stloc.0
+IL_0033  ldc.i4.0
+IL_0034  stloc.1
+IL_0035  br.s IL_006B
+IL_0037  ldloc.0
+IL_0038  ldloc.1
+IL_0039  ldelem.ref
+IL_003A  stloc.2
+IL_003B  ldsfld DifficultyController::DifficultyController instance
+IL_0040  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_0045  ldloc.2
+IL_0046  ldfld TenementUpgrade+UpgradeItem::Int32 itemAmount
+IL_004B  callvirt DifficultyInfo::Int32 GetRenovationResourceCost(Int32)
+IL_0050  stloc.3
+IL_0051  ldsfld TenementController::TenementController instance
+IL_0056  ldloc.2
+IL_0057  ldfld TenementUpgrade+UpgradeItem::ItemReference Item
+IL_005C  ldfld ItemReference::Int32 ID
+IL_0061  ldloc.3
+IL_0062  callvirt TenementController::Void RemoveRequiredItems(Int32, Int32)
+IL_0067  ldloc.1
+IL_0068  ldc.i4.1
+IL_0069  add
+IL_006A  stloc.1
+IL_006B  ldloc.1
+IL_006C  ldloc.0
+IL_006D  ldlen
+IL_006E  conv.i4
+IL_006F  blt.s IL_0037
+IL_0071  ret
+
+TenementUpgrade::Boolean IsUpgraded(TenementApartment) [0x06002A85]
+IL_0000  ldsfld TenementController::TenementController instance
+IL_0005  ldfld TenementController::TenementGeneral general
+IL_000A  stloc.0
+IL_000B  ldarg.0
+IL_000C  ldfld TenementUpgrade::Boolean upgradeTenementElectricity
+IL_0011  brfalse.s IL_0025
+IL_0013  ldloc.0
+IL_0014  ldfld TenementGeneral::TenementElectricity currentElectricity
+IL_0019  ldarg.0
+IL_001A  ldfld TenementUpgrade::TenementElectricity tenementElectricityType
+IL_001F  clt
+IL_0021  ldc.i4.0
+IL_0022  ceq
+IL_0024  ret
+IL_0025  ldarg.0
+IL_0026  ldfld TenementUpgrade::Boolean upgradeTenementWater
+IL_002B  brfalse.s IL_003F
+IL_002D  ldloc.0
+IL_002E  ldfld TenementGeneral::TenementWater currentWater
+IL_0033  ldarg.0
+IL_0034  ldfld TenementUpgrade::TenementWater tenementWaterType
+IL_0039  clt
+IL_003B  ldc.i4.0
+IL_003C  ceq
+IL_003E  ret
+IL_003F  ldarg.0
+IL_0040  ldfld TenementUpgrade::Boolean upgradeHeating
+IL_0045  brfalse.s IL_0059
+IL_0047  ldloc.0
+IL_0048  ldfld TenementGeneral::TenementHeating currentHeating
+IL_004D  ldarg.0
+IL_004E  ldfld TenementUpgrade::TenementHeating heatingType
+IL_0053  clt
+IL_0055  ldc.i4.0
+IL_0056  ceq
+IL_0058  ret
+IL_0059  ldarg.0
+IL_005A  ldfld TenementUpgrade::Boolean upgradeElevator
+IL_005F  brfalse.s IL_0073
+IL_0061  ldloc.0
+IL_0062  ldfld TenementGeneral::TenementElevator currentElevator
+IL_0067  ldarg.0
+IL_0068  ldfld TenementUpgrade::TenementElevator elevatorType
+IL_006D  clt
+IL_006F  ldc.i4.0
+IL_0070  ceq
+IL_0072  ret
+IL_0073  ldarg.0
+IL_0074  ldfld TenementUpgrade::Boolean upgradeStairs
+IL_0079  brfalse.s IL_008D
+IL_007B  ldloc.0
+IL_007C  ldfld TenementGeneral::TenementStairs currentStairs
+IL_0081  ldarg.0
+IL_0082  ldfld TenementUpgrade::TenementStairs stairsType
+IL_0087  clt
+IL_0089  ldc.i4.0
+IL_008A  ceq
+IL_008C  ret
+IL_008D  ldarg.0
+IL_008E  ldfld TenementUpgrade::Boolean upgradeBasement
+IL_0093  brfalse.s IL_00A7
+IL_0095  ldloc.0
+IL_0096  ldfld TenementGeneral::TenementBasement currentBasement
+IL_009B  ldarg.0
+IL_009C  ldfld TenementUpgrade::TenementBasement basementType
+IL_00A1  clt
+IL_00A3  ldc.i4.0
+IL_00A4  ceq
+IL_00A6  ret
+IL_00A7  ldarg.0
+IL_00A8  ldfld TenementUpgrade::Boolean upgradeBasementSauna
+IL_00AD  brfalse.s IL_00C1
+IL_00AF  ldloc.0
+IL_00B0  ldfld TenementGeneral::BasementSauna currentSauna
+IL_00B5  ldarg.0
+IL_00B6  ldfld TenementUpgrade::BasementSauna basementSaunaType
+IL_00BB  clt
+IL_00BD  ldc.i4.0
+IL_00BE  ceq
+IL_00C0  ret
+IL_00C1  ldarg.0
+IL_00C2  ldfld TenementUpgrade::Boolean upgradeBasementShrooms
+IL_00C7  brfalse.s IL_00DB
+IL_00C9  ldloc.0
+IL_00CA  ldfld TenementGeneral::BasementShrooms currentShrooms
+IL_00CF  ldarg.0
+IL_00D0  ldfld TenementUpgrade::BasementShrooms basementShroomsType
+IL_00D5  clt
+IL_00D7  ldc.i4.0
+IL_00D8  ceq
+IL_00DA  ret
+IL_00DB  ldarg.0
+IL_00DC  ldfld TenementUpgrade::Boolean upgradeRoof
+IL_00E1  brfalse.s IL_00F5
+IL_00E3  ldloc.0
+IL_00E4  ldfld TenementGeneral::TenementRoof currentRoof
+IL_00E9  ldarg.0
+IL_00EA  ldfld TenementUpgrade::TenementRoof roofType
+IL_00EF  clt
+IL_00F1  ldc.i4.0
+IL_00F2  ceq
+IL_00F4  ret
+IL_00F5  ldarg.0
+IL_00F6  ldfld TenementUpgrade::Boolean upgradeOuterWalls
+IL_00FB  brfalse.s IL_010F
+IL_00FD  ldloc.0
+IL_00FE  ldfld TenementGeneral::OuterWalls currentFacade
+IL_0103  ldarg.0
+IL_0104  ldfld TenementUpgrade::OuterWalls outerWallType
+IL_0109  clt
+IL_010B  ldc.i4.0
+IL_010C  ceq
+IL_010E  ret
+IL_010F  ldarg.0
+IL_0110  ldfld TenementUpgrade::Boolean upgradeFence
+IL_0115  brfalse.s IL_0129
+IL_0117  ldloc.0
+IL_0118  ldfld TenementGeneral::TenementElevator currententFence
+IL_011D  ldarg.0
+IL_011E  ldfld TenementUpgrade::Fence fenceType
+IL_0123  clt
+IL_0125  ldc.i4.0
+IL_0126  ceq
+IL_0128  ret
+IL_0129  ldarg.0
+IL_012A  ldfld TenementUpgrade::Boolean upgradeCourtyard
+IL_012F  brfalse.s IL_0143
+IL_0131  ldloc.0
+IL_0132  ldfld TenementGeneral::Courtyard currentCourtyard
+IL_0137  ldarg.0
+IL_0138  ldfld TenementUpgrade::Courtyard courtyardType
+IL_013D  clt
+IL_013F  ldc.i4.0
+IL_0140  ceq
+IL_0142  ret
+IL_0143  ldarg.0
+IL_0144  ldfld TenementUpgrade::Boolean upgradeSaunaAndPier
+IL_0149  brfalse.s IL_015D
+IL_014B  ldloc.0
+IL_014C  ldfld TenementGeneral::SaunaAndPier currentSaunaAndPier
+IL_0151  ldarg.0
+IL_0152  ldfld TenementUpgrade::SaunaAndPier saunaAndPierType
+IL_0157  clt
+IL_0159  ldc.i4.0
+IL_015A  ceq
+IL_015C  ret
+IL_015D  ldarg.0
+IL_015E  ldfld TenementUpgrade::Boolean upgradeGreenhouse
+IL_0163  brfalse.s IL_0177
+IL_0165  ldloc.0
+IL_0166  ldfld TenementGeneral::TenementElevator currententGreenhouse
+IL_016B  ldarg.0
+IL_016C  ldfld TenementUpgrade::Greenhouse greenhouseType
+IL_0171  clt
+IL_0173  ldc.i4.0
+IL_0174  ceq
+IL_0176  ret
+IL_0177  ldarg.0
+IL_0178  ldfld TenementUpgrade::Boolean upgradeWorkshop
+IL_017D  brfalse.s IL_0191
+IL_017F  ldloc.0
+IL_0180  ldfld TenementGeneral::BasementWorkShop currentWorkshop
+IL_0185  ldarg.0
+IL_0186  ldfld TenementUpgrade::BasementWorkShop workshopType
+IL_018B  clt
+IL_018D  ldc.i4.0
+IL_018E  ceq
+IL_0190  ret
+IL_0191  ldarg.0
+IL_0192  ldfld TenementUpgrade::Boolean upgradeMine
+IL_0197  brfalse.s IL_01AB
+IL_0199  ldloc.0
+IL_019A  ldfld TenementGeneral::BasementMine currentMine
+IL_019F  ldarg.0
+IL_01A0  ldfld TenementUpgrade::BasementMine mineType
+IL_01A5  clt
+IL_01A7  ldc.i4.0
+IL_01A8  ceq
+IL_01AA  ret
+IL_01AB  ldarg.1
+IL_01AC  brtrue.s IL_01B0
+IL_01AE  ldc.i4.0
+IL_01AF  ret
+IL_01B0  ldarg.0
+IL_01B1  ldfld TenementUpgrade::Boolean upgradeElectricity
+IL_01B6  brfalse.s IL_01CA
+IL_01B8  ldarg.1
+IL_01B9  ldfld TenementApartment::ApartmentElectricity currentElectricity
+IL_01BE  ldarg.0
+IL_01BF  ldfld TenementUpgrade::ApartmentElectricity electricityType
+IL_01C4  clt
+IL_01C6  ldc.i4.0
+IL_01C7  ceq
+IL_01C9  ret
+IL_01CA  ldarg.0
+IL_01CB  ldfld TenementUpgrade::Boolean upgradeWater
+IL_01D0  brfalse.s IL_01E4
+IL_01D2  ldarg.1
+IL_01D3  ldfld TenementApartment::ApartmentWater currentWater
+IL_01D8  ldarg.0
+IL_01D9  ldfld TenementUpgrade::ApartmentWater waterType
+IL_01DE  clt
+IL_01E0  ldc.i4.0
+IL_01E1  ceq
+IL_01E3  ret
+IL_01E4  ldarg.0
+IL_01E5  ldfld TenementUpgrade::Boolean upgradeHeatingMethod
+IL_01EA  brfalse.s IL_01FE
+IL_01EC  ldarg.1
+IL_01ED  ldfld TenementApartment::ApartmentHeatingMethod currentHeating
+IL_01F2  ldarg.0
+IL_01F3  ldfld TenementUpgrade::TenementHeating heatingType
+IL_01F8  clt
+IL_01FA  ldc.i4.0
+IL_01FB  ceq
+IL_01FD  ret
+IL_01FE  ldarg.0
+IL_01FF  ldfld TenementUpgrade::Boolean upgradeBathroom
+IL_0204  brfalse.s IL_0218
+IL_0206  ldarg.1
+IL_0207  ldfld TenementApartment::BathroomType currentBathroom
+IL_020C  ldarg.0
+IL_020D  ldfld TenementUpgrade::BathroomType bathroomType
+IL_0212  clt
+IL_0214  ldc.i4.0
+IL_0215  ceq
+IL_0217  ret
+IL_0218  ldarg.0
+IL_0219  ldfld TenementUpgrade::Boolean upgradeWalls
+IL_021E  brfalse.s IL_0232
+IL_0220  ldarg.1
+IL_0221  ldfld TenementApartment::ApartmentWallType currentWall
+IL_0226  ldarg.0
+IL_0227  ldfld TenementUpgrade::ApartmentWallType wallType
+IL_022C  clt
+IL_022E  ldc.i4.0
+IL_022F  ceq
+IL_0231  ret
+IL_0232  ldarg.0
+IL_0233  ldfld TenementUpgrade::Boolean upgradeBalcony
+IL_0238  brfalse.s IL_024C
+IL_023A  ldarg.1
+IL_023B  ldfld TenementApartment::BalconyType currentBalcony
+IL_0240  ldarg.0
+IL_0241  ldfld TenementUpgrade::BalconyType balconyType
+IL_0246  clt
+IL_0248  ldc.i4.0
+IL_0249  ceq
+IL_024B  ret
+IL_024C  ldarg.0
+IL_024D  ldfld TenementUpgrade::Boolean upgradeBalcony2
+IL_0252  brfalse.s IL_0266
+IL_0254  ldarg.1
+IL_0255  ldfld TenementApartment::BalconyType currentBalcony2
+IL_025A  ldarg.0
+IL_025B  ldfld TenementUpgrade::BalconyType balcony2Type
+IL_0260  clt
+IL_0262  ldc.i4.0
+IL_0263  ceq
+IL_0265  ret
+IL_0266  ldarg.0
+IL_0267  ldfld TenementUpgrade::Boolean upgradeKitchen
+IL_026C  brfalse.s IL_0280
+IL_026E  ldarg.1
+IL_026F  ldfld TenementApartment::KitchenType currentKitchen
+IL_0274  ldarg.0
+IL_0275  ldfld TenementUpgrade::KitchenType kitchenType
+IL_027A  clt
+IL_027C  ldc.i4.0
+IL_027D  ceq
+IL_027F  ret
+IL_0280  ldc.i4.0
+IL_0281  ret
+
+TenementUpgrade::Boolean CanUpgrade(TenementApartment, Boolean, TenementContractor) [0x06002A86]
+IL_0000  ldc.i4.0
+IL_0001  stloc.0
+IL_0002  br.s IL_001A
+IL_0004  ldarg.0
+IL_0005  ldfld TenementUpgrade::TenementUpgrade[] requiredUpgrades
+IL_000A  ldloc.0
+IL_000B  ldelem.ref
+IL_000C  ldarg.1
+IL_000D  callvirt TenementUpgrade::Boolean IsUpgraded(TenementApartment)
+IL_0012  brtrue.s IL_0016
+IL_0014  ldc.i4.0
+IL_0015  ret
+IL_0016  ldloc.0
+IL_0017  ldc.i4.1
+IL_0018  add
+IL_0019  stloc.0
+IL_001A  ldloc.0
+IL_001B  ldarg.0
+IL_001C  ldfld TenementUpgrade::TenementUpgrade[] requiredUpgrades
+IL_0021  ldlen
+IL_0022  conv.i4
+IL_0023  blt.s IL_0004
+IL_0025  ldarg.2
+IL_0026  brfalse.s IL_007B
+IL_0028  ldc.i4.0
+IL_0029  stloc.1
+IL_002A  br.s IL_0070
+IL_002C  ldsfld DifficultyController::DifficultyController instance
+IL_0031  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_0036  ldarg.0
+IL_0037  ldfld TenementUpgrade::UpgradeItem[] requiredItems
+IL_003C  ldloc.1
+IL_003D  ldelem.ref
+IL_003E  ldfld TenementUpgrade+UpgradeItem::Int32 itemAmount
+IL_0043  callvirt DifficultyInfo::Int32 GetRenovationResourceCost(Int32)
+IL_0048  stloc.2
+IL_0049  ldsfld TenementController::TenementController instance
+IL_004E  ldarg.0
+IL_004F  ldfld TenementUpgrade::UpgradeItem[] requiredItems
+IL_0054  ldloc.1
+IL_0055  ldelem.ref
+IL_0056  ldfld TenementUpgrade+UpgradeItem::ItemReference Item
+IL_005B  ldfld ItemReference::Int32 ID
+IL_0060  ldloc.2
+IL_0061  conv.r4
+IL_0062  ldarg.3
+IL_0063  callvirt TenementController::Boolean CheckForItem(Int32, Single, TenementContractor)
+IL_0068  brtrue.s IL_006C
+IL_006A  ldc.i4.0
+IL_006B  ret
+IL_006C  ldloc.1
+IL_006D  ldc.i4.1
+IL_006E  add
+IL_006F  stloc.1
+IL_0070  ldloc.1
+IL_0071  ldarg.0
+IL_0072  ldfld TenementUpgrade::UpgradeItem[] requiredItems
+IL_0077  ldlen
+IL_0078  conv.i4
+IL_0079  blt.s IL_002C
+IL_007B  ldc.i4.1
+IL_007C  ret
+
+TenementUpgrade::Int32 GetTier() [0x06002A87]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementUpgrade::Boolean upgradeTenementElectricity
+IL_0006  brfalse.s IL_000F
+IL_0008  ldarg.0
+IL_0009  ldfld TenementUpgrade::TenementElectricity tenementElectricityType
+IL_000E  ret
+IL_000F  ldarg.0
+IL_0010  ldfld TenementUpgrade::Boolean upgradeTenementWater
+IL_0015  brfalse.s IL_001E
+IL_0017  ldarg.0
+IL_0018  ldfld TenementUpgrade::TenementWater tenementWaterType
+IL_001D  ret
+IL_001E  ldarg.0
+IL_001F  ldfld TenementUpgrade::Boolean upgradeHeating
+IL_0024  brfalse.s IL_002D
+IL_0026  ldarg.0
+IL_0027  ldfld TenementUpgrade::TenementHeating heatingType
+IL_002C  ret
+IL_002D  ldarg.0
+IL_002E  ldfld TenementUpgrade::Boolean upgradeElevator
+IL_0033  brfalse.s IL_003C
+IL_0035  ldarg.0
+IL_0036  ldfld TenementUpgrade::TenementElevator elevatorType
+IL_003B  ret
+IL_003C  ldarg.0
+IL_003D  ldfld TenementUpgrade::Boolean upgradeStairs
+IL_0042  brfalse.s IL_004B
+IL_0044  ldarg.0
+IL_0045  ldfld TenementUpgrade::TenementStairs stairsType
+IL_004A  ret
+IL_004B  ldarg.0
+IL_004C  ldfld TenementUpgrade::Boolean upgradeBasement
+IL_0051  brfalse.s IL_005A
+IL_0053  ldarg.0
+IL_0054  ldfld TenementUpgrade::TenementBasement basementType
+IL_0059  ret
+IL_005A  ldarg.0
+IL_005B  ldfld TenementUpgrade::Boolean upgradeBasementSauna
+IL_0060  brfalse.s IL_0069
+IL_0062  ldarg.0
+IL_0063  ldfld TenementUpgrade::BasementSauna basementSaunaType
+IL_0068  ret
+IL_0069  ldarg.0
+IL_006A  ldfld TenementUpgrade::Boolean upgradeBasementShrooms
+IL_006F  brfalse.s IL_0078
+IL_0071  ldarg.0
+IL_0072  ldfld TenementUpgrade::BasementShrooms basementShroomsType
+IL_0077  ret
+IL_0078  ldarg.0
+IL_0079  ldfld TenementUpgrade::Boolean upgradeWorkshop
+IL_007E  brfalse.s IL_0087
+IL_0080  ldarg.0
+IL_0081  ldfld TenementUpgrade::BasementWorkShop workshopType
+IL_0086  ret
+IL_0087  ldarg.0
+IL_0088  ldfld TenementUpgrade::Boolean upgradeMine
+IL_008D  brfalse.s IL_0096
+IL_008F  ldarg.0
+IL_0090  ldfld TenementUpgrade::BasementMine mineType
+IL_0095  ret
+IL_0096  ldarg.0
+IL_0097  ldfld TenementUpgrade::Boolean upgradeRoof
+IL_009C  brfalse.s IL_00A5
+IL_009E  ldarg.0
+IL_009F  ldfld TenementUpgrade::TenementRoof roofType
+IL_00A4  ret
+IL_00A5  ldarg.0
+IL_00A6  ldfld TenementUpgrade::Boolean upgradeOuterWalls
+IL_00AB  brfalse.s IL_00B4
+IL_00AD  ldarg.0
+IL_00AE  ldfld TenementUpgrade::OuterWalls outerWallType
+IL_00B3  ret
+IL_00B4  ldarg.0
+IL_00B5  ldfld TenementUpgrade::Boolean upgradeFence
+IL_00BA  brfalse.s IL_00C3
+IL_00BC  ldarg.0
+IL_00BD  ldfld TenementUpgrade::Fence fenceType
+IL_00C2  ret
+IL_00C3  ldarg.0
+IL_00C4  ldfld TenementUpgrade::Boolean upgradeCourtyard
+IL_00C9  brfalse.s IL_00D2
+IL_00CB  ldarg.0
+IL_00CC  ldfld TenementUpgrade::Courtyard courtyardType
+IL_00D1  ret
+IL_00D2  ldarg.0
+IL_00D3  ldfld TenementUpgrade::Boolean upgradeSaunaAndPier
+IL_00D8  brfalse.s IL_00E1
+IL_00DA  ldarg.0
+IL_00DB  ldfld TenementUpgrade::SaunaAndPier saunaAndPierType
+IL_00E0  ret
+IL_00E1  ldarg.0
+IL_00E2  ldfld TenementUpgrade::Boolean upgradeGreenhouse
+IL_00E7  brfalse.s IL_00F0
+IL_00E9  ldarg.0
+IL_00EA  ldfld TenementUpgrade::Greenhouse greenhouseType
+IL_00EF  ret
+IL_00F0  ldarg.0
+IL_00F1  ldfld TenementUpgrade::Boolean upgradeElectricity
+IL_00F6  brfalse.s IL_00FF
+IL_00F8  ldarg.0
+IL_00F9  ldfld TenementUpgrade::ApartmentElectricity electricityType
+IL_00FE  ret
+IL_00FF  ldarg.0
+IL_0100  ldfld TenementUpgrade::Boolean upgradeWater
+IL_0105  brfalse.s IL_010E
+IL_0107  ldarg.0
+IL_0108  ldfld TenementUpgrade::ApartmentWater waterType
+IL_010D  ret
+IL_010E  ldarg.0
+IL_010F  ldfld TenementUpgrade::Boolean upgradeHeatingMethod
+IL_0114  brfalse.s IL_011D
+IL_0116  ldarg.0
+IL_0117  ldfld TenementUpgrade::ApartmentHeatingMethod heatingMethod
+IL_011C  ret
+IL_011D  ldarg.0
+IL_011E  ldfld TenementUpgrade::Boolean upgradeBathroom
+IL_0123  brfalse.s IL_012C
+IL_0125  ldarg.0
+IL_0126  ldfld TenementUpgrade::BathroomType bathroomType
+IL_012B  ret
+IL_012C  ldarg.0
+IL_012D  ldfld TenementUpgrade::Boolean upgradeWalls
+IL_0132  brfalse.s IL_013B
+IL_0134  ldarg.0
+IL_0135  ldfld TenementUpgrade::ApartmentWallType wallType
+IL_013A  ret
+IL_013B  ldarg.0
+IL_013C  ldfld TenementUpgrade::Boolean upgradeBalcony
+IL_0141  brfalse.s IL_014A
+IL_0143  ldarg.0
+IL_0144  ldfld TenementUpgrade::BalconyType balconyType
+IL_0149  ret
+IL_014A  ldarg.0
+IL_014B  ldfld TenementUpgrade::Boolean upgradeBalcony2
+IL_0150  brfalse.s IL_0159
+IL_0152  ldarg.0
+IL_0153  ldfld TenementUpgrade::BalconyType balcony2Type
+IL_0158  ret
+IL_0159  ldarg.0
+IL_015A  ldfld TenementUpgrade::Boolean upgradeKitchen
+IL_015F  brfalse.s IL_0168
+IL_0161  ldarg.0
+IL_0162  ldfld TenementUpgrade::KitchenType kitchenType
+IL_0167  ret
+IL_0168  ldc.i4.0
+IL_0169  ret
+
+TenementContractor::Boolean CanUpgrade(TenementUpgrade, ApartmentType) [0x06002996]
+IL_0000  ldarg.1
+IL_0001  ldfld TenementUpgrade::Boolean upgradeTenementElectricity
+IL_0006  brfalse.s IL_001A
+IL_0008  ldarg.0
+IL_0009  ldfld TenementContractor::TenementElectricity maxTenementElectricityUpgrade
+IL_000E  ldarg.1
+IL_000F  ldfld TenementUpgrade::TenementElectricity tenementElectricityType
+IL_0014  clt
+IL_0016  ldc.i4.0
+IL_0017  ceq
+IL_0019  ret
+IL_001A  ldarg.1
+IL_001B  ldfld TenementUpgrade::Boolean upgradeTenementWater
+IL_0020  brfalse.s IL_0034
+IL_0022  ldarg.0
+IL_0023  ldfld TenementContractor::TenementWater maxTenementWaterUpgrade
+IL_0028  ldarg.1
+IL_0029  ldfld TenementUpgrade::TenementWater tenementWaterType
+IL_002E  clt
+IL_0030  ldc.i4.0
+IL_0031  ceq
+IL_0033  ret
+IL_0034  ldarg.1
+IL_0035  ldfld TenementUpgrade::Boolean upgradeHeating
+IL_003A  brfalse.s IL_004E
+IL_003C  ldarg.0
+IL_003D  ldfld TenementContractor::TenementHeating maxTenementHeatingUpgrade
+IL_0042  ldarg.1
+IL_0043  ldfld TenementUpgrade::TenementHeating heatingType
+IL_0048  clt
+IL_004A  ldc.i4.0
+IL_004B  ceq
+IL_004D  ret
+IL_004E  ldarg.1
+IL_004F  ldfld TenementUpgrade::Boolean upgradeElevator
+IL_0054  brfalse.s IL_0068
+IL_0056  ldarg.0
+IL_0057  ldfld TenementContractor::TenementElevator maxTenementElevatorUpgrade
+IL_005C  ldarg.1
+IL_005D  ldfld TenementUpgrade::TenementElevator elevatorType
+IL_0062  clt
+IL_0064  ldc.i4.0
+IL_0065  ceq
+IL_0067  ret
+IL_0068  ldarg.1
+IL_0069  ldfld TenementUpgrade::Boolean upgradeRoof
+IL_006E  brfalse.s IL_0082
+IL_0070  ldarg.0
+IL_0071  ldfld TenementContractor::TenementRoof maxTenementRoofUpgrade
+IL_0076  ldarg.1
+IL_0077  ldfld TenementUpgrade::TenementRoof roofType
+IL_007C  clt
+IL_007E  ldc.i4.0
+IL_007F  ceq
+IL_0081  ret
+IL_0082  ldarg.1
+IL_0083  ldfld TenementUpgrade::Boolean upgradeStairs
+IL_0088  brfalse.s IL_009C
+IL_008A  ldarg.0
+IL_008B  ldfld TenementContractor::TenementStairs maxTenementStairsUpgrade
+IL_0090  ldarg.1
+IL_0091  ldfld TenementUpgrade::TenementStairs stairsType
+IL_0096  clt
+IL_0098  ldc.i4.0
+IL_0099  ceq
+IL_009B  ret
+IL_009C  ldarg.1
+IL_009D  ldfld TenementUpgrade::Boolean upgradeOuterWalls
+IL_00A2  brfalse.s IL_00B6
+IL_00A4  ldarg.0
+IL_00A5  ldfld TenementContractor::OuterWalls maxTenementFacadeUpgrade
+IL_00AA  ldarg.1
+IL_00AB  ldfld TenementUpgrade::OuterWalls outerWallType
+IL_00B0  clt
+IL_00B2  ldc.i4.0
+IL_00B3  ceq
+IL_00B5  ret
+IL_00B6  ldarg.1
+IL_00B7  ldfld TenementUpgrade::Boolean upgradeCourtyard
+IL_00BC  brfalse.s IL_00D0
+IL_00BE  ldarg.0
+IL_00BF  ldfld TenementContractor::Courtyard maxCourtyardUpgrade
+IL_00C4  ldarg.1
+IL_00C5  ldfld TenementUpgrade::Courtyard courtyardType
+IL_00CA  clt
+IL_00CC  ldc.i4.0
+IL_00CD  ceq
+IL_00CF  ret
+IL_00D0  ldarg.1
+IL_00D1  ldfld TenementUpgrade::Boolean upgradeSaunaAndPier
+IL_00D6  brfalse.s IL_00EA
+IL_00D8  ldarg.0
+IL_00D9  ldfld TenementContractor::SaunaAndPier maxSaunaAndPierUpgrade
+IL_00DE  ldarg.1
+IL_00DF  ldfld TenementUpgrade::SaunaAndPier saunaAndPierType
+IL_00E4  clt
+IL_00E6  ldc.i4.0
+IL_00E7  ceq
+IL_00E9  ret
+IL_00EA  ldarg.1
+IL_00EB  ldfld TenementUpgrade::Boolean upgradeBasement
+IL_00F0  brfalse.s IL_0104
+IL_00F2  ldarg.0
+IL_00F3  ldfld TenementContractor::TenementBasement maxTenementBasementUpgrade
+IL_00F8  ldarg.1
+IL_00F9  ldfld TenementUpgrade::TenementBasement basementType
+IL_00FE  clt
+IL_0100  ldc.i4.0
+IL_0101  ceq
+IL_0103  ret
+IL_0104  ldarg.1
+IL_0105  ldfld TenementUpgrade::Boolean upgradeBasementSauna
+IL_010A  brfalse.s IL_011E
+IL_010C  ldarg.0
+IL_010D  ldfld TenementContractor::BasementSauna maxBasementSaunaUpgrade
+IL_0112  ldarg.1
+IL_0113  ldfld TenementUpgrade::BasementSauna basementSaunaType
+IL_0118  clt
+IL_011A  ldc.i4.0
+IL_011B  ceq
+IL_011D  ret
+IL_011E  ldarg.1
+IL_011F  ldfld TenementUpgrade::Boolean upgradeBasementShrooms
+IL_0124  brfalse.s IL_0138
+IL_0126  ldarg.0
+IL_0127  ldfld TenementContractor::BasementShrooms maxBasementShroomsUpgrade
+IL_012C  ldarg.1
+IL_012D  ldfld TenementUpgrade::BasementShrooms basementShroomsType
+IL_0132  clt
+IL_0134  ldc.i4.0
+IL_0135  ceq
+IL_0137  ret
+IL_0138  ldarg.1
+IL_0139  ldfld TenementUpgrade::Boolean upgradeWorkshop
+IL_013E  brfalse.s IL_0152
+IL_0140  ldarg.0
+IL_0141  ldfld TenementContractor::BasementWorkShop maxBasementWorkShopUpgrade
+IL_0146  ldarg.1
+IL_0147  ldfld TenementUpgrade::BasementWorkShop workshopType
+IL_014C  clt
+IL_014E  ldc.i4.0
+IL_014F  ceq
+IL_0151  ret
+IL_0152  ldarg.1
+IL_0153  ldfld TenementUpgrade::Boolean upgradeMine
+IL_0158  brfalse.s IL_016C
+IL_015A  ldarg.0
+IL_015B  ldfld TenementContractor::BasementMine maxBasementMineUpgrade
+IL_0160  ldarg.1
+IL_0161  ldfld TenementUpgrade::BasementMine mineType
+IL_0166  clt
+IL_0168  ldc.i4.0
+IL_0169  ceq
+IL_016B  ret
+IL_016C  ldarg.2
+IL_016D  ldc.i4.3
+IL_016E  ceq
+IL_0170  stloc.0
+IL_0171  ldarg.1
+IL_0172  ldfld TenementUpgrade::Boolean upgradeElectricity
+IL_0177  brfalse.s IL_01A0
+IL_0179  ldloc.0
+IL_017A  brfalse.s IL_018E
+IL_017C  ldarg.0
+IL_017D  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_0182  ldarg.1
+IL_0183  ldfld TenementUpgrade::ApartmentElectricity electricityType
+IL_0188  clt
+IL_018A  ldc.i4.0
+IL_018B  ceq
+IL_018D  ret
+IL_018E  ldarg.0
+IL_018F  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_0194  ldarg.1
+IL_0195  ldfld TenementUpgrade::ApartmentElectricity electricityType
+IL_019A  clt
+IL_019C  ldc.i4.0
+IL_019D  ceq
+IL_019F  ret
+IL_01A0  ldarg.1
+IL_01A1  ldfld TenementUpgrade::Boolean upgradeWater
+IL_01A6  brfalse.s IL_01CF
+IL_01A8  ldloc.0
+IL_01A9  brfalse.s IL_01BD
+IL_01AB  ldarg.0
+IL_01AC  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_01B1  ldarg.1
+IL_01B2  ldfld TenementUpgrade::ApartmentWater waterType
+IL_01B7  clt
+IL_01B9  ldc.i4.0
+IL_01BA  ceq
+IL_01BC  ret
+IL_01BD  ldarg.0
+IL_01BE  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_01C3  ldarg.1
+IL_01C4  ldfld TenementUpgrade::ApartmentWater waterType
+IL_01C9  clt
+IL_01CB  ldc.i4.0
+IL_01CC  ceq
+IL_01CE  ret
+IL_01CF  ldarg.1
+IL_01D0  ldfld TenementUpgrade::Boolean upgradeHeatingMethod
+IL_01D5  brfalse.s IL_01FE
+IL_01D7  ldloc.0
+IL_01D8  brfalse.s IL_01EC
+IL_01DA  ldarg.0
+IL_01DB  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_01E0  ldarg.1
+IL_01E1  ldfld TenementUpgrade::ApartmentHeatingMethod heatingMethod
+IL_01E6  clt
+IL_01E8  ldc.i4.0
+IL_01E9  ceq
+IL_01EB  ret
+IL_01EC  ldarg.0
+IL_01ED  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_01F2  ldarg.1
+IL_01F3  ldfld TenementUpgrade::ApartmentHeatingMethod heatingMethod
+IL_01F8  clt
+IL_01FA  ldc.i4.0
+IL_01FB  ceq
+IL_01FD  ret
+IL_01FE  ldarg.1
+IL_01FF  ldfld TenementUpgrade::Boolean upgradeBathroom
+IL_0204  brfalse.s IL_022D
+IL_0206  ldloc.0
+IL_0207  brfalse.s IL_021B
+IL_0209  ldarg.0
+IL_020A  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_020F  ldarg.1
+IL_0210  ldfld TenementUpgrade::BathroomType bathroomType
+IL_0215  clt
+IL_0217  ldc.i4.0
+IL_0218  ceq
+IL_021A  ret
+IL_021B  ldarg.0
+IL_021C  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_0221  ldarg.1
+IL_0222  ldfld TenementUpgrade::BathroomType bathroomType
+IL_0227  clt
+IL_0229  ldc.i4.0
+IL_022A  ceq
+IL_022C  ret
+IL_022D  ldarg.1
+IL_022E  ldfld TenementUpgrade::Boolean upgradeWalls
+IL_0233  brfalse.s IL_025C
+IL_0235  ldloc.0
+IL_0236  brfalse.s IL_024A
+IL_0238  ldarg.0
+IL_0239  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_023E  ldarg.1
+IL_023F  ldfld TenementUpgrade::ApartmentWallType wallType
+IL_0244  clt
+IL_0246  ldc.i4.0
+IL_0247  ceq
+IL_0249  ret
+IL_024A  ldarg.0
+IL_024B  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_0250  ldarg.1
+IL_0251  ldfld TenementUpgrade::ApartmentWallType wallType
+IL_0256  clt
+IL_0258  ldc.i4.0
+IL_0259  ceq
+IL_025B  ret
+IL_025C  ldarg.1
+IL_025D  ldfld TenementUpgrade::Boolean upgradeBalcony
+IL_0262  brfalse.s IL_028B
+IL_0264  ldloc.0
+IL_0265  brfalse.s IL_0279
+IL_0267  ldarg.0
+IL_0268  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_026D  ldarg.1
+IL_026E  ldfld TenementUpgrade::BalconyType balconyType
+IL_0273  clt
+IL_0275  ldc.i4.0
+IL_0276  ceq
+IL_0278  ret
+IL_0279  ldarg.0
+IL_027A  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_027F  ldarg.1
+IL_0280  ldfld TenementUpgrade::BalconyType balconyType
+IL_0285  clt
+IL_0287  ldc.i4.0
+IL_0288  ceq
+IL_028A  ret
+IL_028B  ldarg.1
+IL_028C  ldfld TenementUpgrade::Boolean upgradeBalcony2
+IL_0291  brfalse.s IL_02BA
+IL_0293  ldloc.0
+IL_0294  brfalse.s IL_02A8
+IL_0296  ldarg.0
+IL_0297  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_029C  ldarg.1
+IL_029D  ldfld TenementUpgrade::BalconyType balcony2Type
+IL_02A2  clt
+IL_02A4  ldc.i4.0
+IL_02A5  ceq
+IL_02A7  ret
+IL_02A8  ldarg.0
+IL_02A9  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_02AE  ldarg.1
+IL_02AF  ldfld TenementUpgrade::BalconyType balcony2Type
+IL_02B4  clt
+IL_02B6  ldc.i4.0
+IL_02B7  ceq
+IL_02B9  ret
+IL_02BA  ldarg.1
+IL_02BB  ldfld TenementUpgrade::Boolean upgradeKitchen
+IL_02C0  brfalse.s IL_02E9
+IL_02C2  ldloc.0
+IL_02C3  brfalse.s IL_02D7
+IL_02C5  ldarg.0
+IL_02C6  ldfld TenementContractor::GeneralType maxShopUpgrade
+IL_02CB  ldarg.1
+IL_02CC  ldfld TenementUpgrade::KitchenType kitchenType
+IL_02D1  clt
+IL_02D3  ldc.i4.0
+IL_02D4  ceq
+IL_02D6  ret
+IL_02D7  ldarg.0
+IL_02D8  ldfld TenementContractor::GeneralType maxApartmentUpgrade
+IL_02DD  ldarg.1
+IL_02DE  ldfld TenementUpgrade::KitchenType kitchenType
+IL_02E3  clt
+IL_02E5  ldc.i4.0
+IL_02E6  ceq
+IL_02E8  ret
+IL_02E9  ldc.i4.1
+IL_02EA  ret
+
+TenementApartment::Boolean IsApartmentAvailable() [0x06002916]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementApartment::TenementResident resident
+IL_0006  ldnull
+IL_0007  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_000C  brfalse.s IL_0025
+IL_000E  ldarg.0
+IL_000F  ldfld TenementApartment::Boolean onlyFurniture
+IL_0014  brtrue.s IL_0025
+IL_0016  ldarg.0
+IL_0017  ldfld TenementApartment::TenementResident resident
+IL_001C  callvirt TenementResident::Boolean CantUpgradeApartment()
+IL_0021  brfalse.s IL_0025
+IL_0023  ldc.i4.0
+IL_0024  ret
+IL_0025  ldarg.0
+IL_0026  call TenementApartment::Boolean HasUpgrades()
+IL_002B  brtrue.s IL_0035
+IL_002D  ldarg.0
+IL_002E  ldfld TenementApartment::Boolean underConstruction
+IL_0033  brfalse.s IL_003F
+IL_0035  ldarg.0
+IL_0036  ldfld TenementApartment::Boolean onlyFurniture
+IL_003B  brtrue.s IL_003F
+IL_003D  ldc.i4.1
+IL_003E  ret
+IL_003F  ldarg.0
+IL_0040  ldfld TenementApartment::Boolean examined
+IL_0045  brfalse.s IL_005B
+IL_0047  ldarg.0
+IL_0048  call TenementApartment::Int32 FurnitureClearPercentPrimary()
+IL_004D  ldc.i4.s 90
+IL_004F  blt.s IL_005B
+IL_0051  ldarg.0
+IL_0052  call TenementApartment::Int32 FurnitureClearPercentSecondary()
+IL_0057  ldc.i4.s 80
+IL_0059  bge.s IL_005D
+IL_005B  ldc.i4.0
+IL_005C  ret
+IL_005D  ldc.i4.1
+IL_005E  ret
+
+TenementApartment::money GetScaledValue() [0x0600291C]
+IL_0000  ldarg.0
+IL_0001  call TenementApartment::Int32 GetValue()
+IL_0006  conv.r4
+IL_0007  ldsfld TenementApartment::Int32 ocDivider
+IL_000C  conv.r4
+IL_000D  div
+IL_000E  conv.i4
+IL_000F  ldarg.0
+IL_0010  call TenementApartment::Int32 GetValue()
+IL_0015  conv.r4
+IL_0016  ldsfld TenementApartment::Int32 rmDivider
+IL_001B  conv.r4
+IL_001C  div
+IL_001D  conv.i4
+IL_001E  stloc.0
+IL_001F  ldloc.0
+IL_0020  conv.r4
+IL_0021  newobj Money+money::Void .ctor(Int32, Single)
+IL_0026  ret
+
+TenementController::Boolean CanRentApartment(Double) [0x060029CA]
+IL_0000  ldarg.0
+IL_0001  ldfld TenementController::TenementPanelUI tenementPanelUI
+IL_0006  callvirt TenementPanelUI::Boolean PlayerHasRequiredItem()
+IL_000B  brfalse.s IL_0018
+IL_000D  ldarg.0
+IL_000E  ldarg.1
+IL_000F  call TenementController::Boolean ResidentRented(Double)
+IL_0014  ldc.i4.0
+IL_0015  ceq
+IL_0017  ret
+IL_0018  ldc.i4.0
+IL_0019  ret
+
+TenementController::Void AddResident(TenementResident) [0x060029CB]
+IL_0000  ldarg.0
+IL_0001  ldarg.1
+IL_0002  stfld TenementController::TenementResident currentResident
+IL_0007  ldarg.0
+IL_0008  ldc.i4.1
+IL_0009  stfld TenementController::Boolean residentOpen
+IL_000E  ret
+
+TenementController::Void RentApartment(TenementResident, Int32, Single, Boolean) [0x060029CD]
+IL_0000  ldarg.0
+IL_0001  ldarg.2
+IL_0002  call TenementController::TenementApartment GetApartmentFromNumber(Int32)
+IL_0007  stloc.0
+IL_0008  ldloc.0
+IL_0009  brfalse.s IL_002A
+IL_000B  ldloc.0
+IL_000C  ldfld TenementApartment::TenementResident resident
+IL_0011  ldnull
+IL_0012  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0017  brfalse.s IL_002A
+IL_0019  ldarg.0
+IL_001A  ldarg.0
+IL_001B  ldarg.2
+IL_001C  call TenementController::TenementApartment GetApartmentFromNumber(Int32)
+IL_0021  ldarg.s 4
+IL_0023  ldc.i4.0
+IL_0024  ldc.i4.0
+IL_0025  call TenementController::Void EvictResident(TenementApartment, Boolean, Boolean, Boolean)
+IL_002A  ldarg.0
+IL_002B  ldarg.1
+IL_002C  ldarg.0
+IL_002D  ldarg.2
+IL_002E  call TenementController::TenementApartment GetApartmentFromNumber(Int32)
+IL_0033  ldarg.3
+IL_0034  ldarg.s 4
+IL_0036  call TenementController::Void RentApartment(TenementResident, TenementApartment, Single, Boolean)
+IL_003B  ret
+
+TenementController::Void RentApartment(TenementResident, TenementApartment, Single, Boolean) [0x060029CE]
+IL_0000  ldarg.2
+IL_0001  ldarg.1
+IL_0002  callvirt TenementApartment::Void AddResident(TenementResident)
+IL_0007  ldarg.0
+IL_0008  call TenementController::Void RemoveResident()
+IL_000D  ldarg.0
+IL_000E  ldfld TenementController::BlueprintManager blueprintManager
+IL_0013  callvirt BlueprintManager::Void UpdateAll()
+IL_0018  ldarg.0
+IL_0019  ldfld TenementController::System.Collections.Generic.List`1[TenementResident] allResidents
+IL_001E  ldarg.1
+IL_001F  callvirt System.Collections.Generic.List`1[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void Add(TenementResident)
+IL_0024  ldarg.2
+IL_0025  ldc.i4.1
+IL_0026  stfld TenementApartment::Boolean moveStarted
+IL_002B  ldarg.2
+IL_002C  ldarg.3
+IL_002D  ldc.r4 3600
+IL_0032  mul
+IL_0033  conv.i4
+IL_0034  stfld TenementApartment::Int32 moveSecondsLeft
+IL_0039  ldarg.2
+IL_003A  ldarg.s 4
+IL_003C  stfld TenementApartment::Boolean silentRent
+IL_0041  ldarg.2
+IL_0042  ldsfld DifficultyController::DifficultyController instance
+IL_0047  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+IL_004C  ldarg.1
+IL_004D  ldarg.2
+IL_004E  callvirt TenementResident::money GetMonthlyRent(TenementApartment)
+IL_0053  callvirt DifficultyInfo::money GetRentCollateral(money)
+IL_0058  stfld TenementApartment::money deposit
+IL_005D  ldarg.s 4
+IL_005F  brtrue.s IL_009A
+IL_0061  ldarg.2
+IL_0062  ldflda TenementApartment::money deposit
+IL_0067  call Money+money::Boolean IsMoreThanZero()
+IL_006C  brfalse.s IL_009A
+IL_006E  ldsfld Notifications::Notifications instance
+IL_0073  ldstr "Collateral paid"
+IL_0078  ldarg.2
+IL_0079  ldflda TenementApartment::money deposit
+IL_007E  call Money+money::System.String GetPricestring()
+IL_0083  ldc.i4.0
+IL_0084  callvirt Notifications::Void CreateNotification(System.String, System.String, Boolean)
+IL_0089  ldsfld Money::Money instance
+IL_008E  ldarg.2
+IL_008F  ldfld TenementApartment::money deposit
+IL_0094  ldc.i4.0
+IL_0095  callvirt Money::Void AddMoney(money, Boolean)
+IL_009A  ldarg.s 4
+IL_009C  brtrue.s IL_0107
+IL_009E  ldsfld Achievements::Achievements instance
+IL_00A3  dup
+IL_00A4  brtrue.s IL_00A9
+IL_00A6  pop
+IL_00A7  br.s IL_00B3
+IL_00A9  ldstr "TENEMENT_FIRTST_TENANT"
+IL_00AE  call Achievements::Void TriggerAchievement(System.String)
+IL_00B3  ldsfld Achievements::Achievements instance
+IL_00B8  dup
+IL_00B9  brtrue.s IL_00BE
+IL_00BB  pop
+IL_00BC  br.s IL_00D6
+IL_00BE  ldstr "TENEMENT_HALF_OCCUPANCY"
+IL_00C3  ldarg.0
+IL_00C4  ldfld TenementController::System.Collections.Generic.List`1[TenementResident] allResidents
+IL_00C9  callvirt System.Collections.Generic.List`1[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Int32 get_Count()
+IL_00CE  ldc.i4.1
+IL_00CF  add
+IL_00D0  ldc.i4.1
+IL_00D1  call Achievements::Void TriggerAchievement(System.String, Int32, Boolean)
+IL_00D6  ldsfld Achievements::Achievements instance
+IL_00DB  dup
+IL_00DC  brtrue.s IL_00E1
+IL_00DE  pop
+IL_00DF  br.s IL_00F9
+IL_00E1  ldstr "TENEMENT_FULL_OCCUPANCY"
+IL_00E6  ldarg.0
+IL_00E7  ldfld TenementController::System.Collections.Generic.List`1[TenementResident] allResidents
+IL_00EC  callvirt System.Collections.Generic.List`1[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Int32 get_Count()
+IL_00F1  ldc.i4.1
+IL_00F2  add
+IL_00F3  ldc.i4.1
+IL_00F4  call Achievements::Void TriggerAchievement(System.String, Int32, Boolean)
+IL_00F9  ldarg.0
+IL_00FA  ldarg.0
+IL_00FB  ldarg.1
+IL_00FC  call TenementController::System.Collections.IEnumerator RentFade(TenementResident)
+IL_0101  call UnityEngine.MonoBehaviour::UnityEngine.Coroutine StartCoroutine(System.Collections.IEnumerator)
+IL_0106  pop
+IL_0107  ret
+
+TenementController::Void RemoveRequiredItems(Int32, Int32) [0x060029D7]
+IL_0000  ldarg.2
+IL_0001  stloc.0
+IL_0002  ldarg.0
+IL_0003  ldfld TenementController::System.Collections.Generic.List`1[Storage] tenementResourceStorages
+IL_0008  callvirt System.Collections.Generic.List`1[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+IL_000D  stloc.1
+IL_000E  br.s IL_0024
+IL_0010  ldloca.s 1
+IL_0012  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Storage get_Current()
+IL_0017  ldarg.1
+IL_0018  ldloca.s 0
+IL_001A  ldarg.2
+IL_001B  ldc.i4.0
+IL_001C  ldc.i4.1
+IL_001D  ldc.i4.m1
+IL_001E  callvirt Storage::Boolean RemoveItem(Int32, Int32 ByRef, Int32, Boolean, Boolean, Int32)
+IL_0023  pop
+IL_0024  ldloca.s 1
+IL_0026  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+IL_002B  brtrue.s IL_0010
+IL_002D  leave.s IL_003D
+IL_002F  ldloca.s 1
+IL_0031  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[Storage]
+IL_0037  callvirt System.IDisposable::Void Dispose()
+IL_003C  endfinally
+IL_003D  ldsfld Inventory::Inventory instance
+IL_0042  ldarg.1
+IL_0043  ldloc.0
+IL_0044  conv.r4
+IL_0045  ldc.i4.1
+IL_0046  ldc.i4.m1
+IL_0047  ldc.i4.1
+IL_0048  ldc.i4.0
+IL_0049  callvirt Inventory::Void RemoveItems(Int32, Single, Boolean, Int32, Boolean, Boolean)
+IL_004E  ret
+
+TenementController::Void MarkUpgrade(Int32, TenementUpgrade, TenementContractor) [0x060029DB]
+IL_0000  ldarg.0
+IL_0001  ldarg.2
+IL_0002  ldarg.1
+IL_0003  call TenementController::Void RemoveMarkedUpgrade(TenementUpgrade, Int32)
+IL_0008  ldarg.0
+IL_0009  ldfld TenementController::System.Collections.Generic.List`1[TenementUpgradeMarked] markedUpgrades
+IL_000E  ldarg.1
+IL_000F  ldarg.2
+IL_0010  ldarg.3
+IL_0011  newobj TenementUpgradeMarked::Void .ctor(Int32, TenementUpgrade, TenementContractor)
+IL_0016  callvirt System.Collections.Generic.List`1[[TenementUpgradeMarked, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void Add(TenementUpgradeMarked)
+IL_001B  ret
+
+TenementController::Void RemoveSupersededMarkedUpgrades(Int32, TenementUpgrade, TenementUpgrade[]) [0x060029DD]
+IL_0000  newobj TenementController+<>c__DisplayClass113_0::Void .ctor()
+IL_0005  stloc.0
+IL_0006  ldloc.0
+IL_0007  ldarg.2
+IL_0008  stfld TenementController+<>c__DisplayClass113_0::TenementUpgrade upgrade
+IL_000D  ldloc.0
+IL_000E  ldfld TenementController+<>c__DisplayClass113_0::TenementUpgrade upgrade
+IL_0013  ldnull
+IL_0014  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0019  brfalse.s IL_001C
+IL_001B  ret
+IL_001C  ldarg.0
+IL_001D  ldloc.0
+IL_001E  ldfld TenementController+<>c__DisplayClass113_0::TenementUpgrade upgrade
+IL_0023  ldarg.1
+IL_0024  call TenementController::Void RemoveMarkedUpgrade(TenementUpgrade, Int32)
+IL_0029  ldarg.3
+IL_002A  brtrue.s IL_002D
+IL_002C  ret
+IL_002D  ldarg.3
+IL_002E  ldloc.0
+IL_002F  ldftn TenementController+<>c__DisplayClass113_0::Boolean <RemoveSupersededMarkedUpgrades>b__0(TenementUpgrade)
+IL_0035  newobj System.Predicate`1[[TenementUpgrade, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void .ctor(System.Object, IntPtr)
+IL_003A  call System.Array::Int32 FindIndex[TenementUpgrade](TenementUpgrade[], System.Predicate`1[TenementUpgrade])
+IL_003F  stloc.1
+IL_0040  ldc.i4.0
+IL_0041  stloc.2
+IL_0042  br.s IL_0052
+IL_0044  ldarg.0
+IL_0045  ldarg.3
+IL_0046  ldloc.2
+IL_0047  ldelem.ref
+IL_0048  ldarg.1
+IL_0049  call TenementController::Void RemoveMarkedUpgrade(TenementUpgrade, Int32)
+IL_004E  ldloc.2
+IL_004F  ldc.i4.1
+IL_0050  add
+IL_0051  stloc.2
+IL_0052  ldloc.2
+IL_0053  ldloc.1
+IL_0054  blt.s IL_0044
+IL_0056  ret
+
+DifficultyInfo::Single GetMultiplierValue(DefaultMultiplier) [0x06000F06]
+IL_0000  ldarg.0
+IL_0001  switch IL_0068, IL_0050, IL_0056, IL_005C, IL_0062, IL_006E, IL_0074, IL_007A, IL_0080, IL_0086, IL_008C, IL_0092, IL_0098, IL_009E, IL_00A4, IL_00AA, IL_00B0, IL_00B6
+IL_004E  br.s IL_00BC
+IL_0050  ldc.r4 0
+IL_0055  ret
+IL_0056  ldc.r4 0.25
+IL_005B  ret
+IL_005C  ldc.r4 0.5
+IL_0061  ret
+IL_0062  ldc.r4 0.75
+IL_0067  ret
+IL_0068  ldc.r4 1
+IL_006D  ret
+IL_006E  ldc.r4 1.25
+IL_0073  ret
+IL_0074  ldc.r4 1.5
+IL_0079  ret
+IL_007A  ldc.r4 1.75
+IL_007F  ret
+IL_0080  ldc.r4 2
+IL_0085  ret
+IL_0086  ldc.r4 2.25
+IL_008B  ret
+IL_008C  ldc.r4 2.5
+IL_0091  ret
+IL_0092  ldc.r4 2.75
+IL_0097  ret
+IL_0098  ldc.r4 3
+IL_009D  ret
+IL_009E  ldc.r4 3.25
+IL_00A3  ret
+IL_00A4  ldc.r4 3.5
+IL_00A9  ret
+IL_00AA  ldc.r4 3.75
+IL_00AF  ret
+IL_00B0  ldc.r4 4
+IL_00B5  ret
+IL_00B6  ldc.r4 Infinity
+IL_00BB  ret
+IL_00BC  ldc.r4 1
+IL_00C1  ret
+
+DifficultyInfo::Single ApplyMultiplier(Single, DefaultMultiplier) [0x06000F07]
+IL_0000  ldarg.0
+IL_0001  ldarg.1
+IL_0002  call DifficultyInfo::Single GetMultiplierValue(DefaultMultiplier)
+IL_0007  mul
+IL_0008  ret
+
+DifficultyInfo::Single GetRenovationCost(Single) [0x06000F0D]
+IL_0000  ldarg.1
+IL_0001  ldarg.0
+IL_0002  ldfld DifficultyInfo::DefaultMultiplier renovationCost
+IL_0007  call DifficultyInfo::Single ApplyMultiplier(Single, DefaultMultiplier)
+IL_000C  ret
+
+DifficultyInfo::Int32 GetRenovationResourceCost(Int32) [0x06000F0E]
+IL_0000  ldarg.1
+IL_0001  conv.r4
+IL_0002  ldarg.0
+IL_0003  ldfld DifficultyInfo::DefaultMultiplier renovationResourceCosts
+IL_0008  call DifficultyInfo::Single ApplyMultiplier(Single, DefaultMultiplier)
+IL_000D  conv.i4
+IL_000E  stloc.0
+IL_000F  ldloc.0
+IL_0010  ldc.i4.1
+IL_0011  blt.s IL_0015
+IL_0013  ldloc.0
+IL_0014  ret
+IL_0015  ldc.i4.1
+IL_0016  ret
+
+DifficultyInfo::Single GetRenovationSpeed(Single) [0x06000F0F]
+IL_0000  ldarg.1
+IL_0001  ldarg.0
+IL_0002  ldfld DifficultyInfo::DefaultMultiplier renovationSpeed
+IL_0007  call DifficultyInfo::Single GetMultiplierValue(DefaultMultiplier)
+IL_000C  div
+IL_000D  ret
+
+ApartmentRentUI::Void OnRentButtonPressed() [0x060035C4]
+IL_0000  ldsfld TenementController::TenementController instance
+IL_0005  ldsfld TenementController::TenementController instance
+IL_000A  ldfld TenementController::TenementResident currentResident
+IL_000F  ldarg.0
+IL_0010  ldfld ApartmentRentUI::TenementApartment apartment
+IL_0015  ldc.r4 18
+IL_001A  ldc.i4.0
+IL_001B  callvirt TenementController::Void RentApartment(TenementResident, TenementApartment, Single, Boolean)
+IL_0020  ldarg.0
+IL_0021  ldfld ApartmentRentUI::SoundInfo rentAudio
+IL_0026  call MiscAudioPlayer::Void PlaySound(SoundInfo)
+IL_002B  ret
+
+ApartmentRentUI::Void ShowRentButton(TenementResident, TenementApartment) [0x060035C8]
+IL_0000  ldarg.0
+IL_0001  call ApartmentRentUI::Void HideAll()
+IL_0006  ldarg.0
+IL_0007  ldarg.2
+IL_0008  stfld ApartmentRentUI::TenementApartment apartment
+IL_000D  ldarg.1
+IL_000E  ldnull
+IL_000F  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0014  brfalse.s IL_0017
+IL_0016  ret
+IL_0017  ldarg.0
+IL_0018  ldfld ApartmentRentUI::UnityEngine.GameObject cantRentButton
+IL_001D  ldc.i4.1
+IL_001E  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0023  ldarg.2
+IL_0024  ldfld TenementApartment::Int32 apartmentNumber
+IL_0029  ldc.i4.1
+IL_002A  bne.un.s IL_0034
+IL_002C  ldarg.0
+IL_002D  ldc.i4.5
+IL_002E  call ApartmentRentUI::Void UpdateCantRentButton(CantRentReason)
+IL_0033  ret
+IL_0034  ldarg.1
+IL_0035  ldarg.2
+IL_0036  callvirt TenementResident::CantRentReason CheckRequirements(TenementApartment)
+IL_003B  stloc.0
+IL_003C  ldloc.0
+IL_003D  brfalse.s IL_0047
+IL_003F  ldarg.0
+IL_0040  ldloc.0
+IL_0041  call ApartmentRentUI::Void UpdateCantRentButton(CantRentReason)
+IL_0046  ret
+IL_0047  ldarg.0
+IL_0048  ldfld ApartmentRentUI::UnityEngine.GameObject rentButton
+IL_004D  ldc.i4.1
+IL_004E  callvirt UnityEngine.GameObject::Void SetActive(Boolean)
+IL_0053  ret
+
+ApartmentRentUI::Void UpdateCantRentButton(CantRentReason) [0x060035C9]
+IL_0000  ldarg.1
+IL_0001  ldc.i4.1
+IL_0002  sub
+IL_0003  switch IL_001D, IL_0050, IL_003F, IL_002E, IL_0061
+IL_001C  ret
+IL_001D  ldarg.0
+IL_001E  ldfld ApartmentRentUI::TMPro.TextMeshProUGUI cantRentButtonText
+IL_0023  ldstr "Already Occupied!"
+IL_0028  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_002D  ret
+IL_002E  ldarg.0
+IL_002F  ldfld ApartmentRentUI::TMPro.TextMeshProUGUI cantRentButtonText
+IL_0034  ldstr "Wrong Size!"
+IL_0039  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_003E  ret
+IL_003F  ldarg.0
+IL_0040  ldfld ApartmentRentUI::TMPro.TextMeshProUGUI cantRentButtonText
+IL_0045  ldstr "The tenement needs upgrades!"
+IL_004A  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_004F  ret
+IL_0050  ldarg.0
+IL_0051  ldfld ApartmentRentUI::TMPro.TextMeshProUGUI cantRentButtonText
+IL_0056  ldstr "The apartment needs upgrades!"
+IL_005B  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0060  ret
+IL_0061  ldarg.0
+IL_0062  ldfld ApartmentRentUI::TMPro.TextMeshProUGUI cantRentButtonText
+IL_0067  ldstr "Your apartment!"
+IL_006C  callvirt TMPro.TMP_Text::Void set_text(System.String)
+IL_0071  ret
+
+TenementPanelUI::Boolean PlayerCanRentApartment() [0x060035FE]
+IL_0000  ldsfld TaskItemsManager::TaskItemsManager instance
+IL_0005  ldarg.0
+IL_0006  ldfld TenementPanelUI::TaskItem requiredTaskItem
+IL_000B  ldc.i4.0
+IL_000C  callvirt TaskItemsManager::Boolean CheckIfPlayerHasTaskItem(TaskItem, Int32)
+IL_0011  brfalse.s IL_0015
+IL_0013  ldc.i4.1
+IL_0014  ret
+IL_0015  ldc.i4.0
+IL_0016  ret
+
+TenementPanelUI::Boolean PlayerHasRequiredItem() [0x060035FF]
+IL_0000  ldsfld TaskItemsManager::TaskItemsManager instance
+IL_0005  ldarg.0
+IL_0006  ldfld TenementPanelUI::TaskItem requiredTaskItem
+IL_000B  callvirt TaskItem::System.String get_Id()
+IL_0010  ldc.r8 0
+IL_0019  callvirt TaskItemsManager::Boolean PlayerHasTaskItemId(System.String, Double)
+IL_001E  ret
+
+UpgradePanel::System.String IsLocked(TenementUpgrade, UpgradeButtonUI, Boolean, Boolean, Int32, ApartmentType) [0x06003621]
+IL_0000  ldsfld TenementController::TenementController instance
+IL_0005  ldfld TenementController::Boolean contractorOpen
+IL_000A  brtrue.s IL_0027
+IL_000C  ldsfld TenementController::TenementController instance
+IL_0011  ldarg.s 4
+IL_0013  ldarg.0
+IL_0014  callvirt TenementController::Boolean IsMarkedUpgrade(Int32, TenementUpgrade)
+IL_0019  brtrue.s IL_0021
+IL_001B  ldstr "Not marked"
+IL_0020  ret
+IL_0021  ldstr ""
+IL_0026  ret
+IL_0027  ldarg.2
+IL_0028  brtrue.s IL_0033
+IL_002A  ldarg.3
+IL_002B  brtrue.s IL_0033
+IL_002D  ldstr "Inferior upgrade"
+IL_0032  ret
+IL_0033  ldsfld TenementController::TenementController instance
+IL_0038  ldfld TenementController::TenementContractor currentContractor
+IL_003D  stloc.0
+IL_003E  ldloc.0
+IL_003F  ldnull
+IL_0040  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_0045  brfalse.s IL_00A5
+IL_0047  ldloc.0
+IL_0048  ldarg.0
+IL_0049  ldarg.s 5
+IL_004B  callvirt TenementContractor::Boolean CanUpgrade(TenementUpgrade, ApartmentType)
+IL_0050  brtrue.s IL_00A5
+IL_0052  ldarg.1
+IL_0053  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_0058  ldnull
+IL_0059  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_005E  brtrue.s IL_0084
+IL_0060  ldarg.1
+IL_0061  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_0066  ldfld TenementUpgradeProgress::TenementContractor contractor
+IL_006B  dup
+IL_006C  brtrue.s IL_0072
+IL_006E  pop
+IL_006F  ldnull
+IL_0070  br.s IL_0077
+IL_0072  ldfld SavableScriptableObject::System.String addressableAssetPath
+IL_0077  ldloc.0
+IL_0078  ldfld SavableScriptableObject::System.String addressableAssetPath
+IL_007D  call System.String::Boolean op_Inequality(System.String, System.String)
+IL_0082  brfalse.s IL_00A5
+IL_0084  ldarg.1
+IL_0085  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_008A  ldnull
+IL_008B  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+IL_0090  brtrue.s IL_009F
+IL_0092  ldarg.1
+IL_0093  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_0098  callvirt TenementUpgradeProgress::Boolean IsUpgradeReady()
+IL_009D  brtrue.s IL_00A5
+IL_009F  ldstr "The skills of the contractor are too low"
+IL_00A4  ret
+IL_00A5  ldarg.1
+IL_00A6  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_00AB  ldnull
+IL_00AC  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+IL_00B1  brfalse.s IL_00E2
+IL_00B3  ldarg.1
+IL_00B4  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_00B9  callvirt TenementUpgradeProgress::Boolean IsUpgradeReady()
+IL_00BE  ldarg.3
+IL_00BF  and
+IL_00C0  brfalse.s IL_00C8
+IL_00C2  ldstr ""
+IL_00C7  ret
+IL_00C8  ldarg.1
+IL_00C9  ldfld UpgradeButtonUI::TenementUpgradeProgress progress
+IL_00CE  callvirt TenementUpgradeProgress::Int32 get_TimeSecondsLeft()
+IL_00D3  ldc.i4.0
+IL_00D4  ble.s IL_00DC
+IL_00D6  ldstr "Upgrade in progress"
+IL_00DB  ret
+IL_00DC  ldstr "Pay the final payment"
+IL_00E1  ret
+IL_00E2  ldstr ""
+IL_00E7  ret
+
+CharacterRentDatabase::Void Start() [0x060009D1]
+IL_0000  ldarg.0
+IL_0001  stsfld CharacterRentDatabase::CharacterRentDatabase instance
+IL_0006  ldsfld CharacterRentDatabase::System.Collections.Generic.List`1[CharacterRent] database
+IL_000B  callvirt System.Collections.Generic.List`1[[CharacterRent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Int32 get_Count()
+IL_0010  ldc.i4.0
+IL_0011  ble.s IL_0014
+IL_0013  ret
+IL_0014  ldarg.0
+IL_0015  call UnityEngine.Application::System.String get_dataPath()
+IL_001A  ldstr "/StreamingAssets/CharactersRent.json"
+IL_001F  call System.String::System.String Concat(System.String, System.String)
+IL_0024  call System.IO.File::System.String ReadAllText(System.String)
+IL_0029  call LitJson.JsonMapper::LitJson.JsonData ToObject(System.String)
+IL_002E  stfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0033  ldarg.0
+IL_0034  call CharacterRentDatabase::Void ConstructCharacterRentDatabase()
+IL_0039  ret
+
+CharacterRentDatabase::Void ConstructCharacterRentDatabase() [0x060009D5]
+IL_0000  ldc.i4.0
+IL_0001  stloc.0
+IL_0002  br IL_02A2
+IL_0007  ldsfld CharacterRentDatabase::System.Collections.Generic.List`1[CharacterRent] database
+IL_000C  ldarg.0
+IL_000D  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0012  ldloc.0
+IL_0013  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0018  ldstr "id"
+IL_001D  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0022  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_0027  ldarg.0
+IL_0028  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_002D  ldloc.0
+IL_002E  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0033  ldstr "name"
+IL_0038  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_003D  callvirt System.Object::System.String ToString()
+IL_0042  ldarg.0
+IL_0043  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0048  ldloc.0
+IL_0049  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_004E  ldstr "Income1"
+IL_0053  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0058  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_005D  ldarg.0
+IL_005E  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0063  ldloc.0
+IL_0064  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0069  ldstr "Income2"
+IL_006E  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0073  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_0078  ldarg.0
+IL_0079  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_007E  ldloc.0
+IL_007F  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0084  ldstr "Income3"
+IL_0089  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_008E  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_0093  ldarg.0
+IL_0094  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0099  ldloc.0
+IL_009A  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_009F  ldstr "Income4"
+IL_00A4  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_00A9  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_00AE  ldarg.0
+IL_00AF  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_00B4  ldloc.0
+IL_00B5  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_00BA  ldstr "Income5"
+IL_00BF  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_00C4  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_00C9  ldarg.0
+IL_00CA  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_00CF  ldloc.0
+IL_00D0  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_00D5  ldstr "Income6"
+IL_00DA  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_00DF  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_00E4  ldarg.0
+IL_00E5  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_00EA  ldloc.0
+IL_00EB  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_00F0  ldstr "Method"
+IL_00F5  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_00FA  callvirt System.Object::System.String ToString()
+IL_00FF  ldarg.0
+IL_0100  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0105  ldloc.0
+IL_0106  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_010B  ldstr "MinCondition"
+IL_0110  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0115  callvirt System.Object::System.String ToString()
+IL_011A  ldarg.0
+IL_011B  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0120  ldloc.0
+IL_0121  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0126  ldstr "MaxCondition"
+IL_012B  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0130  callvirt System.Object::System.String ToString()
+IL_0135  ldarg.0
+IL_0136  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_013B  ldloc.0
+IL_013C  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0141  ldstr "Smallest"
+IL_0146  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_014B  callvirt System.Object::System.String ToString()
+IL_0150  ldarg.0
+IL_0151  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0156  ldloc.0
+IL_0157  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_015C  ldstr "Biggest"
+IL_0161  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0166  callvirt System.Object::System.String ToString()
+IL_016B  ldarg.0
+IL_016C  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0171  ldloc.0
+IL_0172  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0177  ldstr "FloorMin"
+IL_017C  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0181  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_0186  ldarg.0
+IL_0187  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_018C  ldloc.0
+IL_018D  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0192  ldstr "FloorMax"
+IL_0197  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_019C  call LitJson.JsonData::Int32 op_Explicit(LitJson.JsonData)
+IL_01A1  ldarg.0
+IL_01A2  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_01A7  ldloc.0
+IL_01A8  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_01AD  ldstr "MinBathroom"
+IL_01B2  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_01B7  callvirt System.Object::System.String ToString()
+IL_01BC  ldarg.0
+IL_01BD  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_01C2  ldloc.0
+IL_01C3  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_01C8  ldstr "Electricity"
+IL_01CD  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_01D2  call LitJson.JsonData::Boolean op_Explicit(LitJson.JsonData)
+IL_01D7  ldarg.0
+IL_01D8  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_01DD  ldloc.0
+IL_01DE  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_01E3  ldstr "MinHeating"
+IL_01E8  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_01ED  callvirt System.Object::System.String ToString()
+IL_01F2  ldarg.0
+IL_01F3  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_01F8  ldloc.0
+IL_01F9  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_01FE  ldstr "Kitchen"
+IL_0203  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0208  call LitJson.JsonData::Boolean op_Explicit(LitJson.JsonData)
+IL_020D  ldarg.0
+IL_020E  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0213  ldloc.0
+IL_0214  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0219  ldstr "Water"
+IL_021E  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0223  call LitJson.JsonData::Boolean op_Explicit(LitJson.JsonData)
+IL_0228  ldarg.0
+IL_0229  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_022E  ldloc.0
+IL_022F  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0234  ldstr "Family1"
+IL_0239  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_023E  callvirt System.Object::System.String ToString()
+IL_0243  ldarg.0
+IL_0244  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0249  ldloc.0
+IL_024A  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_024F  ldstr "Family2"
+IL_0254  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0259  callvirt System.Object::System.String ToString()
+IL_025E  ldarg.0
+IL_025F  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_0264  ldloc.0
+IL_0265  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_026A  ldstr "Family3"
+IL_026F  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_0274  callvirt System.Object::System.String ToString()
+IL_0279  ldarg.0
+IL_027A  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_027F  ldloc.0
+IL_0280  callvirt LitJson.JsonData::LitJson.JsonData get_Item(Int32)
+IL_0285  ldstr "Family4"
+IL_028A  callvirt LitJson.JsonData::LitJson.JsonData get_Item(System.String)
+IL_028F  callvirt System.Object::System.String ToString()
+IL_0294  newobj CharacterRent::Void .ctor(Int32, System.String, Int32, Int32, Int32, Int32, Int32, Int32, System.String, System.String, System.String, System.String, System.String, Int32, Int32, System.String, Boolean, System.String, Boolean, Boolean, System.String, System.String, System.String, System.String)
+IL_0299  callvirt System.Collections.Generic.List`1[[CharacterRent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void Add(CharacterRent)
+IL_029E  ldloc.0
+IL_029F  ldc.i4.1
+IL_02A0  add
+IL_02A1  stloc.0
+IL_02A2  ldloc.0
+IL_02A3  ldarg.0
+IL_02A4  ldfld CharacterRentDatabase::LitJson.JsonData characterRentData
+IL_02A9  callvirt LitJson.JsonData::Int32 get_Count()
+IL_02AE  blt IL_0007
+IL_02B3  ret

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="940" viewBox="0 0 1440 940"><title>OSHelp Obenseuer Dark theme concept</title><desc>Dark desktop planning interface with tenant requirements and a materials shopping cart. Illustrative profile, verified material bill.</desc>
+<rect x="0" y="0" width="1440" height="940" fill="#181917"/>
+<rect x="0" y="0" width="1440" height="36" fill="#101210"/>
+<text x="20" y="24" font-family="Courier New" font-size="16" font-weight="bold" fill="#B4B5A5">OSHelp</text>
+<text x="24" y="80" font-family="Courier New" font-size="25" font-weight="bold" fill="#E2DFD2">TENEMENT PLANNER</text>
+<text x="26" y="102" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#B4B5A5">Obenseuer / Materials and rental requirements</text>
+<rect x="1030" y="55" width="385" height="43" fill="#101210" stroke="#55594B"/>
+<text x="1045" y="81" font-family="Courier New" font-size="14" font-weight="bold" fill="#B4B5A5">PROFILE:  Example playthrough</text>
+<rect x="24" y="123" width="180" height="38" fill="#684812" stroke="#C09A50"/>
+<text x="38" y="147" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">TENANTS</text>
+<rect x="214" y="123" width="180" height="38" fill="#34362F" stroke="#C09A50"/>
+<text x="228" y="147" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">UPGRADES</text>
+<rect x="404" y="123" width="220" height="38" fill="#34362F" stroke="#C09A50"/>
+<text x="418" y="147" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">SHOPPING CART  5</text>
+<text x="1160" y="150" font-family="Consolas" font-size="14" font-weight="normal" fill="#B4B5A5">RESOURCE COST  1.00x</text>
+<rect x="24" y="181" width="298" height="636" fill="#292A27" stroke="#55594B"/>
+<rect x="40" y="197" width="266" height="38" fill="#101210" stroke="#858A76"/>
+<text x="53" y="222" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#B4B5A5">Search tenants...</text>
+<rect x="40" y="248" width="266" height="32" fill="#214F65" stroke="#55594B"/>
+<text x="51" y="270" font-family="Courier New" font-size="13" font-weight="bold" fill="#E2DFD2">ALL RESIDENT DEFINITIONS</text>
+<text x="44" y="307" font-family="Segoe UI" font-size="13" font-weight="normal" fill="#B4B5A5">31 definitions</text>
+<rect x="40" y="322" width="266" height="42" fill="#3B3425" stroke="#C09A50"/>
+<rect x="40" y="322" width="3" height="42" fill="#C09A50"/>
+<text x="54" y="349" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Aleksi Kivi</text>
+<rect x="40" y="370" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="397" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Amanda Korhonen</text>
+<rect x="40" y="418" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="445" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Agnes Takala</text>
+<rect x="40" y="466" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="493" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Einar Kaivuri</text>
+<rect x="40" y="514" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="541" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Elias Karhu</text>
+<rect x="40" y="562" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="589" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Fenella Hunt</text>
+<rect x="40" y="610" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="637" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Jarmo Pettinen</text>
+<rect x="40" y="658" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="685" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Kirka Kääbus</text>
+<rect x="40" y="706" width="266" height="42" fill="#101210" stroke="#55594B"/>
+<text x="54" y="733" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Martta Lapinjoki</text>
+<rect x="338" y="181" width="616" height="636" fill="#292A27" stroke="#55594B"/>
+<rect x="354" y="197" width="584" height="64" fill="#101210"/>
+<text x="370" y="234" font-family="Courier New" font-size="23" font-weight="bold" fill="#E2DFD2">ALEKSI KIVI</text>
+<text x="371" y="255" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#B4B5A5">Accepted apartment size: Small</text>
+<rect x="354" y="277" width="584" height="42" fill="#214F65" stroke="#55594B"/>
+<text x="370" y="305" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">EXAMPLE APARTMENT / SMALL</text>
+<text x="370" y="359" font-family="Courier New" font-size="16" font-weight="bold" fill="#C09A50">RENTAL REQUIREMENTS</text>
+<text x="371" y="394" font-family="Segoe UI" font-size="13" font-weight="normal" fill="#B4B5A5">Facility</text>
+<text x="590" y="394" font-family="Segoe UI" font-size="13" font-weight="normal" fill="#B4B5A5">Required</text>
+<text x="765" y="394" font-family="Segoe UI" font-size="13" font-weight="normal" fill="#B4B5A5">Recorded state</text>
+<rect x="354" y="406" width="584" height="43" fill="#101210"/>
+<text x="371" y="434" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Bathroom</text>
+<text x="590" y="434" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Makeshift</text>
+<text x="765" y="433" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#D4B474">Needs work</text>
+<rect x="354" y="454" width="584" height="43" fill="#101210"/>
+<text x="371" y="482" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Walls</text>
+<text x="590" y="482" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Makeshift</text>
+<text x="765" y="481" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#D4B474">Needs work</text>
+<rect x="354" y="502" width="584" height="43" fill="#101210"/>
+<text x="371" y="530" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Apartment size</text>
+<text x="590" y="530" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Small</text>
+<text x="765" y="529" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#A9BC7A">Meets requirement</text>
+<text x="370" y="591" font-family="Courier New" font-size="16" font-weight="bold" fill="#C09A50">BUILDING REQUIREMENTS</text>
+<text x="371" y="624" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#B4B5A5">No building upgrade minimums for this resident.</text>
+<rect x="354" y="652" width="584" height="71" fill="#101210" stroke="#55594B"/>
+<text x="370" y="681" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">2 jobs confirmed as still needed</text>
+<text x="370" y="707" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#B4B5A5">Makeshift Bathroom + Makeshift Walls</text>
+<rect x="370" y="752" width="260" height="38" fill="#684812" stroke="#C09A50"/>
+<text x="384" y="776" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">REVIEW MISSING WORK</text>
+<rect x="970" y="181" width="446" height="636" fill="#292A27" stroke="#55594B"/>
+<text x="986" y="225" font-family="Courier New" font-size="21" font-weight="bold" fill="#E2DFD2">MATERIALS TO BUY</text>
+<text x="988" y="251" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#B4B5A5">2 jobs / 1 example apartment</text>
+<rect x="986" y="276" width="414" height="38" fill="#214F65" stroke="#55594B"/>
+<text x="999" y="300" font-family="Courier New" font-size="13" font-weight="bold" fill="#E2DFD2">Material</text>
+<text x="1189" y="300" font-family="Courier New" font-size="13" font-weight="bold" fill="#E2DFD2">Need</text>
+<text x="1262" y="300" font-family="Courier New" font-size="13" font-weight="bold" fill="#E2DFD2">Have</text>
+<text x="1340" y="300" font-family="Courier New" font-size="13" font-weight="bold" fill="#E2DFD2">Buy</text>
+<rect x="986" y="318" width="414" height="48" fill="#101210"/>
+<text x="999" y="349" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Planks</text>
+<text x="1200" y="350" font-family="Consolas" font-size="16" font-weight="normal" fill="#B4B5A5">32</text>
+<rect x="1248" y="325" width="63" height="34" fill="#101210" stroke="#858A76"/>
+<text x="1268" y="350" font-family="Consolas" font-size="16" font-weight="normal" fill="#E2DFD2">10</text>
+<text x="1346" y="351" font-family="Consolas" font-size="17" font-weight="normal" fill="#C09A50">22</text>
+<rect x="986" y="370" width="414" height="48" fill="#292A27"/>
+<text x="999" y="401" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Nails</text>
+<text x="1200" y="402" font-family="Consolas" font-size="16" font-weight="normal" fill="#B4B5A5">34</text>
+<rect x="1248" y="377" width="63" height="34" fill="#101210" stroke="#858A76"/>
+<text x="1268" y="402" font-family="Consolas" font-size="16" font-weight="normal" fill="#E2DFD2">0</text>
+<text x="1346" y="403" font-family="Consolas" font-size="17" font-weight="normal" fill="#C09A50">34</text>
+<rect x="986" y="422" width="414" height="48" fill="#101210"/>
+<text x="999" y="453" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Scrap Metal</text>
+<text x="1200" y="454" font-family="Consolas" font-size="16" font-weight="normal" fill="#B4B5A5">20</text>
+<rect x="1248" y="429" width="63" height="34" fill="#101210" stroke="#858A76"/>
+<text x="1268" y="454" font-family="Consolas" font-size="16" font-weight="normal" fill="#E2DFD2">0</text>
+<text x="1346" y="455" font-family="Consolas" font-size="17" font-weight="normal" fill="#C09A50">20</text>
+<rect x="986" y="474" width="414" height="48" fill="#292A27"/>
+<text x="999" y="505" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Duct Tape</text>
+<text x="1200" y="506" font-family="Consolas" font-size="16" font-weight="normal" fill="#B4B5A5">4</text>
+<rect x="1248" y="481" width="63" height="34" fill="#101210" stroke="#858A76"/>
+<text x="1268" y="506" font-family="Consolas" font-size="16" font-weight="normal" fill="#E2DFD2">0</text>
+<text x="1346" y="507" font-family="Consolas" font-size="17" font-weight="normal" fill="#C09A50">4</text>
+<rect x="986" y="526" width="414" height="48" fill="#101210"/>
+<text x="999" y="557" font-family="Segoe UI" font-size="15" font-weight="normal" fill="#E2DFD2">Tarps</text>
+<text x="1200" y="558" font-family="Consolas" font-size="16" font-weight="normal" fill="#B4B5A5">7</text>
+<rect x="1248" y="533" width="63" height="34" fill="#101210" stroke="#858A76"/>
+<text x="1268" y="558" font-family="Consolas" font-size="16" font-weight="normal" fill="#E2DFD2">0</text>
+<text x="1346" y="559" font-family="Consolas" font-size="17" font-weight="normal" fill="#C09A50">7</text>
+<text x="989" y="621" font-family="Segoe UI" font-size="14" font-weight="normal" fill="#B4B5A5">Costs for the selected jobs</text>
+<text x="989" y="655" font-family="Consolas" font-size="17" font-weight="normal" fill="#E2DFD2">START    1,120 OC</text>
+<text x="989" y="686" font-family="Consolas" font-size="17" font-weight="normal" fill="#E2DFD2">FINAL       95 RM</text>
+<rect x="988" y="750" width="304" height="38" fill="#684812" stroke="#C09A50"/>
+<text x="1002" y="774" font-family="Courier New" font-size="14" font-weight="bold" fill="#E2DFD2">EXPORT SHOPPING LIST</text>
+<rect x="24" y="837" width="1392" height="74" fill="#101210" stroke="#55594B"/>
+<rect x="41" y="852" width="24" height="24" fill="#181917" stroke="#55594B"/>
+<text x="74" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">window</text>
+<text x="74" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#181917</text>
+<rect x="210" y="852" width="24" height="24" fill="#292A27" stroke="#55594B"/>
+<text x="243" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">panel</text>
+<text x="243" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#292A27</text>
+<rect x="379" y="852" width="24" height="24" fill="#101210" stroke="#55594B"/>
+<text x="412" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">recess</text>
+<text x="412" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#101210</text>
+<rect x="548" y="852" width="24" height="24" fill="#C09A50" stroke="#55594B"/>
+<text x="581" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">accent</text>
+<text x="581" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#C09A50</text>
+<rect x="717" y="852" width="24" height="24" fill="#214F65" stroke="#55594B"/>
+<text x="750" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">navigation</text>
+<text x="750" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#214F65</text>
+<rect x="886" y="852" width="24" height="24" fill="#E2DFD2" stroke="#55594B"/>
+<text x="919" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">text</text>
+<text x="919" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#E2DFD2</text>
+<rect x="1055" y="852" width="24" height="24" fill="#A9BC7A" stroke="#55594B"/>
+<text x="1088" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">success</text>
+<text x="1088" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#A9BC7A</text>
+<rect x="1224" y="852" width="24" height="24" fill="#DB9587" stroke="#55594B"/>
+<text x="1257" y="862" font-family="Courier New" font-size="12" font-weight="bold" fill="#B4B5A5">danger</text>
+<text x="1257" y="883" font-family="Consolas" font-size="13" font-weight="normal" fill="#E2DFD2">#DB9587</text>
+<text x="26" y="933" font-family="Segoe UI" font-size="12" font-weight="normal" fill="#B4B5A5">THEME CONCEPT / Illustrative profile; material bill extracted from game assets. Not a running application.</text>
+</svg>

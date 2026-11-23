@@ -1,0 +1,22 @@
+﻿[
+    {
+        "file":  "globalgamemanagers",
+        "hash":  "8312BD571375549E37BB86A15BF9365C5503C2A0574CFAC5E15458695BCA79CE"
+    },
+    {
+        "file":  "globalgamemanagers.assets",
+        "hash":  "3195AC18CCE9141AC0573004FDD00556D13B44824C9B2EE3779F717570EA27B8"
+    },
+    {
+        "file":  "level77",
+        "hash":  "DD28230C6362B8B2CF2C55B66AE4F69E453CED5D356EE10AB0A7A06020440C77"
+    },
+    {
+        "file":  "level112",
+        "hash":  "ECEA46CA559CC5E6389E76D377A301DBB0B83DF41AD180CCEE882DD79AF105D1"
+    },
+    {
+        "file":  "Managed/Assembly-CSharp.dll",
+        "hash":  "C45AE3010158E9C28F2B47CA561F10172133B4EC87D0D33DB13EC5E5C7C3B328"
+    }
+]

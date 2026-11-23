@@ -1,0 +1,2545 @@
+﻿{
+    "investigatedOn":  "2026-11-23",
+    "scanAllAssets":  true,
+    "filesScanned":  [
+                         {
+                             "name":  "globalgamemanagers.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  5328
+                         },
+                         {
+                             "name":  "level0",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  84684
+                         },
+                         {
+                             "name":  "level1",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  81939
+                         },
+                         {
+                             "name":  "level10",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  76888
+                         },
+                         {
+                             "name":  "level100",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  57275
+                         },
+                         {
+                             "name":  "level101",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  52622
+                         },
+                         {
+                             "name":  "level102",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  42770
+                         },
+                         {
+                             "name":  "level103",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  47122
+                         },
+                         {
+                             "name":  "level104",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  42984
+                         },
+                         {
+                             "name":  "level105",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  42629
+                         },
+                         {
+                             "name":  "level106",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45920
+                         },
+                         {
+                             "name":  "level107",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44574
+                         },
+                         {
+                             "name":  "level108",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43655
+                         },
+                         {
+                             "name":  "level109",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  50958
+                         },
+                         {
+                             "name":  "level11",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  47349
+                         },
+                         {
+                             "name":  "level110",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  49511
+                         },
+                         {
+                             "name":  "level111",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  659273
+                         },
+                         {
+                             "name":  "level112",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  308991
+                         },
+                         {
+                             "name":  "level113",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  101877
+                         },
+                         {
+                             "name":  "level114",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  140201
+                         },
+                         {
+                             "name":  "level115",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39939
+                         },
+                         {
+                             "name":  "level116",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  126046
+                         },
+                         {
+                             "name":  "level117",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  106363
+                         },
+                         {
+                             "name":  "level118",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  132184
+                         },
+                         {
+                             "name":  "level119",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  57864
+                         },
+                         {
+                             "name":  "level12",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  47074
+                         },
+                         {
+                             "name":  "level120",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  58105
+                         },
+                         {
+                             "name":  "level121",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  154525
+                         },
+                         {
+                             "name":  "level122",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  52715
+                         },
+                         {
+                             "name":  "level123",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37948
+                         },
+                         {
+                             "name":  "level13",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  57339
+                         },
+                         {
+                             "name":  "level14",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  47540
+                         },
+                         {
+                             "name":  "level15",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  55063
+                         },
+                         {
+                             "name":  "level16",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43265
+                         },
+                         {
+                             "name":  "level17",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37895
+                         },
+                         {
+                             "name":  "level18",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40798
+                         },
+                         {
+                             "name":  "level19",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  60202
+                         },
+                         {
+                             "name":  "level2",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  206129
+                         },
+                         {
+                             "name":  "level20",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46488
+                         },
+                         {
+                             "name":  "level21",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38019
+                         },
+                         {
+                             "name":  "level22",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38732
+                         },
+                         {
+                             "name":  "level23",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39880
+                         },
+                         {
+                             "name":  "level24",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37802
+                         },
+                         {
+                             "name":  "level25",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37677
+                         },
+                         {
+                             "name":  "level26",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40317
+                         },
+                         {
+                             "name":  "level27",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40316
+                         },
+                         {
+                             "name":  "level28",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38794
+                         },
+                         {
+                             "name":  "level29",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  165891
+                         },
+                         {
+                             "name":  "level3",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39623
+                         },
+                         {
+                             "name":  "level30",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38112
+                         },
+                         {
+                             "name":  "level31",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46021
+                         },
+                         {
+                             "name":  "level32",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  152714
+                         },
+                         {
+                             "name":  "level33",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  55912
+                         },
+                         {
+                             "name":  "level34",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  77438
+                         },
+                         {
+                             "name":  "level35",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46238
+                         },
+                         {
+                             "name":  "level36",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44569
+                         },
+                         {
+                             "name":  "level37",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43142
+                         },
+                         {
+                             "name":  "level38",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46838
+                         },
+                         {
+                             "name":  "level39",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45215
+                         },
+                         {
+                             "name":  "level4",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  111290
+                         },
+                         {
+                             "name":  "level40",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  41737
+                         },
+                         {
+                             "name":  "level41",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39553
+                         },
+                         {
+                             "name":  "level42",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37740
+                         },
+                         {
+                             "name":  "level43",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37760
+                         },
+                         {
+                             "name":  "level44",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43017
+                         },
+                         {
+                             "name":  "level45",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39570
+                         },
+                         {
+                             "name":  "level46",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38897
+                         },
+                         {
+                             "name":  "level47",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38273
+                         },
+                         {
+                             "name":  "level48",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46313
+                         },
+                         {
+                             "name":  "level49",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37793
+                         },
+                         {
+                             "name":  "level5",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  36946
+                         },
+                         {
+                             "name":  "level50",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37953
+                         },
+                         {
+                             "name":  "level51",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38934
+                         },
+                         {
+                             "name":  "level52",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37254
+                         },
+                         {
+                             "name":  "level53",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39516
+                         },
+                         {
+                             "name":  "level54",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37235
+                         },
+                         {
+                             "name":  "level55",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37342
+                         },
+                         {
+                             "name":  "level56",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44739
+                         },
+                         {
+                             "name":  "level57",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39766
+                         },
+                         {
+                             "name":  "level58",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43293
+                         },
+                         {
+                             "name":  "level59",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39689
+                         },
+                         {
+                             "name":  "level6",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  129552
+                         },
+                         {
+                             "name":  "level60",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38820
+                         },
+                         {
+                             "name":  "level61",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44548
+                         },
+                         {
+                             "name":  "level62",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39958
+                         },
+                         {
+                             "name":  "level63",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  41471
+                         },
+                         {
+                             "name":  "level64",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40292
+                         },
+                         {
+                             "name":  "level65",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  43051
+                         },
+                         {
+                             "name":  "level66",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40331
+                         },
+                         {
+                             "name":  "level67",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46844
+                         },
+                         {
+                             "name":  "level68",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39617
+                         },
+                         {
+                             "name":  "level69",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37783
+                         },
+                         {
+                             "name":  "level7",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  95212
+                         },
+                         {
+                             "name":  "level70",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38356
+                         },
+                         {
+                             "name":  "level71",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45561
+                         },
+                         {
+                             "name":  "level72",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45983
+                         },
+                         {
+                             "name":  "level73",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46000
+                         },
+                         {
+                             "name":  "level74",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38564
+                         },
+                         {
+                             "name":  "level75",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44707
+                         },
+                         {
+                             "name":  "level76",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  41413
+                         },
+                         {
+                             "name":  "level77",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  50656
+                         },
+                         {
+                             "name":  "level78",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  51341
+                         },
+                         {
+                             "name":  "level79",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44701
+                         },
+                         {
+                             "name":  "level8",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  79401
+                         },
+                         {
+                             "name":  "level80",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40019
+                         },
+                         {
+                             "name":  "level81",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37836
+                         },
+                         {
+                             "name":  "level82",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  44165
+                         },
+                         {
+                             "name":  "level83",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38386
+                         },
+                         {
+                             "name":  "level84",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45765
+                         },
+                         {
+                             "name":  "level85",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  56962
+                         },
+                         {
+                             "name":  "level86",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39362
+                         },
+                         {
+                             "name":  "level87",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  42635
+                         },
+                         {
+                             "name":  "level88",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  48986
+                         },
+                         {
+                             "name":  "level89",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  40385
+                         },
+                         {
+                             "name":  "level9",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  90235
+                         },
+                         {
+                             "name":  "level90",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38093
+                         },
+                         {
+                             "name":  "level91",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46451
+                         },
+                         {
+                             "name":  "level92",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39298
+                         },
+                         {
+                             "name":  "level93",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  48766
+                         },
+                         {
+                             "name":  "level94",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  62919
+                         },
+                         {
+                             "name":  "level95",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  49512
+                         },
+                         {
+                             "name":  "level96",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  125929
+                         },
+                         {
+                             "name":  "level97",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46949
+                         },
+                         {
+                             "name":  "level98",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  47292
+                         },
+                         {
+                             "name":  "level99",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  62000
+                         },
+                         {
+                             "name":  "resources.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  222245
+                         },
+                         {
+                             "name":  "sharedassets0.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  141253
+                         },
+                         {
+                             "name":  "sharedassets1.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  473
+                         },
+                         {
+                             "name":  "sharedassets10.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  189
+                         },
+                         {
+                             "name":  "sharedassets100.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  914
+                         },
+                         {
+                             "name":  "sharedassets101.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  142
+                         },
+                         {
+                             "name":  "sharedassets102.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  54
+                         },
+                         {
+                             "name":  "sharedassets103.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  64
+                         },
+                         {
+                             "name":  "sharedassets104.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  12
+                         },
+                         {
+                             "name":  "sharedassets105.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  23
+                         },
+                         {
+                             "name":  "sharedassets106.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  141
+                         },
+                         {
+                             "name":  "sharedassets107.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  34
+                         },
+                         {
+                             "name":  "sharedassets108.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  38
+                         },
+                         {
+                             "name":  "sharedassets109.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  53
+                         },
+                         {
+                             "name":  "sharedassets11.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  218
+                         },
+                         {
+                             "name":  "sharedassets110.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  94
+                         },
+                         {
+                             "name":  "sharedassets111.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  32820
+                         },
+                         {
+                             "name":  "sharedassets112.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  504
+                         },
+                         {
+                             "name":  "sharedassets113.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  203
+                         },
+                         {
+                             "name":  "sharedassets114.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  300
+                         },
+                         {
+                             "name":  "sharedassets115.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  45
+                         },
+                         {
+                             "name":  "sharedassets116.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  251
+                         },
+                         {
+                             "name":  "sharedassets117.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  2343
+                         },
+                         {
+                             "name":  "sharedassets118.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  319
+                         },
+                         {
+                             "name":  "sharedassets119.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  78
+                         },
+                         {
+                             "name":  "sharedassets12.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  137
+                         },
+                         {
+                             "name":  "sharedassets120.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  76
+                         },
+                         {
+                             "name":  "sharedassets121.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  223
+                         },
+                         {
+                             "name":  "sharedassets122.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  203
+                         },
+                         {
+                             "name":  "sharedassets123.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  4
+                         },
+                         {
+                             "name":  "sharedassets13.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  265
+                         },
+                         {
+                             "name":  "sharedassets14.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  194
+                         },
+                         {
+                             "name":  "sharedassets15.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  142
+                         },
+                         {
+                             "name":  "sharedassets16.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  24
+                         },
+                         {
+                             "name":  "sharedassets17.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  11
+                         },
+                         {
+                             "name":  "sharedassets18.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  10
+                         },
+                         {
+                             "name":  "sharedassets19.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  525
+                         },
+                         {
+                             "name":  "sharedassets2.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  84637
+                         },
+                         {
+                             "name":  "sharedassets20.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  95
+                         },
+                         {
+                             "name":  "sharedassets21.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  8
+                         },
+                         {
+                             "name":  "sharedassets22.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  32
+                         },
+                         {
+                             "name":  "sharedassets23.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  53
+                         },
+                         {
+                             "name":  "sharedassets24.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  6
+                         },
+                         {
+                             "name":  "sharedassets25.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  5
+                         },
+                         {
+                             "name":  "sharedassets26.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  15
+                         },
+                         {
+                             "name":  "sharedassets27.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  19
+                         },
+                         {
+                             "name":  "sharedassets28.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  132
+                         },
+                         {
+                             "name":  "sharedassets29.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  633
+                         },
+                         {
+                             "name":  "sharedassets3.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  211
+                         },
+                         {
+                             "name":  "sharedassets30.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  8
+                         },
+                         {
+                             "name":  "sharedassets31.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  6
+                         },
+                         {
+                             "name":  "sharedassets32.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  384
+                         },
+                         {
+                             "name":  "sharedassets33.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  271
+                         },
+                         {
+                             "name":  "sharedassets34.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  484
+                         },
+                         {
+                             "name":  "sharedassets35.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  384
+                         },
+                         {
+                             "name":  "sharedassets36.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  48
+                         },
+                         {
+                             "name":  "sharedassets37.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  59
+                         },
+                         {
+                             "name":  "sharedassets38.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  115
+                         },
+                         {
+                             "name":  "sharedassets39.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  17
+                         },
+                         {
+                             "name":  "sharedassets4.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  187986
+                         },
+                         {
+                             "name":  "sharedassets40.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  16
+                         },
+                         {
+                             "name":  "sharedassets41.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  15
+                         },
+                         {
+                             "name":  "sharedassets42.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets43.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  14
+                         },
+                         {
+                             "name":  "sharedassets44.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  48
+                         },
+                         {
+                             "name":  "sharedassets45.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  29
+                         },
+                         {
+                             "name":  "sharedassets46.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  16
+                         },
+                         {
+                             "name":  "sharedassets47.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  5
+                         },
+                         {
+                             "name":  "sharedassets48.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  18
+                         },
+                         {
+                             "name":  "sharedassets49.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  36
+                         },
+                         {
+                             "name":  "sharedassets5.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  3144
+                         },
+                         {
+                             "name":  "sharedassets50.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  8
+                         },
+                         {
+                             "name":  "sharedassets51.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets52.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  10
+                         },
+                         {
+                             "name":  "sharedassets53.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  137
+                         },
+                         {
+                             "name":  "sharedassets54.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets55.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  8
+                         },
+                         {
+                             "name":  "sharedassets56.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  27
+                         },
+                         {
+                             "name":  "sharedassets57.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  9
+                         },
+                         {
+                             "name":  "sharedassets58.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  31
+                         },
+                         {
+                             "name":  "sharedassets59.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  39
+                         },
+                         {
+                             "name":  "sharedassets6.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  1617
+                         },
+                         {
+                             "name":  "sharedassets60.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets61.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  11
+                         },
+                         {
+                             "name":  "sharedassets62.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  32
+                         },
+                         {
+                             "name":  "sharedassets63.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  24
+                         },
+                         {
+                             "name":  "sharedassets64.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  22
+                         },
+                         {
+                             "name":  "sharedassets65.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  24
+                         },
+                         {
+                             "name":  "sharedassets66.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  13
+                         },
+                         {
+                             "name":  "sharedassets67.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  34
+                         },
+                         {
+                             "name":  "sharedassets68.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  17
+                         },
+                         {
+                             "name":  "sharedassets69.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  6
+                         },
+                         {
+                             "name":  "sharedassets7.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  512
+                         },
+                         {
+                             "name":  "sharedassets70.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  41
+                         },
+                         {
+                             "name":  "sharedassets71.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  37
+                         },
+                         {
+                             "name":  "sharedassets72.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  59
+                         },
+                         {
+                             "name":  "sharedassets73.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  59
+                         },
+                         {
+                             "name":  "sharedassets74.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  50
+                         },
+                         {
+                             "name":  "sharedassets75.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  88
+                         },
+                         {
+                             "name":  "sharedassets76.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  20
+                         },
+                         {
+                             "name":  "sharedassets77.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  42
+                         },
+                         {
+                             "name":  "sharedassets78.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  65
+                         },
+                         {
+                             "name":  "sharedassets79.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  59
+                         },
+                         {
+                             "name":  "sharedassets8.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  210
+                         },
+                         {
+                             "name":  "sharedassets80.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  16
+                         },
+                         {
+                             "name":  "sharedassets81.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  5
+                         },
+                         {
+                             "name":  "sharedassets82.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  9
+                         },
+                         {
+                             "name":  "sharedassets83.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  10
+                         },
+                         {
+                             "name":  "sharedassets84.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  46
+                         },
+                         {
+                             "name":  "sharedassets85.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  64
+                         },
+                         {
+                             "name":  "sharedassets86.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  22
+                         },
+                         {
+                             "name":  "sharedassets87.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  21
+                         },
+                         {
+                             "name":  "sharedassets88.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  90
+                         },
+                         {
+                             "name":  "sharedassets89.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets9.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  388
+                         },
+                         {
+                             "name":  "sharedassets90.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  7
+                         },
+                         {
+                             "name":  "sharedassets91.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  48
+                         },
+                         {
+                             "name":  "sharedassets92.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  17
+                         },
+                         {
+                             "name":  "sharedassets93.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  66
+                         },
+                         {
+                             "name":  "sharedassets94.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  69
+                         },
+                         {
+                             "name":  "sharedassets95.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  102
+                         },
+                         {
+                             "name":  "sharedassets96.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  329
+                         },
+                         {
+                             "name":  "sharedassets97.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  50
+                         },
+                         {
+                             "name":  "sharedassets98.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  58
+                         },
+                         {
+                             "name":  "sharedassets99.assets",
+                             "unityVersion":  "6000.0.77f1",
+                             "objectCount":  183
+                         }
+                     ],
+    "sourceHashes":  [
+                         {
+                             "file":  "Managed/Assembly-CSharp.dll",
+                             "sha256":  "C45AE3010158E9C28F2B47CA561F10172133B4EC87D0D33DB13EC5E5C7C3B328",
+                             "bytes":  4274176
+                         },
+                         {
+                             "file":  "StreamingAssets/CharactersRent.json",
+                             "sha256":  "86AD736E72A6EF6C8435DB3668C36ED6C9B878A44D34D6D3309A324699B8C19C",
+                             "bytes":  6096
+                         },
+                         {
+                             "file":  "StreamingAssets/Items.json",
+                             "sha256":  "01B58316FA78FC88A37A0C2B11BA913DB25CD0452774E8E8A0C6F5CF2699990D",
+                             "bytes":  3196157
+                         },
+                         {
+                             "file":  "globalgamemanagers.assets",
+                             "sha256":  "3195AC18CCE9141AC0573004FDD00556D13B44824C9B2EE3779F717570EA27B8",
+                             "bytes":  795016
+                         },
+                         {
+                             "file":  "level0",
+                             "sha256":  "77718E4F31E067B75EAC6DB12CA2D2054E7861F63DC739418AF043331833AD44",
+                             "bytes":  81693952
+                         },
+                         {
+                             "file":  "level1",
+                             "sha256":  "2E75D01BEFDC584D91C8C250355CAC87A8F709C0639DE7DA077A747F333DE211",
+                             "bytes":  10077568
+                         },
+                         {
+                             "file":  "level10",
+                             "sha256":  "582F5C8FE0178ECF7E7E65AE8C46D40825CBFA7925ADFDFABC15859CBCD99B1A",
+                             "bytes":  11633048
+                         },
+                         {
+                             "file":  "level100",
+                             "sha256":  "5B00D0688085B6E932DD703A1DF70975FA8C040CF2BE17FED86C7BB62094DBCB",
+                             "bytes":  9188680
+                         },
+                         {
+                             "file":  "level101",
+                             "sha256":  "564AA7BF7DCD9DE6A41A328F66D45BB530702BB6DCCB4A6D5C6E8546211F4F76",
+                             "bytes":  11873032
+                         },
+                         {
+                             "file":  "level102",
+                             "sha256":  "300D5AAF8120C61F80E80C92CAB3C66A6BF2F5E206F82C4B9B4F12202D8BFDBB",
+                             "bytes":  6526936
+                         },
+                         {
+                             "file":  "level103",
+                             "sha256":  "581E0A950D00822F26CD5FB67B3026AD14FCDD0F109E30E303C82B67DF06E8EA",
+                             "bytes":  7580520
+                         },
+                         {
+                             "file":  "level104",
+                             "sha256":  "438CCAABABBF05FFAB106AA8A0619F3CF617E8D1602408CC6D7B459A6FF85663",
+                             "bytes":  6342584
+                         },
+                         {
+                             "file":  "level105",
+                             "sha256":  "DF75C3D07A1882A012E8D3BF41254B845785A6F4F905EFDA0A42904DC25328D4",
+                             "bytes":  6709328
+                         },
+                         {
+                             "file":  "level106",
+                             "sha256":  "CC9223ACCE603EEBC0E6F0337CFACD88B5FE75655001F1B398B2ACA3F227077B",
+                             "bytes":  7415808
+                         },
+                         {
+                             "file":  "level107",
+                             "sha256":  "A7DED0EBD7252F2A2109FA55E47199A5D138E46FF795DB4EDB27B1B21F89AD99",
+                             "bytes":  13777800
+                         },
+                         {
+                             "file":  "level108",
+                             "sha256":  "66CEA63AFD8A37B8A38E2B94801CBE6293F434FDBC361FC793F953571454EE02",
+                             "bytes":  7001824
+                         },
+                         {
+                             "file":  "level109",
+                             "sha256":  "4905F8899D6A18E91762F698FF6C9CEA4BD9AD8641D0BA7F84283A1528A628E1",
+                             "bytes":  8127744
+                         },
+                         {
+                             "file":  "level11",
+                             "sha256":  "B810B1A9D3F0451DEFD145ED78CF1048363F367336339D0B5009172E3DFAD5B5",
+                             "bytes":  7195256
+                         },
+                         {
+                             "file":  "level110",
+                             "sha256":  "3EDF34E21AD6E13B942067D4745D274FDFCC59A29F3E65FF679AB17956CDE365",
+                             "bytes":  8116480
+                         },
+                         {
+                             "file":  "level111",
+                             "sha256":  "FF3F2C9357EC90779099F3B915F177A9B0CF00D911326DBBC318A5CD0A13BE87",
+                             "bytes":  193522472
+                         },
+                         {
+                             "file":  "level112",
+                             "sha256":  "ECEA46CA559CC5E6389E76D377A301DBB0B83DF41AD180CCEE882DD79AF105D1",
+                             "bytes":  214373404
+                         },
+                         {
+                             "file":  "level113",
+                             "sha256":  "468759376392A6280A48D511AB95E9C963715C4FF80A452CE316D316205DA623",
+                             "bytes":  16955504
+                         },
+                         {
+                             "file":  "level114",
+                             "sha256":  "821310D177224A9F0807290647667E059549FC05DF2307713A6D34BF35A5866C",
+                             "bytes":  25281408
+                         },
+                         {
+                             "file":  "level115",
+                             "sha256":  "A054A6C0A1287441E4667C40B41D65E15E779A2699BC0E15BDEFCB2546A33744",
+                             "bytes":  6223376
+                         },
+                         {
+                             "file":  "level116",
+                             "sha256":  "5D7EE471E304FFDCC91157C1709D2758FACFDCF03BD0C6A8E14E9D9B73F86B7C",
+                             "bytes":  21167464
+                         },
+                         {
+                             "file":  "level117",
+                             "sha256":  "D41D9F89C4203B0AD6A651C73ABE22B87FAE697EBE773F157598B1142B24DDC7",
+                             "bytes":  19577112
+                         },
+                         {
+                             "file":  "level118",
+                             "sha256":  "572C76A71D14C02231A250BD26F88520BD1E65D721208E179D1F6AB043BA7D51",
+                             "bytes":  91245152
+                         },
+                         {
+                             "file":  "level119",
+                             "sha256":  "AB34B6EF006F60CC2CAA053620759973F621D03EA0E17B45CB3566CF3C5EA7E1",
+                             "bytes":  10735360
+                         },
+                         {
+                             "file":  "level12",
+                             "sha256":  "51963694D1B5AE01A1AD709A409867CD59C88DE0D931B7603EACA3612131FE65",
+                             "bytes":  7014168
+                         },
+                         {
+                             "file":  "level120",
+                             "sha256":  "234F84D58DBA59167D8A62BD65E684B29177719CCD2D16E6470FDE31C449A8CA",
+                             "bytes":  11288104
+                         },
+                         {
+                             "file":  "level121",
+                             "sha256":  "671700D64A2CF4D035642145E56F40BE36CED3B9C2D28066C0C87ADDA6A5A07C",
+                             "bytes":  26426896
+                         },
+                         {
+                             "file":  "level122",
+                             "sha256":  "722DA7B353F6BDC6AFF65B7410A6B94E160C1916D5F0A0ED084599413E804C30",
+                             "bytes":  8489824
+                         },
+                         {
+                             "file":  "level123",
+                             "sha256":  "7574CFE440137E5A374CE5708D4FA7D2706E5269B7AF538A48C8B78EE427532A",
+                             "bytes":  5768896
+                         },
+                         {
+                             "file":  "level13",
+                             "sha256":  "4FFA292223C109EE669AC8A68BBBAF181CA1192894EE158AF1960CEC8F8E3201",
+                             "bytes":  8371672
+                         },
+                         {
+                             "file":  "level14",
+                             "sha256":  "F9ED0BD37B367166E281EE594217C52C8D390381D455C24B5E46ADD680C5A65A",
+                             "bytes":  7323000
+                         },
+                         {
+                             "file":  "level15",
+                             "sha256":  "C79AFDFCC5CE60029D457500E89847BCEF28F230974B88066CB4385977E719A8",
+                             "bytes":  8642664
+                         },
+                         {
+                             "file":  "level16",
+                             "sha256":  "2313AB41E9D778845BEE1355C94F5BFE6DB16964B697AEE92883E2940AAC180A",
+                             "bytes":  8161720
+                         },
+                         {
+                             "file":  "level17",
+                             "sha256":  "2CB3AA7E5AB9F35C66737F37F39590218127E8546157CBAE92413B260CE1E514",
+                             "bytes":  5750024
+                         },
+                         {
+                             "file":  "level18",
+                             "sha256":  "5A8C5B1325E7DC4B439BC515DF0CD9674BFA45349214BD6AF10E4D931E672E16",
+                             "bytes":  6297112
+                         },
+                         {
+                             "file":  "level19",
+                             "sha256":  "696A66CFD4C6F648E647ACD1547E6B66AD5CE7909989BD311B5FB4EAB44E7923",
+                             "bytes":  10035992
+                         },
+                         {
+                             "file":  "level2",
+                             "sha256":  "558DF5F3589F20988CEEB3897DECD4FD032CB113E96799EC67117A4A1E70DA72",
+                             "bytes":  150141024
+                         },
+                         {
+                             "file":  "level20",
+                             "sha256":  "349344557365D0FA857F1C0F110DD62710149E31E790176387F598F56E1BB77D",
+                             "bytes":  7231336
+                         },
+                         {
+                             "file":  "level21",
+                             "sha256":  "4251EF5C7A3E3C02299601E682A1E7D6F5B60DBD893C0AD56409974051B23112",
+                             "bytes":  5765448
+                         },
+                         {
+                             "file":  "level22",
+                             "sha256":  "CE15053D2C9189679129B3FF5A7D29432C1BF8637F8DE8BC7DA91E098D5E5715",
+                             "bytes":  5872008
+                         },
+                         {
+                             "file":  "level23",
+                             "sha256":  "B5D335BF83D528A75678239421FA60017CFE907B5847FC6D10D4786719F11235",
+                             "bytes":  6046984
+                         },
+                         {
+                             "file":  "level24",
+                             "sha256":  "B8C490FFCB996BC60CE6A1B6F64D6C144033277C809B34698EBD5D0FFEA7E6FE",
+                             "bytes":  5718168
+                         },
+                         {
+                             "file":  "level25",
+                             "sha256":  "BB77FE7886478185585B8720EBDDCD1859E0B2C762B1763778EF94198F2C96A9",
+                             "bytes":  5703560
+                         },
+                         {
+                             "file":  "level26",
+                             "sha256":  "39984B9572C84C3AFF5080890766700F5358B6D13DB9BE7C8A1AA7C656DDBEB7",
+                             "bytes":  7126312
+                         },
+                         {
+                             "file":  "level27",
+                             "sha256":  "25842702BB918ED3F443EE260046681AA3D9BB7CA4EE0F3F892245AA36A25DDC",
+                             "bytes":  6273336
+                         },
+                         {
+                             "file":  "level28",
+                             "sha256":  "ABB0C65802AC89564F5255A82B568EB9ABAEC9CE6DB29788F660951490F6FB03",
+                             "bytes":  5885720
+                         },
+                         {
+                             "file":  "level29",
+                             "sha256":  "C91C24CC78DF1C9FAEA25043445953722D499050C57B4D1F393FD5379ADAE163",
+                             "bytes":  54961144
+                         },
+                         {
+                             "file":  "level3",
+                             "sha256":  "CFE4F27014A847DCBFD9DA0F2ACBA82EF247F78604A471FA6B4FDF6C720C3B8C",
+                             "bytes":  5944488
+                         },
+                         {
+                             "file":  "level30",
+                             "sha256":  "BB68D2B71E130C9656DC4FFBE33FF0F7C2285CAF89AB4C65005B176D8F78C826",
+                             "bytes":  5831080
+                         },
+                         {
+                             "file":  "level31",
+                             "sha256":  "A8BF7D3630DB7B2A040A6116E43B36B6FD1A67F0793DDC89817733A6E39B0328",
+                             "bytes":  7130584
+                         },
+                         {
+                             "file":  "level32",
+                             "sha256":  "0FA9A550CA91813D0651AACC4185ACE20376B978E2A812560E55D073467C1236",
+                             "bytes":  30502876
+                         },
+                         {
+                             "file":  "level33",
+                             "sha256":  "8C2A5C626FC10585052B7C3032DE76EEF742FC031C4D1DBA6B957E94AC898BC6",
+                             "bytes":  8518168
+                         },
+                         {
+                             "file":  "level34",
+                             "sha256":  "997BB672C546F287324118503AD9672F375E60A930BAA31B53271BFC8E0CF485",
+                             "bytes":  61025352
+                         },
+                         {
+                             "file":  "level35",
+                             "sha256":  "888737E4EA214B7FFA311544D1DB79B19FDB93ACD3BEDDBE10D5CAB37D21ED70",
+                             "bytes":  7322056
+                         },
+                         {
+                             "file":  "level36",
+                             "sha256":  "18DDA60FF19D64D3A5F7E6E9157CA6AF50D9833550A3C9D58F0FCA977963E9D7",
+                             "bytes":  6886872
+                         },
+                         {
+                             "file":  "level37",
+                             "sha256":  "4B3415E87BD7785254B9C26AD2C8DD7A37E94770B742C1F33ABA659094271C2D",
+                             "bytes":  6507816
+                         },
+                         {
+                             "file":  "level38",
+                             "sha256":  "3F14A336E77C7EC25917C811C9D0D851AF331310A2E2FBF0C0537C0FEFB12D9B",
+                             "bytes":  7203560
+                         },
+                         {
+                             "file":  "level39",
+                             "sha256":  "B084F7F47DF49D05EE222474F657B998A8927C2262454683D0FB5E19FE18E3E8",
+                             "bytes":  7122168
+                         },
+                         {
+                             "file":  "level4",
+                             "sha256":  "DB933336300D76378C383874CB206F5022E4611233E382A56CD8B452F9B8CDBE",
+                             "bytes":  20088024
+                         },
+                         {
+                             "file":  "level40",
+                             "sha256":  "0A0ABA88BFDEAD4C49AD3ACDBF3E12807F23F564EB4F2085B8BDB4E0E5F845D5",
+                             "bytes":  6310632
+                         },
+                         {
+                             "file":  "level41",
+                             "sha256":  "6938E189BB9E60605E033697C199771A8ABAB5BA74D4537B0B45D2352EA05C3E",
+                             "bytes":  6223272
+                         },
+                         {
+                             "file":  "level42",
+                             "sha256":  "7171A3AD6B978966077553D2B2B9165F8CCA747BBBE92C83D2C3D77ACAC15D4C",
+                             "bytes":  5692408
+                         },
+                         {
+                             "file":  "level43",
+                             "sha256":  "21C7470DF70F91AC76FF124D8B0A9712ADB0F6BE5072CE0F36534DE1B5618B1A",
+                             "bytes":  8336168
+                         },
+                         {
+                             "file":  "level44",
+                             "sha256":  "76EE236DAF5B8C9BF6D1CA588901B4A449CA310B6BCBAF29A485A057FCC1350A",
+                             "bytes":  19073160
+                         },
+                         {
+                             "file":  "level45",
+                             "sha256":  "8D7EA1CA0A0EBF70A1A876C7BBEC6E652CDFC455A4E89446D5B503DBBA85693F",
+                             "bytes":  6240520
+                         },
+                         {
+                             "file":  "level46",
+                             "sha256":  "1C1D729B992E59A25C53DE484C2C624BA6E51FC3FD62DF57F969D4D247EDF9CC",
+                             "bytes":  5874648
+                         },
+                         {
+                             "file":  "level47",
+                             "sha256":  "B56F022261FC8452BDB6DF7C4E92AAFBF507D1807AC4D150FA1580548163C236",
+                             "bytes":  5758600
+                         },
+                         {
+                             "file":  "level48",
+                             "sha256":  "1566CE43928EF427FF9A59CF7EB22D2F6ACE5EC1DFA9A5278DB66DDAF8BA2411",
+                             "bytes":  6865496
+                         },
+                         {
+                             "file":  "level49",
+                             "sha256":  "0E52F7BD8011360FD2ABE41BC63B3AF4A931D60681012FB0A305B34D59EED4B4",
+                             "bytes":  5684472
+                         },
+                         {
+                             "file":  "level5",
+                             "sha256":  "E650A48626BFD2FFA9E59E64CA278B734F03AFBB74EE4B95BBBEAF26BBE3A153",
+                             "bytes":  5644992
+                         },
+                         {
+                             "file":  "level50",
+                             "sha256":  "B66C9D37CC00807AA21B2D61AE2A366C9C7121DF5183FE5FD22E6BF446428FDA",
+                             "bytes":  5720632
+                         },
+                         {
+                             "file":  "level51",
+                             "sha256":  "0CF40C762C1F211B626C1E835F62D4D4785A4C286E04F2F70AA4748A45C25836",
+                             "bytes":  5919672
+                         },
+                         {
+                             "file":  "level52",
+                             "sha256":  "DBD84FC2154782C187603B1410FD1A39347E4678FD8578216C04742741DF4870",
+                             "bytes":  5609656
+                         },
+                         {
+                             "file":  "level53",
+                             "sha256":  "57AC082F43014417491E1FDBA491CD1114D4E57C679287CB8FAEDBC1731BD160",
+                             "bytes":  6315176
+                         },
+                         {
+                             "file":  "level54",
+                             "sha256":  "162EAB7869DC0577EACB381479B3FBC7EA632410BAF6288EC9FEED1815D8B217",
+                             "bytes":  5590120
+                         },
+                         {
+                             "file":  "level55",
+                             "sha256":  "835660967B000AA06E147909E1BAD43F7AB26097C64A11EBBF6F8DC27EA85677",
+                             "bytes":  7227256
+                         },
+                         {
+                             "file":  "level56",
+                             "sha256":  "58E9DDF41AB23F5A24478E66EE138EA05AEF045E2EA71EA3F02FF49E5AD12CD0",
+                             "bytes":  6704600
+                         },
+                         {
+                             "file":  "level57",
+                             "sha256":  "6D5AC9E46EFB1E9ADFD5604F5076287B8720E429DE46FCAFE65CFB194BE8409F",
+                             "bytes":  5944328
+                         },
+                         {
+                             "file":  "level58",
+                             "sha256":  "5BB9514714EE8501DF16E4E632D367F4CB8928EE9599C07F2EC293811F69376F",
+                             "bytes":  6968872
+                         },
+                         {
+                             "file":  "level59",
+                             "sha256":  "15ABC221FF325EA28F9A6F0F3175DFA2AB4F1579B667F3B7245769B63F048BD5",
+                             "bytes":  9182872
+                         },
+                         {
+                             "file":  "level6",
+                             "sha256":  "DC62A4167456F2D8E3DFCDD09AF3D8257A9D67E4EC390B25717C28F75E083007",
+                             "bytes":  31773944
+                         },
+                         {
+                             "file":  "level60",
+                             "sha256":  "E2631792B719A8971167CC46DF92D5DF8B0223E4C5EAD502F6B5268A512B040A",
+                             "bytes":  5885608
+                         },
+                         {
+                             "file":  "level61",
+                             "sha256":  "354CE18EB5C2EF33C2665AF1D7B3E87B790CC0C779BC61AF7487B34154FFB546",
+                             "bytes":  6978024
+                         },
+                         {
+                             "file":  "level62",
+                             "sha256":  "2CDD380CD3CA28BF6C0D3C0ED5BB29135E6984C4C873A418AD91667676D687E4",
+                             "bytes":  6058456
+                         },
+                         {
+                             "file":  "level63",
+                             "sha256":  "A801AA032CF60E8616815DBAFC2554F7CEEB0699FB4622A422100AA64A802A71",
+                             "bytes":  6330888
+                         },
+                         {
+                             "file":  "level64",
+                             "sha256":  "648F4A40FA469B328022A7AEEDE78AF48565FD296390314E198C2AC38F57BDA9",
+                             "bytes":  6279896
+                         },
+                         {
+                             "file":  "level65",
+                             "sha256":  "FFCDC39E06FD508DF2792B824033E5C4FF9A1642EB8E7B1BEC3FD68D79FD10AE",
+                             "bytes":  6691000
+                         },
+                         {
+                             "file":  "level66",
+                             "sha256":  "60FEE3274DF80F07766E622A004A2F42866FABACF4F82B872E763B905898CEF8",
+                             "bytes":  6167088
+                         },
+                         {
+                             "file":  "level67",
+                             "sha256":  "362836E80B89B302EBC8D0216A76C790CFE751D3EE6257AD8E33A05775473441",
+                             "bytes":  8116032
+                         },
+                         {
+                             "file":  "level68",
+                             "sha256":  "880AF94780149521287011E50A13DE00749DBABD044AF444B58242B06C9C9082",
+                             "bytes":  6017048
+                         },
+                         {
+                             "file":  "level69",
+                             "sha256":  "1493FAE9C5837A42EE7F336AB5AE72A8A1F5C699FFF015225B3E1A7F2CE69BF7",
+                             "bytes":  5675336
+                         },
+                         {
+                             "file":  "level7",
+                             "sha256":  "E56C7F6F04E4205FFBE7983DF237B3EB07D933535DDFDA24838B0A115F7E2772",
+                             "bytes":  50636184
+                         },
+                         {
+                             "file":  "level70",
+                             "sha256":  "527B362FFFB7B736ACBEAB8FA521EFB5C3677051329AAD2BF0FF5FB08171805E",
+                             "bytes":  5878296
+                         },
+                         {
+                             "file":  "level71",
+                             "sha256":  "AED440C515CD54F66FB52B05551D06A549E52D9EABDC68A1FC0F303E5D6F9970",
+                             "bytes":  6870008
+                         },
+                         {
+                             "file":  "level72",
+                             "sha256":  "7A423A51EFAAD0D7FEFE16E1138748EEE6F9645C924F3E8C991A27CD3C02F0A9",
+                             "bytes":  7094008
+                         },
+                         {
+                             "file":  "level73",
+                             "sha256":  "5910EFADEAC6CD51A7D1FACFF0ABD9F2B8EBA07CACF4F6823EB637A5A75E3F35",
+                             "bytes":  6939096
+                         },
+                         {
+                             "file":  "level74",
+                             "sha256":  "844CA1D0459C0330619AABA68CE7EE7F7245B37C29E3E600906DB1E3F8613BB4",
+                             "bytes":  5925736
+                         },
+                         {
+                             "file":  "level75",
+                             "sha256":  "39C0D2C406E41633352EFACC6BC2991A654251B9D742491AAA175C074DA0CDFD",
+                             "bytes":  7424680
+                         },
+                         {
+                             "file":  "level76",
+                             "sha256":  "C2C3722FEB5D4159D2BD69A98BFCF5C771E454C36F794CD7610A2B10DD433578",
+                             "bytes":  7351720
+                         },
+                         {
+                             "file":  "level77",
+                             "sha256":  "DD28230C6362B8B2CF2C55B66AE4F69E453CED5D356EE10AB0A7A06020440C77",
+                             "bytes":  7710344
+                         },
+                         {
+                             "file":  "level78",
+                             "sha256":  "01D93F91ECC86B2A427911D6BC88C2D8FF22EAEB7215F89EA626B99F16A71F09",
+                             "bytes":  7977096
+                         },
+                         {
+                             "file":  "level79",
+                             "sha256":  "10B58D74FBC0DD19250C4C02147B57FB8B8D8558A9C8A409E49572755E462685",
+                             "bytes":  7107824
+                         },
+                         {
+                             "file":  "level8",
+                             "sha256":  "B63FF6E529D311E76206F74E91CD40330DB234A1E2B2A07E7D9D784B9E7FA8D9",
+                             "bytes":  12357048
+                         },
+                         {
+                             "file":  "level80",
+                             "sha256":  "D2B22C72DE92F6786AFC88DF79F4BDD8BEED9AC817296543DC1EBC868A6FC7CF",
+                             "bytes":  6110088
+                         },
+                         {
+                             "file":  "level81",
+                             "sha256":  "EB7C494610CBF4CD0FD2F0D7900138754B1D19000EA409B226A85CC28137B524",
+                             "bytes":  5727384
+                         },
+                         {
+                             "file":  "level82",
+                             "sha256":  "1F9F9C3B4BFC8B376ED8ED4D60AA7E126E87D2F308608B5F08A40B9B99F0B992",
+                             "bytes":  6798680
+                         },
+                         {
+                             "file":  "level83",
+                             "sha256":  "69B167372BA94BC866C594FE6EBDD272072139105E57259062CB8D7534522A4B",
+                             "bytes":  5829544
+                         },
+                         {
+                             "file":  "level84",
+                             "sha256":  "2B035409721DCADAB4AC1041A23CF3DDE7FF031CE371904AF9498BC379AAB9FA",
+                             "bytes":  6925544
+                         },
+                         {
+                             "file":  "level85",
+                             "sha256":  "3802A51ACF1FC198CDDC122C7A8B4D461874579CEA532747321982A96425CB01",
+                             "bytes":  8734344
+                         },
+                         {
+                             "file":  "level86",
+                             "sha256":  "CC6DCF43832F221F75C4933580997C9758F0ADF07D521C48C55BE805F2C8B295",
+                             "bytes":  6003800
+                         },
+                         {
+                             "file":  "level87",
+                             "sha256":  "DC16389066EC5F98EA2B98A2CBC8DB1E2BBF912D06CA5AC791E2F2D717F3B327",
+                             "bytes":  6550672
+                         },
+                         {
+                             "file":  "level88",
+                             "sha256":  "2A4052447FA8BC5D36A46F86D65128ED85A22F9608D5B3949F9EB1D88A0CA757",
+                             "bytes":  7796672
+                         },
+                         {
+                             "file":  "level89",
+                             "sha256":  "D1FE1554D92455F504AD1D4AE08749A5F1507962F2AF082A4EEA741B277C3C05",
+                             "bytes":  6203496
+                         },
+                         {
+                             "file":  "level9",
+                             "sha256":  "843605A9EF2E0D0C54A8A31C69F8F50A6AD12E9C75D335EF6678CBE4BE5ED4A8",
+                             "bytes":  13421752
+                         },
+                         {
+                             "file":  "level90",
+                             "sha256":  "95773F8D00160FBD13C3CC549A56AE2F000FE208EB8EC424FBB14B4B17EB161C",
+                             "bytes":  6585696
+                         },
+                         {
+                             "file":  "level91",
+                             "sha256":  "03A6013838E4430908F608F3AD38F14B73607DCF0A38635F2D52BC8F4B1DFA8F",
+                             "bytes":  9650600
+                         },
+                         {
+                             "file":  "level92",
+                             "sha256":  "2281DBD7A651292789DF6D290D3504469E78BB0CA9FADC259F841DC0C251ADFF",
+                             "bytes":  5971208
+                         },
+                         {
+                             "file":  "level93",
+                             "sha256":  "B8548FF459AA710BA9B79F11E298EB543A992FBCF37F34AC7C97239B6848E2A0",
+                             "bytes":  8123256
+                         },
+                         {
+                             "file":  "level94",
+                             "sha256":  "A10037CE5AA214D627FDBF5709DE880FFD97A223A83D3E3CF8DFD5869819902C",
+                             "bytes":  9179272
+                         },
+                         {
+                             "file":  "level95",
+                             "sha256":  "19EE843FC250B3CE6A4738A3623B1F1C94F00B2014A5F486AA453D76F2DB017C",
+                             "bytes":  7229672
+                         },
+                         {
+                             "file":  "level96",
+                             "sha256":  "47452648DFC89B81F8D19AD5DC8287DA4B977BE2A5780F6DD43430CAF3FD8B26",
+                             "bytes":  20695848
+                         },
+                         {
+                             "file":  "level97",
+                             "sha256":  "5BD5EBE33FB11B84502671C03AD8C1D9F6CB6D234EE31CD78A033B76EEC6B5F9",
+                             "bytes":  7873496
+                         },
+                         {
+                             "file":  "level98",
+                             "sha256":  "2496A9EC87FD5D56C469CD9F9D7D98B5D921CD978393379EB42D29B884CC1DB1",
+                             "bytes":  7188952
+                         },
+                         {
+                             "file":  "level99",
+                             "sha256":  "08E3103AA7A86553E78F70BA9F82BCF0E3AC8E723EDAC61D2074D60E6B024AD9",
+                             "bytes":  16064296
+                         },
+                         {
+                             "file":  "resources.assets",
+                             "sha256":  "04FC5E4A5209AA9A141508BC575423B9CF3B33F138BC3582E66304C15F632B6A",
+                             "bytes":  192262952
+                         },
+                         {
+                             "file":  "sharedassets0.assets",
+                             "sha256":  "7CC5CC4A9B6A090D16EA2A5797A92A25A9C8F112C4A8A93FDB307FC965AFB4BD",
+                             "bytes":  226401844
+                         },
+                         {
+                             "file":  "sharedassets1.assets",
+                             "sha256":  "26DD42E004BA9311B277D283FE82CD654671286251C84165442FE3CE078EE274",
+                             "bytes":  16178372
+                         },
+                         {
+                             "file":  "sharedassets10.assets",
+                             "sha256":  "F5078D56D7BF8782B1FB1EA82147E195AC662D850D1D1BD3758D1BF32BBE5C74",
+                             "bytes":  16381168
+                         },
+                         {
+                             "file":  "sharedassets100.assets",
+                             "sha256":  "937BE2F4347088FE175C455D3E5686346959D586025CFDD537DEA81D0DEE6FF7",
+                             "bytes":  2989716
+                         },
+                         {
+                             "file":  "sharedassets101.assets",
+                             "sha256":  "E2C23DC711115D7216E5EAF369F13A98F4CF6216838713DD1032EC2FF8B25082",
+                             "bytes":  25686580
+                         },
+                         {
+                             "file":  "sharedassets102.assets",
+                             "sha256":  "95B0BB86CDF346C648C4959902927B185615FB4B32BC3BFA651DC784149B4D36",
+                             "bytes":  2138032
+                         },
+                         {
+                             "file":  "sharedassets103.assets",
+                             "sha256":  "C4DB18B681510CAD8D71E55BEE97BA6EA87AC2FC16C8BC2121E47C3333CE23E4",
+                             "bytes":  3384400
+                         },
+                         {
+                             "file":  "sharedassets104.assets",
+                             "sha256":  "B7D4F40E01EFD1220E809C009B6FA4ADA76D85ED0C84B02F2C7C4494F3FA8D1C",
+                             "bytes":  28528120
+                         },
+                         {
+                             "file":  "sharedassets105.assets",
+                             "sha256":  "4B74BEEF38A0A4DCEC2C4E9ECA293EDEBFFBA9A42601BBBC973C1F69E4B9B35C",
+                             "bytes":  2052496
+                         },
+                         {
+                             "file":  "sharedassets106.assets",
+                             "sha256":  "AC3ECA5299531847B1453E250404BD830BE1EB2876E80DD180762A8214533911",
+                             "bytes":  2111280
+                         },
+                         {
+                             "file":  "sharedassets107.assets",
+                             "sha256":  "89FB102CCE1CB4286E64D96814CABA36B1B2A6E01E9CD3E5B90FA3EB358D19D0",
+                             "bytes":  2078240
+                         },
+                         {
+                             "file":  "sharedassets108.assets",
+                             "sha256":  "82B3D1489F9F0078C2B0184057ED51145776ADF698B9B5DE4C56ED3AF650003C",
+                             "bytes":  2450708
+                         },
+                         {
+                             "file":  "sharedassets109.assets",
+                             "sha256":  "E62AB314F0DF72699137A8786ADDAA268E159C6BD153D22286EE7035C97F2550",
+                             "bytes":  3052008
+                         },
+                         {
+                             "file":  "sharedassets11.assets",
+                             "sha256":  "0A4772D74CB5D4E47D577D84A664760858E6893038ECC3A00E5215C23121A935",
+                             "bytes":  2749080
+                         },
+                         {
+                             "file":  "sharedassets110.assets",
+                             "sha256":  "A0C62513EF2FC67A8004A61C673D366C92355B69432A974A253740A0D121323B",
+                             "bytes":  2094416
+                         },
+                         {
+                             "file":  "sharedassets111.assets",
+                             "sha256":  "62A916383818CF23B711C7E47CC0A007EF5EB3527768F596648905310168F495",
+                             "bytes":  66594824
+                         },
+                         {
+                             "file":  "sharedassets112.assets",
+                             "sha256":  "70AA316EC43AA39216C0D4D3B470EE386D5364FC4969FE78F927EC1C40152150",
+                             "bytes":  23307320
+                         },
+                         {
+                             "file":  "sharedassets113.assets",
+                             "sha256":  "C90C2C7446CADC599BDAB3F450D4F9A92DC50D5D831DC1B1D3DFEE60D116AD74",
+                             "bytes":  3386152
+                         },
+                         {
+                             "file":  "sharedassets114.assets",
+                             "sha256":  "B6D61F0D5CD2D38D1DB2209CFA0E1F87F78E15E3187BB30C96D7E8EBE66C9479",
+                             "bytes":  4387700
+                         },
+                         {
+                             "file":  "sharedassets115.assets",
+                             "sha256":  "70E9ADD18C2B72A3B6D1CF8D164A6FD59F7FD162CF0DF0611B8F464F7BF3D9D4",
+                             "bytes":  2220296
+                         },
+                         {
+                             "file":  "sharedassets116.assets",
+                             "sha256":  "A4438AF6342EC9E7D0C696A43AF38F50BF5D56E26F03D96005BDB7E023EBBD73",
+                             "bytes":  4327268
+                         },
+                         {
+                             "file":  "sharedassets117.assets",
+                             "sha256":  "2A3D33A3D9D67233C695E84F6BB91819AC47588BC23C575E49063ADB6810571D",
+                             "bytes":  4421964
+                         },
+                         {
+                             "file":  "sharedassets118.assets",
+                             "sha256":  "C228ABE3FCD149DEF04124F918E769B6154E6D5E19F6B6CF33E502771C8E67DF",
+                             "bytes":  2862068
+                         },
+                         {
+                             "file":  "sharedassets119.assets",
+                             "sha256":  "E4B1A264843784616BAE029398C5E5DB04E9283C12AC55E58594779AAC11B706",
+                             "bytes":  2035724
+                         },
+                         {
+                             "file":  "sharedassets12.assets",
+                             "sha256":  "00C0F1A653F9C41D43DE22BF2CC1A7B1A8D52488D7E1310F9704E173F69A3857",
+                             "bytes":  4719456
+                         },
+                         {
+                             "file":  "sharedassets120.assets",
+                             "sha256":  "DF093B94DDA4A50F4B0BAF365F9E66E80E0D753A4E616E985859973A0994A915",
+                             "bytes":  2479532
+                         },
+                         {
+                             "file":  "sharedassets121.assets",
+                             "sha256":  "8756CB8C83BC8A0187B1B65DE4E66FE09CA9574B58F9607379D2FDEAD2326D2B",
+                             "bytes":  3069024
+                         },
+                         {
+                             "file":  "sharedassets122.assets",
+                             "sha256":  "F7AC6464C3899C911D4907FE96E308170734ED2EA5EB98C891F24ECA00A38296",
+                             "bytes":  17474460
+                         },
+                         {
+                             "file":  "sharedassets123.assets",
+                             "sha256":  "51A903670C429C0BE8BFE155AF4B545FAAEE07E807B660C06F84B311E065C869",
+                             "bytes":  1854644
+                         },
+                         {
+                             "file":  "sharedassets13.assets",
+                             "sha256":  "B995318488BBACF510AB4BA7C6FCFFCBF10EE207065ABED90FDE71431D3E067F",
+                             "bytes":  21331560
+                         },
+                         {
+                             "file":  "sharedassets14.assets",
+                             "sha256":  "839161757A249164921E182935636AE43D6306E3BF278EBFD198D579CDC155D5",
+                             "bytes":  4086208
+                         },
+                         {
+                             "file":  "sharedassets15.assets",
+                             "sha256":  "A84996E0AC1AF012ED3F2773543991E742B1E855D4989131B74590BD6C89513F",
+                             "bytes":  21511184
+                         },
+                         {
+                             "file":  "sharedassets16.assets",
+                             "sha256":  "89A0A21EEA3229D3842C393EEA05C8B0AF034F39B602124705259DA76CD7D756",
+                             "bytes":  2382984
+                         },
+                         {
+                             "file":  "sharedassets17.assets",
+                             "sha256":  "1601A775AAF03E5D1A900300FACE3A03A7FE1CF4811A3BD4F566565A8FA639D0",
+                             "bytes":  1882704
+                         },
+                         {
+                             "file":  "sharedassets18.assets",
+                             "sha256":  "2D622E7AA40682F7A04E2A06C82D16BCD27D99A91421F20E4940C6D194038A09",
+                             "bytes":  1851228
+                         },
+                         {
+                             "file":  "sharedassets19.assets",
+                             "sha256":  "21E8CB247E319684236E02ADF32C6761FD3C1F280AE41CEEDD6B460F0035459E",
+                             "bytes":  14859720
+                         },
+                         {
+                             "file":  "sharedassets2.assets",
+                             "sha256":  "A7AC8F967012FBA3FB5FE8021C035DD8016E81FB3F005BA8FA78E5D9BE514197",
+                             "bytes":  131116324
+                         },
+                         {
+                             "file":  "sharedassets20.assets",
+                             "sha256":  "44069812A15FFA4D9F1B8503D4E929A7F7BAAC2366B300CCB2A0FE1F3E9B0588",
+                             "bytes":  5779484
+                         },
+                         {
+                             "file":  "sharedassets21.assets",
+                             "sha256":  "A27E5CD1F216356959FFA7704A20D584515DD6FE4C588DF171A6AA5749C51EAC",
+                             "bytes":  1841388
+                         },
+                         {
+                             "file":  "sharedassets22.assets",
+                             "sha256":  "D57635B434E601B0EFFB86C7C17A9CEDF23E0BC7AA3919EC6A1FDBB849D05755",
+                             "bytes":  6229184
+                         },
+                         {
+                             "file":  "sharedassets23.assets",
+                             "sha256":  "89AB686D48AC675DB61418CD97E0F2DF6A88DD9E0BDB330AF0E0BFBFE0AA61A6",
+                             "bytes":  2164648
+                         },
+                         {
+                             "file":  "sharedassets24.assets",
+                             "sha256":  "2D716BC3358707CCD1F2960D2B2E00C46BADF4F1AE7DFE6E96AA72B0A917DB15",
+                             "bytes":  1841524
+                         },
+                         {
+                             "file":  "sharedassets25.assets",
+                             "sha256":  "71A5E5A27285DB6624C9EAFD10B25BFE0D8E5EB311BB00B81DDC96ECEC013482",
+                             "bytes":  1840732
+                         },
+                         {
+                             "file":  "sharedassets26.assets",
+                             "sha256":  "AD7D8534BA825CBB3266EFE059704B66E338A7AF3FA582D2BBABB38DD32E5EA4",
+                             "bytes":  1849956
+                         },
+                         {
+                             "file":  "sharedassets27.assets",
+                             "sha256":  "91E337312280122296B53CDCE9A4F17648FDFA6497DA12862590C91ECA116D70",
+                             "bytes":  1855572
+                         },
+                         {
+                             "file":  "sharedassets28.assets",
+                             "sha256":  "D6454BEAC63A622809B5EED4857A1CAE5F9E8B8927AE5C18C57A8525D744C614",
+                             "bytes":  4236024
+                         },
+                         {
+                             "file":  "sharedassets29.assets",
+                             "sha256":  "5585570AA06E07EA741806CD8B1AA1A2F1DCB93E97752DA309AEAB4873D0B518",
+                             "bytes":  27649852
+                         },
+                         {
+                             "file":  "sharedassets3.assets",
+                             "sha256":  "24C5AD12A349C8DEACF0D4148712E9928C100A84A3057E4CF1ED74387B2CC3A3",
+                             "bytes":  3211264
+                         },
+                         {
+                             "file":  "sharedassets30.assets",
+                             "sha256":  "2288A13EC30F7306E5C0B77168DEDD845CC0E6BBF73FD1211494010915A1C698",
+                             "bytes":  1845004
+                         },
+                         {
+                             "file":  "sharedassets31.assets",
+                             "sha256":  "0E33DD930D3AEE658D63F4A1FE1F9D4FC41416E7400CE311EE2C75B778B3A93B",
+                             "bytes":  1875092
+                         },
+                         {
+                             "file":  "sharedassets32.assets",
+                             "sha256":  "D1B49186678616829E5DEC7CED924ED5599B26D993762EE1EA2FAF9C1BC6BECE",
+                             "bytes":  63194564
+                         },
+                         {
+                             "file":  "sharedassets33.assets",
+                             "sha256":  "5EEAE3878DDEAE3E6BE0F46ABDABD4EE752CAB4CC985D27C8D76A8DF8655F9B3",
+                             "bytes":  44822988
+                         },
+                         {
+                             "file":  "sharedassets34.assets",
+                             "sha256":  "68B274DE68A9E3468A1C3E4AB0EEA1D598BE12CF0C3BFEC9A1FDECB842A870F6",
+                             "bytes":  20783892
+                         },
+                         {
+                             "file":  "sharedassets35.assets",
+                             "sha256":  "9B61C26E3EC8315FEFF3201FD4BCB3B87449A4B49D447768EFC638554BFA9F17",
+                             "bytes":  2599320
+                         },
+                         {
+                             "file":  "sharedassets36.assets",
+                             "sha256":  "E9D199B072FA169289ADB39BE88B1849C000A2AA8334ABAC3B88A280059389C4",
+                             "bytes":  8311496
+                         },
+                         {
+                             "file":  "sharedassets37.assets",
+                             "sha256":  "6EDA9DF3288B65078CD4FA4C37654CDFC7F347168C97399F79AACF46931D6D67",
+                             "bytes":  2077072
+                         },
+                         {
+                             "file":  "sharedassets38.assets",
+                             "sha256":  "2086B9FD512766419B818D094B5B58864FA032E5AD87344A2292E1F4BAFCCAEC",
+                             "bytes":  2084748
+                         },
+                         {
+                             "file":  "sharedassets39.assets",
+                             "sha256":  "49DF756E8A5B5CACF777673701694979F161773A7715C95FD036595D2C99A303",
+                             "bytes":  1856340
+                         },
+                         {
+                             "file":  "sharedassets4.assets",
+                             "sha256":  "A6BA00FDE93B676EDD083A43F1EEFC6CFDD6473277C2DADE3F47BD345A92E1D1",
+                             "bytes":  51036748
+                         },
+                         {
+                             "file":  "sharedassets40.assets",
+                             "sha256":  "7CBF74F1DD4FA69434FEDA8436DFF16F4A96C84F9541A92031C2720C8DE4CE68",
+                             "bytes":  1866224
+                         },
+                         {
+                             "file":  "sharedassets41.assets",
+                             "sha256":  "048F819C8C891ECC9C969218C41D3059FCE65B3B298674A0870219960621AA45",
+                             "bytes":  1869948
+                         },
+                         {
+                             "file":  "sharedassets42.assets",
+                             "sha256":  "6EA66F041B9161CF2017E96F31E98F88DE597137CFF80F9BF1317C29DAD0B098",
+                             "bytes":  1841660
+                         },
+                         {
+                             "file":  "sharedassets43.assets",
+                             "sha256":  "600869C8B8BF471607D0DF1E86EA85D9CBCE3FC2F7095BA14906C2CFD0963E6F",
+                             "bytes":  2310368
+                         },
+                         {
+                             "file":  "sharedassets44.assets",
+                             "sha256":  "A835D128D1A5FCA38F0E7191C479F881218BA15533F9B35146154AAD57A4667A",
+                             "bytes":  1978128
+                         },
+                         {
+                             "file":  "sharedassets45.assets",
+                             "sha256":  "B9D388102C454572D65B579D92B484DE211C3D7305F76CACE0750DEC4AEE31F7",
+                             "bytes":  1987308
+                         },
+                         {
+                             "file":  "sharedassets46.assets",
+                             "sha256":  "A2E2D2ABD87086EE3A8F2F812415A8B55CF86B92F871416A2B7280B02C8D51A1",
+                             "bytes":  1852164
+                         },
+                         {
+                             "file":  "sharedassets47.assets",
+                             "sha256":  "E0C000194F00B4373F44FBE1DE243D06F40582E8D8DC9210D57EC79DED5A8C83",
+                             "bytes":  1841836
+                         },
+                         {
+                             "file":  "sharedassets48.assets",
+                             "sha256":  "C79306C54B0C98170FAD3E9D7B75DC43E18FD9B88AB571BB4BB2DFB22E3BBCA5",
+                             "bytes":  2253196
+                         },
+                         {
+                             "file":  "sharedassets49.assets",
+                             "sha256":  "962FBEC8C4E5D41BC7946A441A29E5C5F57F874C42FCC3F6BB8F0B71E961AC89",
+                             "bytes":  2584212
+                         },
+                         {
+                             "file":  "sharedassets5.assets",
+                             "sha256":  "001D550CEEE97791C2E4373845A96BEF6710FBF94310FA19CD6C7016067979ED",
+                             "bytes":  2995712
+                         },
+                         {
+                             "file":  "sharedassets50.assets",
+                             "sha256":  "1DF97353D917D7FCACAF66138402B638B0F4277D3444F2C77EBEE29DC8C77A46",
+                             "bytes":  1841956
+                         },
+                         {
+                             "file":  "sharedassets51.assets",
+                             "sha256":  "38499C50621439C4E1752FF19A7E49BDDBA14FEBA9D71DD9146B70177D446B25",
+                             "bytes":  1842272
+                         },
+                         {
+                             "file":  "sharedassets52.assets",
+                             "sha256":  "208DB22FB4902B7C452BDF2BE0F7F5F5D1290C575A3DA508BE6B92EB82BDC899",
+                             "bytes":  1843932
+                         },
+                         {
+                             "file":  "sharedassets53.assets",
+                             "sha256":  "A5DFBB41865A968A3544F5FDBA4E7C6E3A493882FC998426342E45BC39E146A9",
+                             "bytes":  13251572
+                         },
+                         {
+                             "file":  "sharedassets54.assets",
+                             "sha256":  "C06DDC3061AA33BD5792BBD1A551BD0924B40B726402FA26A931562C2AEFC38E",
+                             "bytes":  1841844
+                         },
+                         {
+                             "file":  "sharedassets55.assets",
+                             "sha256":  "01AB612F8489F04A481D4BDFC72952228FA2FEB2F1511AAF2BFC269C8CC6318A",
+                             "bytes":  1842732
+                         },
+                         {
+                             "file":  "sharedassets56.assets",
+                             "sha256":  "E83F81D7FFC2E2A3DF91ACBA7B955F1F0903229ED0CDAF8A3D573C1C8270C609",
+                             "bytes":  4412196
+                         },
+                         {
+                             "file":  "sharedassets57.assets",
+                             "sha256":  "6A39EE9D313A5305F6721DE8021C7BCF8255974DE1E476CBD9F23163F5C5807A",
+                             "bytes":  1845784
+                         },
+                         {
+                             "file":  "sharedassets58.assets",
+                             "sha256":  "20118EBF54F99D357A767E6136B60DB5FEE6652047F42A9342BA5D3B53EA6C38",
+                             "bytes":  1892184
+                         },
+                         {
+                             "file":  "sharedassets59.assets",
+                             "sha256":  "266C753DF9427048E57A629BA2AC29DDB3CF4B547572EDD255CCE4C186B9357C",
+                             "bytes":  2132628
+                         },
+                         {
+                             "file":  "sharedassets6.assets",
+                             "sha256":  "190EFC21B76B19E82F7AE9E6A0E833B814F8C1F867F1C5E26D33F59AEB971F01",
+                             "bytes":  81296152
+                         },
+                         {
+                             "file":  "sharedassets60.assets",
+                             "sha256":  "98F4B7719A3016997E6CA25FCC7F0C75F034724069E281F9124436FD8D879C33",
+                             "bytes":  1842892
+                         },
+                         {
+                             "file":  "sharedassets61.assets",
+                             "sha256":  "5325B58FA023218383302131513A27BAACCD5FCAFE7587631886E58961193872",
+                             "bytes":  1850172
+                         },
+                         {
+                             "file":  "sharedassets62.assets",
+                             "sha256":  "042AF07F3430AA7831583F12BFF41DF2A47D57CF7EB20042FFB36C2E7CE74A55",
+                             "bytes":  1889600
+                         },
+                         {
+                             "file":  "sharedassets63.assets",
+                             "sha256":  "144A78E8CD239C82051D487F579A937DFAB33BAB28DE318C5DE13626B582E5CC",
+                             "bytes":  2066332
+                         },
+                         {
+                             "file":  "sharedassets64.assets",
+                             "sha256":  "3B3D4935D451FC182583605BBE2AFC86E0F7AD572654A4DE58B9C5763E7352A1",
+                             "bytes":  1858828
+                         },
+                         {
+                             "file":  "sharedassets65.assets",
+                             "sha256":  "733B9439ED68ACD8DCBEE86C3FF947AAEB3CCD7354CB7D7042D9C58C026FD672",
+                             "bytes":  1996204
+                         },
+                         {
+                             "file":  "sharedassets66.assets",
+                             "sha256":  "A2090FF0999415D4C854AD1AEBAD3771E9CB04D687DB3DCABA27B2C3E3E250BC",
+                             "bytes":  1909556
+                         },
+                         {
+                             "file":  "sharedassets67.assets",
+                             "sha256":  "8E74130F8C23537BA955AF57610DDC7F57082A7B3E8334E17760837274AB7476",
+                             "bytes":  1926676
+                         },
+                         {
+                             "file":  "sharedassets68.assets",
+                             "sha256":  "8FBE8DDF609A6AD22ABBC4B4ABD35B5BBE31EDFA3E0BF917ECD541CB67E42EAD",
+                             "bytes":  1872792
+                         },
+                         {
+                             "file":  "sharedassets69.assets",
+                             "sha256":  "E5C5108851211AF5C524425309372EFAA6E1C5A4752F562662C23B5EEAC949FC",
+                             "bytes":  1842428
+                         },
+                         {
+                             "file":  "sharedassets7.assets",
+                             "sha256":  "276F35F002E1CD3CE70D2890DF1AD6691CA6312A2A6E7D5F3A094EDCA70F229E",
+                             "bytes":  11607852
+                         },
+                         {
+                             "file":  "sharedassets70.assets",
+                             "sha256":  "9FFCA2194797D425118F00794EC99E63A554ADD35061FBD8CB7B0DA582A6B30E",
+                             "bytes":  2105900
+                         },
+                         {
+                             "file":  "sharedassets71.assets",
+                             "sha256":  "8BEA601F6A020932456D2234AA4BFDC95AB8BE4F60FF14F359FDF03333221CCC",
+                             "bytes":  2095428
+                         },
+                         {
+                             "file":  "sharedassets72.assets",
+                             "sha256":  "EE51130C1C68AD3EA72CA715976D2FAD04104E116056991ABE2455B1EF0FA365",
+                             "bytes":  1956152
+                         },
+                         {
+                             "file":  "sharedassets73.assets",
+                             "sha256":  "2F4B581CAD8605518BABC41A7596089D8AB008AA056D7B61201235AC6C07CC16",
+                             "bytes":  2066208
+                         },
+                         {
+                             "file":  "sharedassets74.assets",
+                             "sha256":  "E9523B6B2FC710D1897F0AFE4C94C91CD45FAA28B61D61F0D87D06A76363FF3F",
+                             "bytes":  2013260
+                         },
+                         {
+                             "file":  "sharedassets75.assets",
+                             "sha256":  "6D672998A81663619CD6C7B40E7D6341F5D537E948BED4CD89A9274E1991E692",
+                             "bytes":  2268916
+                         },
+                         {
+                             "file":  "sharedassets76.assets",
+                             "sha256":  "13728F45E94E3349FF18B04D470B8ADCA46BA05F097CA111730DE625EE7D81D3",
+                             "bytes":  2126540
+                         },
+                         {
+                             "file":  "sharedassets77.assets",
+                             "sha256":  "CBCFF64870D31F79AB127891BE7E6CF750445B5FD9E11BAC2EFA54C9DA8D1C99",
+                             "bytes":  2732524
+                         },
+                         {
+                             "file":  "sharedassets78.assets",
+                             "sha256":  "374BEF75FD312CBAFC7F3DA30E26B38C5B490A7222924E2D0F2900CEA8150249",
+                             "bytes":  2020808
+                         },
+                         {
+                             "file":  "sharedassets79.assets",
+                             "sha256":  "79B6D9519680F639102A88B7B1834AA885605D79C77EECDD6F83430D7DAAF81F",
+                             "bytes":  2799876
+                         },
+                         {
+                             "file":  "sharedassets8.assets",
+                             "sha256":  "F0C33F480A9A1DE8F43B7AAEF6907271E569F7D5D0F5AEECFB0A5A10C64AFFCF",
+                             "bytes":  7636448
+                         },
+                         {
+                             "file":  "sharedassets80.assets",
+                             "sha256":  "CCC836587B617DE49DDCF0CBF8F7013AC60B4D3AD47ED8CA77456ED9EAAABA9E",
+                             "bytes":  1943692
+                         },
+                         {
+                             "file":  "sharedassets81.assets",
+                             "sha256":  "BFD0FE8BA3763C9BEB79E99B2A8C0369C7DB315B0042795DA2CC5ABF6CE6A3C7",
+                             "bytes":  1840696
+                         },
+                         {
+                             "file":  "sharedassets82.assets",
+                             "sha256":  "F06953FA8BAC434C5EB475A3C14D7E4A9611F735E477B0EC5DD5B1E273A5A6DC",
+                             "bytes":  1848340
+                         },
+                         {
+                             "file":  "sharedassets83.assets",
+                             "sha256":  "7F202DDB93EF7B050256C4A4C2F542907354E5BBBA440E6D424C5F8D66D9A618",
+                             "bytes":  1868288
+                         },
+                         {
+                             "file":  "sharedassets84.assets",
+                             "sha256":  "1B169497723CE09283450666AABF4F840FDAA2E94504C936EB536F2A4D9F42D5",
+                             "bytes":  2320984
+                         },
+                         {
+                             "file":  "sharedassets85.assets",
+                             "sha256":  "CEF29C482AEBAA7EC75DE807DF10B2766CDE5B5B6C9DC3D71C66C4BFD93E558E",
+                             "bytes":  2219596
+                         },
+                         {
+                             "file":  "sharedassets86.assets",
+                             "sha256":  "A9EE79D5DBCFFFBADAEB8DCECC56D2F14A0C380352293EB803955616F23F2F87",
+                             "bytes":  2019292
+                         },
+                         {
+                             "file":  "sharedassets87.assets",
+                             "sha256":  "07414B90A8D2B0F431C43209F130DDD2E99A0CD866911B0EF84A4B31F536BFF7",
+                             "bytes":  1973436
+                         },
+                         {
+                             "file":  "sharedassets88.assets",
+                             "sha256":  "BA9BA404F2817DDDFE9D61B2FA8B3C25FE60EB6324FEDCC31B88C98112AFECDB",
+                             "bytes":  3612360
+                         },
+                         {
+                             "file":  "sharedassets89.assets",
+                             "sha256":  "106B614AD8E36B7C13D015B07166822D58D4C5E78F284C836FABC898181DA773",
+                             "bytes":  1841996
+                         },
+                         {
+                             "file":  "sharedassets9.assets",
+                             "sha256":  "EBFF9A6C15F5B949E37B7A066311EBF136C19B7450E7CB90AA3CAE25FF6788CA",
+                             "bytes":  9030528
+                         },
+                         {
+                             "file":  "sharedassets90.assets",
+                             "sha256":  "11E300FFB21B35CA3C799CCECDDF9CA3ED57CA00DA9AE52233806D7C2EBECE83",
+                             "bytes":  1842456
+                         },
+                         {
+                             "file":  "sharedassets91.assets",
+                             "sha256":  "444C3E0E4036C8371185E9B7AE13FE3A4B0F3A4B1AC15B671E5749E945D79EF5",
+                             "bytes":  1959596
+                         },
+                         {
+                             "file":  "sharedassets92.assets",
+                             "sha256":  "16CE582273E18987579A82E4CAB437704BA468C6661046B58CBA90B297B79B6B",
+                             "bytes":  1947052
+                         },
+                         {
+                             "file":  "sharedassets93.assets",
+                             "sha256":  "AFD8A667834DEE5A4DAB62128AE348C2F63B7D854546410ED9CEF9612788E343",
+                             "bytes":  5067076
+                         },
+                         {
+                             "file":  "sharedassets94.assets",
+                             "sha256":  "ACB298ED715AF39BA541F4BD4C95E90F68F856B19DD0A84713738DFA2F236D36",
+                             "bytes":  2490924
+                         },
+                         {
+                             "file":  "sharedassets95.assets",
+                             "sha256":  "397F9CE5D359A9199FE46B102F4ADADCDAC328850C2899B9E0366778E3401F6D",
+                             "bytes":  2540704
+                         },
+                         {
+                             "file":  "sharedassets96.assets",
+                             "sha256":  "B4EDD950CF33ED289603284E9AA0510202A9597F49E4899C2C9FF7F9463DCEC2",
+                             "bytes":  7088436
+                         },
+                         {
+                             "file":  "sharedassets97.assets",
+                             "sha256":  "9E1E29F2C30746EC2966D696E16F1D17D151D921A6DBF55FAE08CB4F455CC67F",
+                             "bytes":  1982176
+                         },
+                         {
+                             "file":  "sharedassets98.assets",
+                             "sha256":  "F0403D06B7F46983050DFCD131A5A2F0E512C760D332175B578BC0A2DB405741",
+                             "bytes":  1952808
+                         },
+                         {
+                             "file":  "sharedassets99.assets",
+                             "sha256":  "CECF30649D8A623DBACD1AF6BD2D6FE1EAF0F4CA4B951410AD2335247F7B0245",
+                             "bytes":  5996640
+                         }
+                     ],
+    "counts":  [
+                   {
+                       "class":  "TenementApartmentType",
+                       "count":  5
+                   },
+                   {
+                       "class":  "TenementUpgrade",
+                       "count":  131
+                   },
+                   {
+                       "class":  "TenementUpgradeGroup",
+                       "count":  25
+                   },
+                   {
+                       "class":  "TenementContractor",
+                       "count":  4
+                   },
+                   {
+                       "class":  "TenementResident",
+                       "count":  31
+                   }
+               ]
+}

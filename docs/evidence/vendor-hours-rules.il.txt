@@ -1,0 +1,358 @@
+RelayWeekdays
+METHOD Void Start()
+IL_0000  ldarg.0
+IL_0001  ldftn RelayWeekdays::Void DeltaSeconds(Int32)
+IL_0007  newobj TimeOfDayAzure+OnMinutePassed::Void .ctor(System.Object, IntPtr)
+IL_000C  call TimeOfDayAzure::Void add_MinutePassed(OnMinutePassed)
+IL_0011  ldarg.0
+IL_0012  ldc.i4.1
+IL_0013  stfld RelayWeekdays::Boolean init
+IL_0018  ldarg.0
+IL_0019  ldarg.0
+IL_001A  call RelayWeekdays::System.Collections.IEnumerator StartDelay()
+IL_001F  call UnityEngine.MonoBehaviour::UnityEngine.Coroutine StartCoroutine(System.Collections.IEnumerator)
+IL_0024  pop
+IL_0025  ret
+METHOD System.Collections.IEnumerator StartDelay()
+IL_0000  ldc.i4.0
+IL_0001  newobj RelayWeekdays+<StartDelay>d__8::Void .ctor(Int32)
+IL_0006  dup
+IL_0007  ldarg.0
+IL_0008  stfld RelayWeekdays+<StartDelay>d__8::RelayWeekdays <>4__this
+IL_000D  ret
+METHOD Void DeltaSeconds(Int32)
+IL_0000  ldarg.0
+IL_0001  ldc.i4.0
+IL_0002  call RelayWeekdays::Void Check(Boolean)
+IL_0007  leave.s IL_0016
+IL_0009  dup
+IL_000A  call UnityEngine.Debug::Void LogException(System.Exception)
+IL_000F  call UnityEngine.Debug::Void LogException(System.Exception)
+IL_0014  leave.s IL_0016
+IL_0016  ret
+METHOD Void ForceCheck()
+IL_0000  ldarg.0
+IL_0001  ldfld RelayWeekdays::OpeningTimes openingTimes
+IL_0006  callvirt OpeningTimes::Boolean IsOpen()
+IL_000B  brfalse.s IL_0026
+IL_000D  ldarg.0
+IL_000E  ldfld RelayWeekdays::Relay onOpen
+IL_0013  dup
+IL_0014  brtrue.s IL_0019
+IL_0016  pop
+IL_0017  br.s IL_001E
+IL_0019  call Relay::Void triggerOutputs()
+IL_001E  ldarg.0
+IL_001F  ldc.i4.1
+IL_0020  stfld RelayWeekdays::Boolean open
+IL_0025  ret
+IL_0026  ldarg.0
+IL_0027  ldfld RelayWeekdays::Relay onClosed
+IL_002C  dup
+IL_002D  brtrue.s IL_0032
+IL_002F  pop
+IL_0030  br.s IL_0037
+IL_0032  call Relay::Void triggerOutputs()
+IL_0037  ldarg.0
+IL_0038  ldc.i4.0
+IL_0039  stfld RelayWeekdays::Boolean open
+IL_003E  ret
+METHOD Void Check(Boolean)
+IL_0000  ldarg.0
+IL_0001  ldfld RelayWeekdays::OpeningTimes openingTimes
+IL_0006  callvirt OpeningTimes::Boolean IsOpen()
+IL_000B  brfalse.s IL_0062
+IL_000D  ldarg.1
+IL_000E  brtrue.s IL_0038
+IL_0010  ldsfld PlayerLocator::PlayerLocator instance
+IL_0015  callvirt UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_001A  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_001F  ldarg.0
+IL_0020  call UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_0025  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_002A  call UnityEngine.Vector3::Single Distance(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_002F  ldarg.0
+IL_0030  ldfld RelayWeekdays::Single playerDistanceOnOpen
+IL_0035  bge.un.s IL_0038
+IL_0037  ret
+IL_0038  ldarg.0
+IL_0039  ldfld RelayWeekdays::Boolean open
+IL_003E  brfalse.s IL_0048
+IL_0040  ldarg.0
+IL_0041  ldfld RelayWeekdays::Boolean init
+IL_0046  brfalse.s IL_0059
+IL_0048  ldarg.0
+IL_0049  ldfld RelayWeekdays::Relay onOpen
+IL_004E  dup
+IL_004F  brtrue.s IL_0054
+IL_0051  pop
+IL_0052  br.s IL_0059
+IL_0054  call Relay::Void triggerOutputs()
+IL_0059  ldarg.0
+IL_005A  ldc.i4.1
+IL_005B  stfld RelayWeekdays::Boolean open
+IL_0060  br.s IL_00B5
+IL_0062  ldarg.1
+IL_0063  brtrue.s IL_008D
+IL_0065  ldsfld PlayerLocator::PlayerLocator instance
+IL_006A  callvirt UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_006F  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_0074  ldarg.0
+IL_0075  call UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_007A  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_007F  call UnityEngine.Vector3::Single Distance(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_0084  ldarg.0
+IL_0085  ldfld RelayWeekdays::Single playerDistanceOnClose
+IL_008A  bge.un.s IL_008D
+IL_008C  ret
+IL_008D  ldarg.0
+IL_008E  ldfld RelayWeekdays::Boolean open
+IL_0093  brtrue.s IL_009D
+IL_0095  ldarg.0
+IL_0096  ldfld RelayWeekdays::Boolean init
+IL_009B  brfalse.s IL_00AE
+IL_009D  ldarg.0
+IL_009E  ldfld RelayWeekdays::Relay onClosed
+IL_00A3  dup
+IL_00A4  brtrue.s IL_00A9
+IL_00A6  pop
+IL_00A7  br.s IL_00AE
+IL_00A9  call Relay::Void triggerOutputs()
+IL_00AE  ldarg.0
+IL_00AF  ldc.i4.0
+IL_00B0  stfld RelayWeekdays::Boolean open
+IL_00B5  ldarg.0
+IL_00B6  ldc.i4.0
+IL_00B7  stfld RelayWeekdays::Boolean init
+IL_00BC  ret
+METHOD Void OnDestroy()
+IL_0000  ldarg.0
+IL_0001  ldftn RelayWeekdays::Void DeltaSeconds(Int32)
+IL_0007  newobj TimeOfDayAzure+OnMinutePassed::Void .ctor(System.Object, IntPtr)
+IL_000C  call TimeOfDayAzure::Void remove_MinutePassed(OnMinutePassed)
+IL_0011  ret
+METHOD Void Finalize()
+IL_0000  ldarg.0
+IL_0001  ldftn RelayWeekdays::Void DeltaSeconds(Int32)
+IL_0007  newobj TimeOfDayAzure+OnMinutePassed::Void .ctor(System.Object, IntPtr)
+IL_000C  call TimeOfDayAzure::Void remove_MinutePassed(OnMinutePassed)
+IL_0011  leave.s IL_001A
+IL_0013  ldarg.0
+IL_0014  call System.Object::Void Finalize()
+IL_0019  endfinally
+IL_001A  ret
+OpeningTimes
+METHOD Boolean IsOpen()
+IL_0000  ldsfld TimeOfDayAzure::TimeOfDayAzure instance
+IL_0005  ldfld TimeOfDayAzure::TimeAndDay currentTimeAndDay
+IL_000A  ldfld TimeAndDay::Int32 weekDay
+IL_000F  stloc.0
+IL_0010  ldloc.0
+IL_0011  switch IL_0037, IL_004A, IL_005D, IL_0070, IL_0083, IL_0096, IL_00A9
+IL_0032  br IL_00BC
+IL_0037  ldarg.0
+IL_0038  ldarg.0
+IL_0039  ldfld OpeningTimes::Int32 opensOnMonday
+IL_003E  ldarg.0
+IL_003F  ldfld OpeningTimes::Int32 closesOnMonday
+IL_0044  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_0049  ret
+IL_004A  ldarg.0
+IL_004B  ldarg.0
+IL_004C  ldfld OpeningTimes::Int32 opensOnTuesday
+IL_0051  ldarg.0
+IL_0052  ldfld OpeningTimes::Int32 closesOnTuesday
+IL_0057  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_005C  ret
+IL_005D  ldarg.0
+IL_005E  ldarg.0
+IL_005F  ldfld OpeningTimes::Int32 opensOnWednesday
+IL_0064  ldarg.0
+IL_0065  ldfld OpeningTimes::Int32 closesOnWednesday
+IL_006A  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_006F  ret
+IL_0070  ldarg.0
+IL_0071  ldarg.0
+IL_0072  ldfld OpeningTimes::Int32 opensOnThursday
+IL_0077  ldarg.0
+IL_0078  ldfld OpeningTimes::Int32 closesOnThursday
+IL_007D  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_0082  ret
+IL_0083  ldarg.0
+IL_0084  ldarg.0
+IL_0085  ldfld OpeningTimes::Int32 opensOnFriday
+IL_008A  ldarg.0
+IL_008B  ldfld OpeningTimes::Int32 closesOnFriday
+IL_0090  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_0095  ret
+IL_0096  ldarg.0
+IL_0097  ldarg.0
+IL_0098  ldfld OpeningTimes::Int32 opensOnSaturday
+IL_009D  ldarg.0
+IL_009E  ldfld OpeningTimes::Int32 closesOnSaturday
+IL_00A3  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_00A8  ret
+IL_00A9  ldarg.0
+IL_00AA  ldarg.0
+IL_00AB  ldfld OpeningTimes::Int32 opensOnSunday
+IL_00B0  ldarg.0
+IL_00B1  ldfld OpeningTimes::Int32 closesOnSunday
+IL_00B6  call OpeningTimes::Boolean IsOpenHour(Int32, Int32)
+IL_00BB  ret
+IL_00BC  ldc.i4.0
+IL_00BD  ret
+METHOD Boolean IsOpenHour(Int32, Int32)
+IL_0000  ldsfld TimeOfDayAzure::TimeOfDayAzure instance
+IL_0005  ldfld TimeOfDayAzure::TimeAndDay currentTimeAndDay
+IL_000A  stloc.0
+IL_000B  ldarg.1
+IL_000C  ldarg.2
+IL_000D  bne.un.s IL_0011
+IL_000F  ldc.i4.0
+IL_0010  ret
+IL_0011  ldarg.1
+IL_0012  ldarg.2
+IL_0013  ble.s IL_002D
+IL_0015  ldloc.0
+IL_0016  ldfld TimeAndDay::Single hours
+IL_001B  ldarg.1
+IL_001C  conv.r4
+IL_001D  bge.s IL_0029
+IL_001F  ldloc.0
+IL_0020  ldfld TimeAndDay::Single hours
+IL_0025  ldarg.2
+IL_0026  conv.r4
+IL_0027  bge.un.s IL_002B
+IL_0029  ldc.i4.1
+IL_002A  ret
+IL_002B  ldc.i4.0
+IL_002C  ret
+IL_002D  ldloc.0
+IL_002E  ldfld TimeAndDay::Single hours
+IL_0033  ldarg.1
+IL_0034  conv.r4
+IL_0035  blt.un.s IL_0043
+IL_0037  ldloc.0
+IL_0038  ldfld TimeAndDay::Single hours
+IL_003D  ldarg.2
+IL_003E  conv.r4
+IL_003F  bge.un.s IL_0043
+IL_0041  ldc.i4.1
+IL_0042  ret
+IL_0043  ldc.i4.0
+IL_0044  ret
+TRADE METHOD Void DeltaSeconds(Int32)
+IL_0000  ldarg.0
+IL_0001  ldfld Trade::SpawnSettings traderMoneySpawnSettings
+IL_0006  ldarg.1
+IL_0007  ldarg.0
+IL_0008  call UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_000D  ldc.i4.1
+IL_000E  callvirt SpawnSettings::Boolean TimeToSpawn(Int32, UnityEngine.Transform, Boolean)
+IL_0013  brfalse.s IL_0026
+IL_0015  ldarg.0
+IL_0016  call Trade::Void MoneyRestock()
+IL_001B  ldarg.0
+IL_001C  ldfld Trade::SpawnSettings traderMoneySpawnSettings
+IL_0021  callvirt SpawnSettings::Void SetSpawnTime()
+IL_0026  ldarg.0
+IL_0027  ldfld Trade::Boolean autoOpenClose
+IL_002C  brtrue.s IL_0033
+IL_002E  leave IL_010B
+IL_0033  ldarg.0
+IL_0034  ldfld Trade::OpeningTimes openingTimes
+IL_0039  callvirt OpeningTimes::Boolean IsOpen()
+IL_003E  brfalse.s IL_009B
+IL_0040  ldarg.0
+IL_0041  ldfld Trade::Boolean open
+IL_0046  brtrue.s IL_0092
+IL_0048  ldarg.0
+IL_0049  ldfld Trade::Single playerDistanceOnOpen
+IL_004E  ldc.r4 0
+IL_0053  ble.un.s IL_0081
+IL_0055  ldsfld PlayerLocator::PlayerLocator instance
+IL_005A  callvirt UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_005F  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_0064  ldarg.0
+IL_0065  call UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_006A  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_006F  call UnityEngine.Vector3::Single Distance(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_0074  ldarg.0
+IL_0075  ldfld Trade::Single playerDistanceOnOpen
+IL_007A  bge.un.s IL_0081
+IL_007C  leave IL_010B
+IL_0081  ldarg.0
+IL_0082  ldfld Trade::Relay onOpen
+IL_0087  dup
+IL_0088  brtrue.s IL_008D
+IL_008A  pop
+IL_008B  br.s IL_0092
+IL_008D  call Relay::Void triggerOutputs()
+IL_0092  ldarg.0
+IL_0093  ldc.i4.1
+IL_0094  stfld Trade::Boolean open
+IL_0099  br.s IL_00F1
+IL_009B  ldarg.0
+IL_009C  ldfld Trade::Boolean open
+IL_00A1  brfalse.s IL_00EA
+IL_00A3  ldarg.0
+IL_00A4  ldfld Trade::Single playerDistanceOnClose
+IL_00A9  ldc.r4 0
+IL_00AE  ble.un.s IL_00D9
+IL_00B0  ldsfld PlayerLocator::PlayerLocator instance
+IL_00B5  callvirt UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_00BA  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_00BF  ldarg.0
+IL_00C0  call UnityEngine.Component::UnityEngine.Transform get_transform()
+IL_00C5  callvirt UnityEngine.Transform::UnityEngine.Vector3 get_position()
+IL_00CA  call UnityEngine.Vector3::Single Distance(UnityEngine.Vector3, UnityEngine.Vector3)
+IL_00CF  ldarg.0
+IL_00D0  ldfld Trade::Single playerDistanceOnClose
+IL_00D5  bge.un.s IL_00D9
+IL_00D7  leave.s IL_010B
+IL_00D9  ldarg.0
+IL_00DA  ldfld Trade::Relay onClosed
+IL_00DF  dup
+IL_00E0  brtrue.s IL_00E5
+IL_00E2  pop
+IL_00E3  br.s IL_00EA
+IL_00E5  call Relay::Void triggerOutputs()
+IL_00EA  ldarg.0
+IL_00EB  ldc.i4.0
+IL_00EC  stfld Trade::Boolean open
+IL_00F1  leave.s IL_010B
+IL_00F3  ldarg.0
+IL_00F4  ldftn Trade::Void DeltaSeconds(Int32)
+IL_00FA  newobj TimeOfDayAzure+OnMinutePassed::Void .ctor(System.Object, IntPtr)
+IL_00FF  call TimeOfDayAzure::Void remove_MinutePassed(OnMinutePassed)
+IL_0104  call UnityEngine.Debug::Void LogException(System.Exception)
+IL_0109  leave.s IL_010B
+IL_010B  ret
+TRADE METHOD Void Interact()
+IL_0000  ldarg.0
+IL_0001  ldfld Trade::Boolean isInteractable
+IL_0006  brtrue.s IL_0009
+IL_0008  ret
+IL_0009  ldarg.0
+IL_000A  call Trade::Void StartTrade()
+IL_000F  ldarg.0
+IL_0010  call Interactable::Void Interact()
+IL_0015  ret
+TRADE METHOD Void UpdateUseMessage()
+IL_0000  ldarg.0
+IL_0001  call Trade::System.String GetUseMessage()
+IL_0006  pop
+IL_0007  ldarg.0
+IL_0008  call Interactable::Void UpdateUseMessage()
+IL_000D  ret
+TRADE METHOD System.String GetUseMessage()
+IL_0000  ldarg.0
+IL_0001  ldfld Trade::Boolean open
+IL_0006  brfalse.s IL_000E
+IL_0008  ldstr "(Trade)"
+IL_000D  ret
+IL_000E  ldarg.0
+IL_000F  ldfld Trade::Boolean autoOpenClose
+IL_0014  pop
+IL_0015  ldstr "(Closed)"
+IL_001A  ret

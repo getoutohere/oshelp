@@ -1,0 +1,41 @@
+{
+  "id": "obenseuer-dark",
+  "name": "Obenseuer Dark",
+  "schemaVersion": 1,
+  "colors": {
+    "window": "#181917",
+    "panel": "#292A27",
+    "recess": "#101210",
+    "raised": "#34362F",
+    "border": "#55594B",
+    "inputBorder": "#858A76",
+    "text": "#E2DFD2",
+    "muted": "#B4B5A5",
+    "accent": "#C09A50",
+    "button": "#684812",
+    "buttonHover": "#805B1F",
+    "selection": "#3B3425",
+    "navigation": "#214F65",
+    "navigationHover": "#2C6179",
+    "success": "#A9BC7A",
+    "warning": "#D4B474",
+    "danger": "#DB9587",
+    "focus": "#E6C271"
+  },
+  "typography": {
+    "body": { "family": "Segoe UI", "points": 11 },
+    "heading": { "family": "Courier New", "points": 14, "bold": true },
+    "label": { "family": "Courier New", "points": 10.5, "bold": true },
+    "numeric": { "family": "Consolas", "points": 11 }
+  },
+  "layout": {
+    "spacingUnit": 4,
+    "outerPadding": 20,
+    "panelPadding": 16,
+    "controlHeight": 36,
+    "rowHeight": 40,
+    "cornerRadius": 0,
+    "borderWidth": 1,
+    "focusBorderWidth": 2
+  }
+}

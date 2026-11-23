@@ -1,0 +1,8 @@
+Runtime: .NET 10.0.9
+Tenants: 31
+Upgrades: 131
+Apartments: 17
+Vendors: 135
+Vendor search / Saturday 13:30 locked entrance / trader-door overlap / access-only filter / chosen time refresh / all seven weekdays / weekly day selection / region filter / vending filter / invalid time: PASS
+Tenant selection / rental annotations / furniture-only exclusion / scene location column and search / current renter and replacement revenue / currency-specific gains and losses / revenue refresh on apartment selection / stock editor / save and reload / facility editor / goal recalculation / Casual preset / shop exclusion / save picker / import review / source selection / imported profile reload / overwrite confirmation and cancellation / unique imported name / previous profile backup: PASS
+PASS: every vendor column in both directions across all seven days, time, empty search, region/type/open filters and profile refresh; selection and sort glyph preserved; weekly table sort and day selection preserved.

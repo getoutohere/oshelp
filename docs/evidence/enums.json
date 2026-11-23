@@ -1,0 +1,293 @@
+﻿{
+    "DefaultMultiplier":  {
+                              "Default":  0,
+                              "Disabled":  1,
+                              "Quarter":  2,
+                              "Half":  3,
+                              "ThreeQuarters":  4,
+                              "OneAndQuarter":  5,
+                              "OneAndHalf":  6,
+                              "OneAndThreeQuarters":  7,
+                              "Doubled":  8,
+                              "TwoAndQuarter":  9,
+                              "TwoAndHalf":  10,
+                              "TwoAndThreeQuarters":  11,
+                              "Threefold":  12,
+                              "ThreeAndQuarter":  13,
+                              "ThreeAndHalf":  14,
+                              "ThreeAndThreeQuarters":  15,
+                              "Fourfold":  16,
+                              "Infinite":  17
+                          },
+    "TenementResident+CantRentReason":  {
+                                            "None":  0,
+                                            "Resident":  1,
+                                            "Apartment":  2,
+                                            "Tenement":  3,
+                                            "Size":  4,
+                                            "PlayerApartment":  5
+                                        },
+    "UpgradeType+UpgradeTarget":  {
+                                      "Tenement":  0,
+                                      "Apartment":  1,
+                                      "PlayerApartment":  2
+                                  },
+    "UpgradeType+GeneralType":  {
+                                    "Bare":  0,
+                                    "Makeshift":  1,
+                                    "Shabby":  2,
+                                    "Decent":  3,
+                                    "Fine":  4,
+                                    "Luxurious":  5
+                                },
+    "UpgradeType+PlayerApartmentElectricity":  {
+                                                   "Off":  0,
+                                                   "On":  1
+                                               },
+    "UpgradeType+PlayerApartmentWater":  {
+                                             "Off":  0,
+                                             "On":  1
+                                         },
+    "UpgradeType+PlayerBathroomType":  {
+                                           "Bare":  0,
+                                           "Makeshift":  1,
+                                           "Shabby":  2,
+                                           "Decent":  3,
+                                           "Fine":  4,
+                                           "Luxurious":  5
+                                       },
+    "UpgradeType+PlayerApartmentHeatingMethod":  {
+                                                     "None":  0,
+                                                     "Makeshift":  1,
+                                                     "Shabby":  2,
+                                                     "Decent":  3,
+                                                     "Fine":  4,
+                                                     "Luxurious":  5
+                                                 },
+    "UpgradeType+PlayerApartmentWallType":  {
+                                                "Bare":  0,
+                                                "Makeshift":  1,
+                                                "Shabby":  2,
+                                                "Decent":  3,
+                                                "Fine":  4,
+                                                "Luxurious":  5
+                                            },
+    "UpgradeType+PlayerBalconyType":  {
+                                          "Bare":  0,
+                                          "Makeshift":  1,
+                                          "Shabby":  2,
+                                          "Decent":  3,
+                                          "Fine":  4,
+                                          "Luxurious":  5
+                                      },
+    "UpgradeType+PlayerKitchenType":  {
+                                          "None":  0,
+                                          "Makeshift":  1,
+                                          "Shabby":  2,
+                                          "Decent":  3,
+                                          "Fine":  4,
+                                          "Luxurious":  5
+                                      },
+    "UpgradeType+ApartmentType":  {
+                                      "Small":  0,
+                                      "Medium":  1,
+                                      "Large":  2,
+                                      "Shop":  3
+                                  },
+    "UpgradeType+ApartmentElectricity":  {
+                                             "Off":  0,
+                                             "On":  1
+                                         },
+    "UpgradeType+ApartmentWater":  {
+                                       "Off":  0,
+                                       "Dirty":  1,
+                                       "Good":  2,
+                                       "Best":  3
+                                   },
+    "UpgradeType+ApartmentHeatingMethod":  {
+                                               "None":  0,
+                                               "Makeshift":  1,
+                                               "Shabby":  2,
+                                               "Decent":  3,
+                                               "Fine":  4,
+                                               "Luxurious":  5
+                                           },
+    "UpgradeType+BathroomType":  {
+                                     "Bare":  0,
+                                     "Makeshift":  1,
+                                     "Shabby":  2,
+                                     "Decent":  3,
+                                     "Fine":  4,
+                                     "Luxurious":  5
+                                 },
+    "UpgradeType+ApartmentWallType":  {
+                                          "Bare":  0,
+                                          "Makeshift":  1,
+                                          "Shabby":  2,
+                                          "Decent":  3,
+                                          "Fine":  4,
+                                          "Luxurious":  5
+                                      },
+    "UpgradeType+BalconyType":  {
+                                    "Bare":  0,
+                                    "Makeshift":  1,
+                                    "Shabby":  2,
+                                    "Decent":  3,
+                                    "Fine":  4,
+                                    "Luxurious":  5
+                                },
+    "UpgradeType+KitchenType":  {
+                                    "None":  0,
+                                    "Makeshift":  1,
+                                    "Shabby":  2,
+                                    "Decent":  3,
+                                    "Fine":  4,
+                                    "Luxurious":  5
+                                },
+    "UpgradeType+TenementElectricity":  {
+                                            "None":  0,
+                                            "Shit":  1,
+                                            "Good":  2,
+                                            "Best":  3
+                                        },
+    "UpgradeType+TenementWater":  {
+                                      "None":  0,
+                                      "Dirty":  1,
+                                      "Good":  2,
+                                      "Best":  3
+                                  },
+    "UpgradeType+TenementHeating":  {
+                                        "None":  0,
+                                        "Bare":  1,
+                                        "Central":  2,
+                                        "District":  3
+                                    },
+    "UpgradeType+TenementElevator":  {
+                                         "None":  0,
+                                         "Small":  1,
+                                         "Large":  2
+                                     },
+    "UpgradeType+TenementStairs":  {
+                                       "Bare":  0,
+                                       "Makeshift":  1,
+                                       "Shabby":  2,
+                                       "Decent":  3,
+                                       "Fine":  4,
+                                       "Luxurious":  5
+                                   },
+    "UpgradeType+TenementBasement":  {
+                                         "Bare":  0,
+                                         "Makeshift":  1,
+                                         "Shabby":  2,
+                                         "Decent":  3,
+                                         "Fine":  4,
+                                         "Luxurious":  5
+                                     },
+    "UpgradeType+BasementSauna":  {
+                                      "Bare":  0,
+                                      "Makeshift":  1,
+                                      "Shabby":  2,
+                                      "Decent":  3,
+                                      "Fine":  4,
+                                      "Luxurious":  5
+                                  },
+    "UpgradeType+BasementShrooms":  {
+                                        "Bare":  0,
+                                        "Makeshift":  1,
+                                        "Shabby":  2,
+                                        "Decent":  3,
+                                        "Fine":  4,
+                                        "Luxurious":  5
+                                    },
+    "UpgradeType+BasementWorkShop":  {
+                                         "None":  0,
+                                         "Small":  1,
+                                         "Medium":  2,
+                                         "Large":  3,
+                                         "Huge":  4
+                                     },
+    "UpgradeType+BasementMine":  {
+                                     "None":  0,
+                                     "Makeshift":  1,
+                                     "Shabby":  2,
+                                     "Decent":  3,
+                                     "Fine":  4
+                                 },
+    "UpgradeType+TenementRoof":  {
+                                     "None":  0,
+                                     "Shabby":  1,
+                                     "Decent":  2,
+                                     "Fine":  3
+                                 },
+    "UpgradeType+OuterWalls":  {
+                                   "Bare":  0,
+                                   "Makeshift":  1,
+                                   "Shabby":  2,
+                                   "Decent":  3,
+                                   "Fine":  4,
+                                   "Luxurious":  5
+                               },
+    "UpgradeType+Fence":  {
+                              "Bare":  0,
+                              "Makeshift":  1,
+                              "Shabby":  2,
+                              "Decent":  3,
+                              "Fine":  4,
+                              "Luxurious":  5
+                          },
+    "UpgradeType+Courtyard":  {
+                                  "Bare":  0,
+                                  "Makeshift":  1,
+                                  "Shabby":  2,
+                                  "Decent":  3,
+                                  "Fine":  4,
+                                  "Luxurious":  5
+                              },
+    "UpgradeType+SaunaAndPier":  {
+                                     "Bare":  0,
+                                     "Makeshift":  1,
+                                     "Shabby":  2,
+                                     "Decent":  3,
+                                     "Fine":  4,
+                                     "Luxurious":  5
+                                 },
+    "UpgradeType+Greenhouse":  {
+                                   "Bare":  0,
+                                   "Makeshift":  1,
+                                   "Shabby":  2,
+                                   "Decent":  3,
+                                   "Fine":  4,
+                                   "Luxurious":  5
+                               },
+    "UpgradeType+ApartmentStatus":  {
+                                        "Bare":  0,
+                                        "Occupied":  1,
+                                        "Empty":  2,
+                                        "Renovation":  3,
+                                        "Rented":  4,
+                                        "RentedRenovation":  5,
+                                        "Sold":  6,
+                                        "Player":  7,
+                                        "PlayerRenovation":  8
+                                    },
+    "UpgradeType+PayingMethod":  {
+                                     "OC":  0,
+                                     "RM":  1
+                                 },
+    "UpgradeType+ApartmentCondition":  {
+                                           "Suicidal":  0,
+                                           "Depressing":  1,
+                                           "Tolerable":  2,
+                                           "Decent":  3,
+                                           "Fine":  4,
+                                           "Luxurious":  5
+                                       },
+    "UpgradeType+ApartmentUse":  {
+                                     "None":  0,
+                                     "Residental":  1,
+                                     "Shop":  2,
+                                     "Industrial":  3,
+                                     "Farm":  4,
+                                     "Office":  5
+                                 }
+}

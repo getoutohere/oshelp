@@ -1,0 +1,709 @@
+﻿
+DifficultyController
+  METHOD Boolean OnLoadingGame()
+    IL_0000  ldarg.0
+    IL_0001  call DifficultyController::Void Start()
+    IL_0006  ldarg.0
+    IL_0007  ldc.i4.1
+    IL_0008  call SaveController::Boolean DeSerializeData(UnityEngine.Object, Boolean)
+    IL_000D  brfalse.s IL_0048
+    IL_000F  ldarg.0
+    IL_0010  ldarg.0
+    IL_0011  ldfld DifficultyController::DifficultyInfo[] difficulties
+    IL_0016  ldarg.0
+    IL_0017  ldfld DifficultyController::Int32 currentDifficultyIndex
+    IL_001C  ldelem.ref
+    IL_001D  ldfld DifficultyInfo::Difficulty difficulty
+    IL_0022  call DifficultyController::Void ChangeDifficulty(Difficulty)
+    IL_0027  ldarg.0
+    IL_0028  ldfld DifficultyController::DifficultyInfo currentDifficultyInfo
+    IL_002D  ldfld DifficultyInfo::Difficulty difficulty
+    IL_0032  ldc.i4.6
+    IL_0033  bne.un.s IL_0046
+    IL_0035  ldarg.0
+    IL_0036  ldarg.0
+    IL_0037  ldfld DifficultyController::DifficultyInfo customDifficultySettings
+    IL_003C  call CopyObjects::DifficultyInfo Copy[DifficultyInfo](DifficultyInfo)
+    IL_0041  stfld DifficultyController::DifficultyInfo currentDifficultyInfo
+    IL_0046  ldc.i4.1
+    IL_0047  ret
+    IL_0048  ldc.i4.0
+    IL_0049  ret
+
+TaskItemsManager
+  METHOD Boolean PlayerHasTaskItemId(System.String, Double)
+    IL_0000  newobj TaskItemsManager+<>c__DisplayClass11_0::Void .ctor()
+    IL_0005  stloc.0
+    IL_0006  ldloc.0
+    IL_0007  ldarg.1
+    IL_0008  stfld TaskItemsManager+<>c__DisplayClass11_0::System.String id
+    IL_000D  ldloc.0
+    IL_000E  ldarg.2
+    IL_000F  stfld TaskItemsManager+<>c__DisplayClass11_0::Double amount
+    IL_0014  ldarg.0
+    IL_0015  ldfld TaskItemsManager::System.Collections.Generic.List`1[TaskItemsManager+TaskItemInfo] taskItems
+    IL_001A  ldloc.0
+    IL_001B  ldftn TaskItemsManager+<>c__DisplayClass11_0::Boolean <PlayerHasTaskItemId>b__0(TaskItemInfo)
+    IL_0021  newobj System.Func`2[[TaskItemsManager+TaskItemInfo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Void .ctor(System.Object, IntPtr)
+    IL_0026  call System.Linq.Enumerable::Boolean Any[TaskItemInfo](System.Collections.Generic.IEnumerable`1[TaskItemsManager+TaskItemInfo], System.Func`2[TaskItemsManager+TaskItemInfo,System.Boolean])
+    IL_002B  ret
+
+TaskItemsManager+<>c__DisplayClass11_0
+  METHOD Boolean <PlayerHasTaskItemId>b__0(TaskItemInfo)
+    IL_0000  ldarg.1
+    IL_0001  ldfld TaskItemsManager+TaskItemInfo::TaskItem taskItem
+    IL_0006  callvirt TaskItem::System.String get_Id()
+    IL_000B  ldarg.0
+    IL_000C  ldfld TaskItemsManager+<>c__DisplayClass11_0::System.String id
+    IL_0011  call System.String::Boolean op_Equality(System.String, System.String)
+    IL_0016  brfalse.s IL_003E
+    IL_0018  ldarg.0
+    IL_0019  ldfld TaskItemsManager+<>c__DisplayClass11_0::Double amount
+    IL_001E  ldc.r8 0
+    IL_0027  beq.s IL_003C
+    IL_0029  ldarg.1
+    IL_002A  ldfld TaskItemsManager+TaskItemInfo::Int32 amount
+    IL_002F  conv.r8
+    IL_0030  ldarg.0
+    IL_0031  ldfld TaskItemsManager+<>c__DisplayClass11_0::Double amount
+    IL_0036  clt.un
+    IL_0038  ldc.i4.0
+    IL_0039  ceq
+    IL_003B  ret
+    IL_003C  ldc.i4.1
+    IL_003D  ret
+    IL_003E  ldc.i4.0
+    IL_003F  ret
+
+TenementApartment
+  METHOD Int32 FurnitureClearPercentPrimary()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementApartment::Int32 preplacedFurnitureAmountPrimary
+    IL_0006  brtrue.s IL_000B
+    IL_0008  ldc.i4.s 100
+    IL_000A  ret
+    IL_000B  ldarg.0
+    IL_000C  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+    IL_0011  call UnityEngine.Object::Boolean op_Implicit(UnityEngine.Object)
+    IL_0016  brfalse.s IL_0023
+    IL_0018  ldarg.0
+    IL_0019  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+    IL_001E  callvirt TenementApartmentPrefabs::Void UpdateCurrentFurnitureAmount()
+    IL_0023  ldc.i4.s 100
+    IL_0025  ldarg.0
+    IL_0026  ldfld TenementApartment::Int32 currentFurnitureAmountPrimary
+    IL_002B  conv.r4
+    IL_002C  ldarg.0
+    IL_002D  ldfld TenementApartment::Int32 preplacedFurnitureAmountPrimary
+    IL_0032  conv.r4
+    IL_0033  div
+    IL_0034  ldc.r4 100
+    IL_0039  mul
+    IL_003A  conv.i4
+    IL_003B  sub
+    IL_003C  ret
+
+TenementApartment
+  METHOD Int32 FurnitureClearPercentSecondary()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementApartment::Int32 preplacedFurnitureAmountSecondary
+    IL_0006  brtrue.s IL_000B
+    IL_0008  ldc.i4.s 100
+    IL_000A  ret
+    IL_000B  ldarg.0
+    IL_000C  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+    IL_0011  call UnityEngine.Object::Boolean op_Implicit(UnityEngine.Object)
+    IL_0016  brfalse.s IL_0023
+    IL_0018  ldarg.0
+    IL_0019  ldfld TenementApartment::TenementApartmentPrefabs tenementApartmentPrefabs
+    IL_001E  callvirt TenementApartmentPrefabs::Void UpdateCurrentFurnitureAmount()
+    IL_0023  ldc.i4.s 100
+    IL_0025  ldarg.0
+    IL_0026  ldfld TenementApartment::Int32 currentFurnitureAmountSecondary
+    IL_002B  conv.r4
+    IL_002C  ldarg.0
+    IL_002D  ldfld TenementApartment::Int32 preplacedFurnitureAmountSecondary
+    IL_0032  conv.r4
+    IL_0033  div
+    IL_0034  ldc.r4 100
+    IL_0039  mul
+    IL_003A  conv.i4
+    IL_003B  sub
+    IL_003C  ret
+
+TenementApartment
+  METHOD Void LoadFromPath()
+    IL_0000  ldarg.0
+    IL_0001  ldarg.0
+    IL_0002  ldfld TenementApartment::TenementUpgrade currentElectricityUpgrade
+    IL_0007  dup
+    IL_0008  brtrue.s IL_000E
+    IL_000A  pop
+    IL_000B  ldnull
+    IL_000C  br.s IL_0013
+    IL_000E  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_0013  dup
+    IL_0014  brtrue.s IL_001D
+    IL_0016  pop
+    IL_0017  ldarg.0
+    IL_0018  ldfld TenementApartment::TenementUpgrade currentElectricityUpgrade
+    IL_001D  castclass TenementUpgrade
+    IL_0022  stfld TenementApartment::TenementUpgrade currentElectricityUpgrade
+    IL_0027  ldarg.0
+    IL_0028  ldarg.0
+    IL_0029  ldfld TenementApartment::TenementUpgrade currentWaterUpgrade
+    IL_002E  dup
+    IL_002F  brtrue.s IL_0035
+    IL_0031  pop
+    IL_0032  ldnull
+    IL_0033  br.s IL_003A
+    IL_0035  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_003A  dup
+    IL_003B  brtrue.s IL_0044
+    IL_003D  pop
+    IL_003E  ldarg.0
+    IL_003F  ldfld TenementApartment::TenementUpgrade currentWaterUpgrade
+    IL_0044  castclass TenementUpgrade
+    IL_0049  stfld TenementApartment::TenementUpgrade currentWaterUpgrade
+    IL_004E  ldarg.0
+    IL_004F  ldarg.0
+    IL_0050  ldfld TenementApartment::TenementUpgrade currentHeatingUpgrade
+    IL_0055  dup
+    IL_0056  brtrue.s IL_005C
+    IL_0058  pop
+    IL_0059  ldnull
+    IL_005A  br.s IL_0061
+    IL_005C  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_0061  dup
+    IL_0062  brtrue.s IL_006B
+    IL_0064  pop
+    IL_0065  ldarg.0
+    IL_0066  ldfld TenementApartment::TenementUpgrade currentHeatingUpgrade
+    IL_006B  castclass TenementUpgrade
+    IL_0070  stfld TenementApartment::TenementUpgrade currentHeatingUpgrade
+    IL_0075  ldarg.0
+    IL_0076  ldarg.0
+    IL_0077  ldfld TenementApartment::TenementUpgrade currentBathroomUpgrade
+    IL_007C  dup
+    IL_007D  brtrue.s IL_0083
+    IL_007F  pop
+    IL_0080  ldnull
+    IL_0081  br.s IL_0088
+    IL_0083  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_0088  dup
+    IL_0089  brtrue.s IL_0092
+    IL_008B  pop
+    IL_008C  ldarg.0
+    IL_008D  ldfld TenementApartment::TenementUpgrade currentBathroomUpgrade
+    IL_0092  castclass TenementUpgrade
+    IL_0097  stfld TenementApartment::TenementUpgrade currentBathroomUpgrade
+    IL_009C  ldarg.0
+    IL_009D  ldarg.0
+    IL_009E  ldfld TenementApartment::TenementUpgrade currentWallUpgrade
+    IL_00A3  dup
+    IL_00A4  brtrue.s IL_00AA
+    IL_00A6  pop
+    IL_00A7  ldnull
+    IL_00A8  br.s IL_00AF
+    IL_00AA  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_00AF  dup
+    IL_00B0  brtrue.s IL_00B9
+    IL_00B2  pop
+    IL_00B3  ldarg.0
+    IL_00B4  ldfld TenementApartment::TenementUpgrade currentWallUpgrade
+    IL_00B9  castclass TenementUpgrade
+    IL_00BE  stfld TenementApartment::TenementUpgrade currentWallUpgrade
+    IL_00C3  ldarg.0
+    IL_00C4  ldarg.0
+    IL_00C5  ldfld TenementApartment::TenementUpgrade currentBalconyUpgrade
+    IL_00CA  dup
+    IL_00CB  brtrue.s IL_00D1
+    IL_00CD  pop
+    IL_00CE  ldnull
+    IL_00CF  br.s IL_00D6
+    IL_00D1  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_00D6  dup
+    IL_00D7  brtrue.s IL_00E0
+    IL_00D9  pop
+    IL_00DA  ldarg.0
+    IL_00DB  ldfld TenementApartment::TenementUpgrade currentBalconyUpgrade
+    IL_00E0  castclass TenementUpgrade
+    IL_00E5  stfld TenementApartment::TenementUpgrade currentBalconyUpgrade
+    IL_00EA  ldarg.0
+    IL_00EB  ldarg.0
+    IL_00EC  ldfld TenementApartment::TenementUpgrade currentBalcony2Upgrade
+    IL_00F1  dup
+    IL_00F2  brtrue.s IL_00F8
+    IL_00F4  pop
+    IL_00F5  ldnull
+    IL_00F6  br.s IL_00FD
+    IL_00F8  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_00FD  dup
+    IL_00FE  brtrue.s IL_0107
+    IL_0100  pop
+    IL_0101  ldarg.0
+    IL_0102  ldfld TenementApartment::TenementUpgrade currentBalcony2Upgrade
+    IL_0107  castclass TenementUpgrade
+    IL_010C  stfld TenementApartment::TenementUpgrade currentBalcony2Upgrade
+    IL_0111  ldarg.0
+    IL_0112  ldarg.0
+    IL_0113  ldfld TenementApartment::TenementUpgrade currentKitchenUpgrade
+    IL_0118  dup
+    IL_0119  brtrue.s IL_011F
+    IL_011B  pop
+    IL_011C  ldnull
+    IL_011D  br.s IL_0124
+    IL_011F  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_0124  dup
+    IL_0125  brtrue.s IL_012E
+    IL_0127  pop
+    IL_0128  ldarg.0
+    IL_0129  ldfld TenementApartment::TenementUpgrade currentKitchenUpgrade
+    IL_012E  castclass TenementUpgrade
+    IL_0133  stfld TenementApartment::TenementUpgrade currentKitchenUpgrade
+    IL_0138  ldarg.0
+    IL_0139  ldarg.0
+    IL_013A  ldfld TenementApartment::TenementResident resident
+    IL_013F  dup
+    IL_0140  brtrue.s IL_0146
+    IL_0142  pop
+    IL_0143  ldnull
+    IL_0144  br.s IL_014B
+    IL_0146  callvirt SavableScriptableObject::UnityEngine.ScriptableObject LoadFromPath()
+    IL_014B  dup
+    IL_014C  brtrue.s IL_0155
+    IL_014E  pop
+    IL_014F  ldarg.0
+    IL_0150  ldfld TenementApartment::TenementResident resident
+    IL_0155  castclass TenementResident
+    IL_015A  stfld TenementApartment::TenementResident resident
+    IL_015F  ldarg.0
+    IL_0160  ldfld TenementApartment::TenementUpgradeProgress electricityProgress
+    IL_0165  dup
+    IL_0166  brtrue.s IL_016B
+    IL_0168  pop
+    IL_0169  br.s IL_0170
+    IL_016B  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_0170  ldarg.0
+    IL_0171  ldfld TenementApartment::TenementUpgradeProgress waterProgress
+    IL_0176  dup
+    IL_0177  brtrue.s IL_017C
+    IL_0179  pop
+    IL_017A  br.s IL_0181
+    IL_017C  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_0181  ldarg.0
+    IL_0182  ldfld TenementApartment::TenementUpgradeProgress heatingProgress
+    IL_0187  dup
+    IL_0188  brtrue.s IL_018D
+    IL_018A  pop
+    IL_018B  br.s IL_0192
+    IL_018D  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_0192  ldarg.0
+    IL_0193  ldfld TenementApartment::TenementUpgradeProgress bathroomProgress
+    IL_0198  dup
+    IL_0199  brtrue.s IL_019E
+    IL_019B  pop
+    IL_019C  br.s IL_01A3
+    IL_019E  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_01A3  ldarg.0
+    IL_01A4  ldfld TenementApartment::TenementUpgradeProgress wallProgress
+    IL_01A9  dup
+    IL_01AA  brtrue.s IL_01AF
+    IL_01AC  pop
+    IL_01AD  br.s IL_01B4
+    IL_01AF  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_01B4  ldarg.0
+    IL_01B5  ldfld TenementApartment::TenementUpgradeProgress balconyProgress
+    IL_01BA  dup
+    IL_01BB  brtrue.s IL_01C0
+    IL_01BD  pop
+    IL_01BE  br.s IL_01C5
+    IL_01C0  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_01C5  ldarg.0
+    IL_01C6  ldfld TenementApartment::TenementUpgradeProgress balcony2Progress
+    IL_01CB  dup
+    IL_01CC  brtrue.s IL_01D1
+    IL_01CE  pop
+    IL_01CF  br.s IL_01D6
+    IL_01D1  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_01D6  ldarg.0
+    IL_01D7  ldfld TenementApartment::TenementUpgradeProgress kitchenProgress
+    IL_01DC  dup
+    IL_01DD  brtrue.s IL_01E2
+    IL_01DF  pop
+    IL_01E0  br.s IL_01E7
+    IL_01E2  call TenementUpgradeProgress::Void LoadFromPath()
+    IL_01E7  ldarg.0
+    IL_01E8  ldfld TenementApartment::TenementApartmentType type
+    IL_01ED  callvirt TenementApartmentType::Void LoadFromPath()
+    IL_01F2  ret
+
+TenementController
+  METHOD Boolean OnSavingGame()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementController::TenementGeneral general
+    IL_0006  callvirt TenementGeneral::Void SavePath()
+    IL_000B  ldarg.0
+    IL_000C  ldfld TenementController::System.Collections.Generic.List`1[TenementApartment] apartments
+    IL_0011  callvirt System.Collections.Generic.List`1[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_0016  stloc.0
+    IL_0017  br.s IL_0040
+    IL_0019  ldloca.s 0
+    IL_001B  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementApartment get_Current()
+    IL_0020  stloc.1
+    IL_0021  ldloc.1
+    IL_0022  ldfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_0027  ldnull
+    IL_0028  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+    IL_002D  brfalse.s IL_003A
+    IL_002F  ldloc.1
+    IL_0030  ldfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_0035  callvirt TenementApartmentPrefabs::Void UpdateCurrentFurnitureAmount()
+    IL_003A  ldloc.1
+    IL_003B  callvirt TenementApartment::Void SavePath()
+    IL_0040  ldloca.s 0
+    IL_0042  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_0047  brtrue.s IL_0019
+    IL_0049  leave.s IL_0059
+    IL_004B  ldloca.s 0
+    IL_004D  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[TenementApartment]
+    IL_0053  callvirt System.IDisposable::Void Dispose()
+    IL_0058  endfinally
+    IL_0059  ldarg.0
+    IL_005A  call TenementController::Void RefreshResourceStorageSnapshot()
+    IL_005F  ldarg.0
+    IL_0060  ldc.i4.1
+    IL_0061  ldc.i4.0
+    IL_0062  call SaveController::Boolean SerializeData(UnityEngine.Object, Boolean, Boolean)
+    IL_0067  ret
+
+TenementController
+  METHOD Boolean OnLoadingGamePrimary()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementController::TenementGeneral general
+    IL_0006  ldfld TenementGeneral::TenementGeneralPrefabs prefabs
+    IL_000B  stloc.0
+    IL_000C  newobj System.Collections.Generic.List`1[[TenementApartmentPrefabs, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void .ctor()
+    IL_0011  stloc.1
+    IL_0012  ldarg.0
+    IL_0013  ldfld TenementController::System.Collections.Generic.List`1[TenementApartment] apartments
+    IL_0018  callvirt System.Collections.Generic.List`1[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_001D  stloc.2
+    IL_001E  br.s IL_0034
+    IL_0020  ldloca.s 2
+    IL_0022  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementApartment get_Current()
+    IL_0027  stloc.3
+    IL_0028  ldloc.1
+    IL_0029  ldloc.3
+    IL_002A  ldfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_002F  callvirt System.Collections.Generic.List`1[[TenementApartmentPrefabs, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Void Add(TenementApartmentPrefabs)
+    IL_0034  ldloca.s 2
+    IL_0036  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_003B  brtrue.s IL_0020
+    IL_003D  leave.s IL_004D
+    IL_003F  ldloca.s 2
+    IL_0041  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[TenementApartment]
+    IL_0047  callvirt System.IDisposable::Void Dispose()
+    IL_004C  endfinally
+    IL_004D  ldarg.0
+    IL_004E  ldc.i4.1
+    IL_004F  call SaveController::Boolean DeSerializeData(UnityEngine.Object, Boolean)
+    IL_0054  brfalse IL_019E
+    IL_0059  ldarg.0
+    IL_005A  ldfld TenementController::TenementGeneral general
+    IL_005F  ldloc.0
+    IL_0060  stfld TenementGeneral::TenementGeneralPrefabs prefabs
+    IL_0065  ldarg.0
+    IL_0066  ldfld TenementController::TenementGeneral general
+    IL_006B  callvirt TenementGeneral::Void LoadFromPath()
+    IL_0070  ldc.i4.0
+    IL_0071  stloc.s 4
+    IL_0073  ldarg.0
+    IL_0074  ldfld TenementController::System.Collections.Generic.List`1[TenementApartment] apartments
+    IL_0079  callvirt System.Collections.Generic.List`1[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_007E  stloc.2
+    IL_007F  br.s IL_00A1
+    IL_0081  ldloca.s 2
+    IL_0083  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementApartment get_Current()
+    IL_0088  dup
+    IL_0089  callvirt TenementApartment::Void LoadFromPath()
+    IL_008E  ldloc.1
+    IL_008F  ldloc.s 4
+    IL_0091  callvirt System.Collections.Generic.List`1[[TenementApartmentPrefabs, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementApartmentPrefabs get_Item(Int32)
+    IL_0096  stfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_009B  ldloc.s 4
+    IL_009D  ldc.i4.1
+    IL_009E  add
+    IL_009F  stloc.s 4
+    IL_00A1  ldloca.s 2
+    IL_00A3  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_00A8  brtrue.s IL_0081
+    IL_00AA  leave.s IL_00BA
+    IL_00AC  ldloca.s 2
+    IL_00AE  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[TenementApartment]
+    IL_00B4  callvirt System.IDisposable::Void Dispose()
+    IL_00B9  endfinally
+    IL_00BA  ldarg.0
+    IL_00BB  ldfld TenementController::TenementGeneral general
+    IL_00C0  ldfld TenementGeneral::TenementGeneralPrefabs prefabs
+    IL_00C5  ldnull
+    IL_00C6  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+    IL_00CB  brfalse.s IL_00E3
+    IL_00CD  ldarg.0
+    IL_00CE  ldfld TenementController::TenementGeneral general
+    IL_00D3  ldfld TenementGeneral::TenementGeneralPrefabs prefabs
+    IL_00D8  ldarg.0
+    IL_00D9  ldfld TenementController::TenementGeneral general
+    IL_00DE  callvirt TenementGeneralPrefabs::Void UpdateGeneralPrefabs(TenementGeneral)
+    IL_00E3  ldarg.0
+    IL_00E4  ldfld TenementController::System.Collections.Generic.List`1[TenementApartment] apartments
+    IL_00E9  callvirt System.Collections.Generic.List`1[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_00EE  stloc.2
+    IL_00EF  br.s IL_0117
+    IL_00F1  ldloca.s 2
+    IL_00F3  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementApartment get_Current()
+    IL_00F8  stloc.s 5
+    IL_00FA  ldloc.s 5
+    IL_00FC  ldfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_0101  ldnull
+    IL_0102  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+    IL_0107  brfalse.s IL_0117
+    IL_0109  ldloc.s 5
+    IL_010B  ldfld TenementApartment::TenementApartmentPrefabs prefabs
+    IL_0110  ldloc.s 5
+    IL_0112  callvirt TenementApartmentPrefabs::Void UpdateApartmentPrefabs(TenementApartment)
+    IL_0117  ldloca.s 2
+    IL_0119  call System.Collections.Generic.List`1+Enumerator[[TenementApartment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_011E  brtrue.s IL_00F1
+    IL_0120  leave.s IL_0130
+    IL_0122  ldloca.s 2
+    IL_0124  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[TenementApartment]
+    IL_012A  callvirt System.IDisposable::Void Dispose()
+    IL_012F  endfinally
+    IL_0130  ldarg.0
+    IL_0131  ldfld TenementController::System.Collections.Generic.List`1[TenementResident] allResidents
+    IL_0136  callvirt System.Collections.Generic.List`1[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_013B  stloc.s 6
+    IL_013D  br.s IL_0178
+    IL_013F  ldloca.s 6
+    IL_0141  call System.Collections.Generic.List`1+Enumerator[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::TenementResident get_Current()
+    IL_0146  stloc.s 7
+    IL_0148  ldloc.s 7
+    IL_014A  ldnull
+    IL_014B  call UnityEngine.Object::Boolean op_Inequality(UnityEngine.Object, UnityEngine.Object)
+    IL_0150  brfalse.s IL_0178
+    IL_0152  ldloc.s 7
+    IL_0154  ldfld TenementResident::TenementEvents tenementEvents
+    IL_0159  brfalse.s IL_0178
+    IL_015B  ldsfld TenementEventController::TenementEventController instance
+    IL_0160  ldloc.s 7
+    IL_0162  ldfld TenementResident::NPC.NPCReference resident
+    IL_0167  ldfld NPC.NPCReference::Int32 ID
+    IL_016C  ldloc.s 7
+    IL_016E  ldfld TenementResident::TenementEvents tenementEvents
+    IL_0173  callvirt TenementEventController::Void AddTenementEvents(Int32, TenementEvents)
+    IL_0178  ldloca.s 6
+    IL_017A  call System.Collections.Generic.List`1+Enumerator[[TenementResident, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_017F  brtrue.s IL_013F
+    IL_0181  leave.s IL_0191
+    IL_0183  ldloca.s 6
+    IL_0185  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[TenementResident]
+    IL_018B  callvirt System.IDisposable::Void Dispose()
+    IL_0190  endfinally
+    IL_0191  call HideResidentProperty::Void UpdateAll()
+    IL_0196  ldarg.0
+    IL_0197  call TenementController::Void UpdateUtilities()
+    IL_019C  ldc.i4.1
+    IL_019D  ret
+    IL_019E  ldc.i4.0
+    IL_019F  ret
+
+TenementController
+  METHOD Single GetItemAmount(Int32, TenementContractor)
+    IL_0000  ldc.r4 0
+    IL_0005  stloc.0
+    IL_0006  ldarg.2
+    IL_0007  ldnull
+    IL_0008  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+    IL_000D  brtrue.s IL_001D
+    IL_000F  ldarg.2
+    IL_0010  ldarg.0
+    IL_0011  ldfld TenementController::TenementContractor currentSceneContractor
+    IL_0016  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+    IL_001B  brfalse.s IL_0056
+    IL_001D  ldarg.0
+    IL_001E  ldfld TenementController::System.Collections.Generic.List`1[Storage] tenementResourceStorages
+    IL_0023  callvirt System.Collections.Generic.List`1[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_0028  stloc.1
+    IL_0029  br.s IL_003D
+    IL_002B  ldloca.s 1
+    IL_002D  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Storage get_Current()
+    IL_0032  stloc.2
+    IL_0033  ldloc.0
+    IL_0034  ldloc.2
+    IL_0035  ldarg.1
+    IL_0036  callvirt Storage::Single GetItemAmount(Int32)
+    IL_003B  add
+    IL_003C  stloc.0
+    IL_003D  ldloca.s 1
+    IL_003F  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_0044  brtrue.s IL_002B
+    IL_0046  leave.s IL_007B
+    IL_0048  ldloca.s 1
+    IL_004A  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[Storage]
+    IL_0050  callvirt System.IDisposable::Void Dispose()
+    IL_0055  endfinally
+    IL_0056  ldarg.0
+    IL_0057  ldfld TenementController::System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.Int32,System.Single]] resourceStorageSnapshotsByContractor
+    IL_005C  ldarg.2
+    IL_005D  callvirt TenementContractor::System.String get_Id()
+    IL_0062  ldloca.s 3
+    IL_0064  callvirt System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Boolean TryGetValue(System.String, System.Collections.Generic.Dictionary`2[System.Int32,System.Single] ByRef)
+    IL_0069  brfalse.s IL_007B
+    IL_006B  ldloc.3
+    IL_006C  ldarg.1
+    IL_006D  ldloca.s 4
+    IL_006F  callvirt System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Boolean TryGetValue(Int32, Single ByRef)
+    IL_0074  brfalse.s IL_007B
+    IL_0076  ldloc.0
+    IL_0077  ldloc.s 4
+    IL_0079  add
+    IL_007A  stloc.0
+    IL_007B  ldloc.0
+    IL_007C  ldsfld Inventory::Inventory instance
+    IL_0081  ldarg.1
+    IL_0082  ldc.i4.0
+    IL_0083  callvirt Inventory::Int32 GetItemAmountInInventory(Int32, Boolean)
+    IL_0088  conv.r4
+    IL_0089  add
+    IL_008A  stloc.0
+    IL_008B  ldloc.0
+    IL_008C  ret
+
+TenementController
+  METHOD Void RefreshResourceStorageSnapshot()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementController::TenementContractor currentSceneContractor
+    IL_0006  ldnull
+    IL_0007  call UnityEngine.Object::Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
+    IL_000C  brfalse.s IL_000F
+    IL_000E  ret
+    IL_000F  newobj System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Void .ctor()
+    IL_0014  stloc.0
+    IL_0015  ldarg.0
+    IL_0016  ldfld TenementController::System.Collections.Generic.List`1[Storage] tenementResourceStorages
+    IL_001B  callvirt System.Collections.Generic.List`1[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Enumerator GetEnumerator()
+    IL_0020  stloc.1
+    IL_0021  br IL_00D0
+    IL_0026  ldloca.s 1
+    IL_0028  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Storage get_Current()
+    IL_002D  ldfld Storage::SlotController[] Slots
+    IL_0032  stloc.2
+    IL_0033  ldc.i4.0
+    IL_0034  stloc.3
+    IL_0035  br IL_00C7
+    IL_003A  ldloc.2
+    IL_003B  ldloc.3
+    IL_003C  ldelem.ref
+    IL_003D  stloc.s 4
+    IL_003F  ldloc.s 4
+    IL_0041  ldfld SlotController::ItemStack itemStack
+    IL_0046  ldfld ItemStack::Int32 itemId
+    IL_004B  ldc.i4.m1
+    IL_004C  beq.s IL_00C3
+    IL_004E  ldloc.s 4
+    IL_0050  ldfld SlotController::ItemStack itemStack
+    IL_0055  ldfld ItemStack::Int32 itemAmount
+    IL_005A  ldc.i4.0
+    IL_005B  ble.s IL_00C3
+    IL_005D  ldloc.0
+    IL_005E  ldloc.s 4
+    IL_0060  ldfld SlotController::ItemStack itemStack
+    IL_0065  ldfld ItemStack::Int32 itemId
+    IL_006A  callvirt System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Boolean ContainsKey(Int32)
+    IL_006F  brfalse.s IL_00A4
+    IL_0071  ldloc.0
+    IL_0072  stloc.s 5
+    IL_0074  ldloc.s 4
+    IL_0076  ldfld SlotController::ItemStack itemStack
+    IL_007B  ldfld ItemStack::Int32 itemId
+    IL_0080  stloc.s 6
+    IL_0082  ldloc.s 5
+    IL_0084  ldloc.s 6
+    IL_0086  ldloc.s 5
+    IL_0088  ldloc.s 6
+    IL_008A  callvirt System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Single get_Item(Int32)
+    IL_008F  ldloc.s 4
+    IL_0091  ldfld SlotController::ItemStack itemStack
+    IL_0096  ldfld ItemStack::Int32 itemAmount
+    IL_009B  conv.r4
+    IL_009C  add
+    IL_009D  callvirt System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Void set_Item(Int32, Single)
+    IL_00A2  br.s IL_00C3
+    IL_00A4  ldloc.0
+    IL_00A5  ldloc.s 4
+    IL_00A7  ldfld SlotController::ItemStack itemStack
+    IL_00AC  ldfld ItemStack::Int32 itemId
+    IL_00B1  ldloc.s 4
+    IL_00B3  ldfld SlotController::ItemStack itemStack
+    IL_00B8  ldfld ItemStack::Int32 itemAmount
+    IL_00BD  conv.r4
+    IL_00BE  callvirt System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Void Add(Int32, Single)
+    IL_00C3  ldloc.3
+    IL_00C4  ldc.i4.1
+    IL_00C5  add
+    IL_00C6  stloc.3
+    IL_00C7  ldloc.3
+    IL_00C8  ldloc.2
+    IL_00C9  ldlen
+    IL_00CA  conv.i4
+    IL_00CB  blt IL_003A
+    IL_00D0  ldloca.s 1
+    IL_00D2  call System.Collections.Generic.List`1+Enumerator[[Storage, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]::Boolean MoveNext()
+    IL_00D7  brtrue IL_0026
+    IL_00DC  leave.s IL_00EC
+    IL_00DE  ldloca.s 1
+    IL_00E0  constrained. System.Collections.Generic.List`1::System.Collections.Generic.List`1+Enumerator[Storage]
+    IL_00E6  callvirt System.IDisposable::Void Dispose()
+    IL_00EB  endfinally
+    IL_00EC  ldarg.0
+    IL_00ED  ldfld TenementController::System.Collections.Generic.Dictionary`2[System.String,System.Collections.Generic.Dictionary`2[System.Int32,System.Single]] resourceStorageSnapshotsByContractor
+    IL_00F2  ldarg.0
+    IL_00F3  ldfld TenementController::TenementContractor currentSceneContractor
+    IL_00F8  callvirt TenementContractor::System.String get_Id()
+    IL_00FD  ldloc.0
+    IL_00FE  callvirt System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]::Void set_Item(System.String, System.Collections.Generic.Dictionary`2[System.Int32,System.Single])
+    IL_0103  ret
+  FIELD TenementElevator currentElevator
+  FIELD TenementElevator currententFence
+  FIELD TenementElevator currententGreenhouse
+
+TenementResident
+  METHOD Boolean CantUpgradeApartment()
+    IL_0000  ldarg.0
+    IL_0001  ldfld TenementResident::System.String dialogueActor
+    IL_0006  call System.String::Boolean IsNullOrEmpty(System.String)
+    IL_000B  brtrue.s IL_0029
+    IL_000D  ldarg.0
+    IL_000E  ldfld TenementResident::System.String dialogueActor
+    IL_0013  ldstr "CanUpgradeApartment"
+    IL_0018  call PixelCrushers.DialogueSystem.DialogueLua::Result GetActorField(System.String, System.String)
+    IL_001D  stloc.0
+    IL_001E  ldloca.s 0
+    IL_0020  call PixelCrushers.DialogueSystem.Lua+Result::Boolean get_AsBool()
+    IL_0025  ldc.i4.0
+    IL_0026  ceq
+    IL_0028  ret
+    IL_0029  ldarg.0
+    IL_002A  ldfld TenementResident::Boolean cantUpgradeApartment
+    IL_002F  ret
+
+TenementPanelUI
+  METHOD Boolean PlayerHasRequiredItem()
+    IL_0000  ldsfld TaskItemsManager::TaskItemsManager instance
+    IL_0005  ldarg.0
+    IL_0006  ldfld TenementPanelUI::TaskItem requiredTaskItem
+    IL_000B  callvirt TaskItem::System.String get_Id()
+    IL_0010  ldc.r8 0
+    IL_0019  callvirt TaskItemsManager::Boolean PlayerHasTaskItemId(System.String, Double)
+    IL_001E  ret

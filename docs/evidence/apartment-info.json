@@ -1,0 +1,72 @@
+﻿[
+    {
+        "object":  195375,
+        "gameObject":  30799,
+        "name":  "Apartment Info",
+        "hierarchy":  "Apartment Info -\u003e Apartment Player -\u003e Floor 1 Player -\u003e Blueprint -\u003e Main Panel -\u003e Tenement Panel -\u003e Main Panels Padding -\u003e Main Panel content -\u003e Main Panel Size -\u003e Main Panel -\u003e Main -\u003e Game Menu",
+        "rentUI":  {
+                       "fileId":  0,
+                       "pathId":  200658
+                   },
+        "label":  {
+                      "fileId":  0,
+                      "pathId":  186005
+                  }
+    },
+    {
+        "object":  196534,
+        "gameObject":  41650,
+        "name":  "Apartment Info",
+        "hierarchy":  "Apartment Info -\u003e Apartment Medium -\u003e Floor -\u003e Blueprint -\u003e Main Panel -\u003e Tenement Panel -\u003e Main Panels Padding -\u003e Main Panel content -\u003e Main Panel Size -\u003e Main Panel -\u003e Main -\u003e Game Menu",
+        "rentUI":  {
+                       "fileId":  0,
+                       "pathId":  204296
+                   },
+        "label":  {
+                      "fileId":  0,
+                      "pathId":  185883
+                  }
+    },
+    {
+        "object":  199673,
+        "gameObject":  47436,
+        "name":  "Apartment Info",
+        "hierarchy":  "Apartment Info -\u003e Apartment Small -\u003e Floor -\u003e Blueprint -\u003e Main Panel -\u003e Tenement Panel -\u003e Main Panels Padding -\u003e Main Panel content -\u003e Main Panel Size -\u003e Main Panel -\u003e Main -\u003e Game Menu",
+        "rentUI":  {
+                       "fileId":  0,
+                       "pathId":  194727
+                   },
+        "label":  {
+                      "fileId":  0,
+                      "pathId":  186893
+                  }
+    },
+    {
+        "object":  204415,
+        "gameObject":  50455,
+        "name":  "Apartment Info",
+        "hierarchy":  "Apartment Info -\u003e Apartment Shop -\u003e Floor 1 Player -\u003e Blueprint -\u003e Main Panel -\u003e Tenement Panel -\u003e Main Panels Padding -\u003e Main Panel content -\u003e Main Panel Size -\u003e Main Panel -\u003e Main -\u003e Game Menu",
+        "rentUI":  {
+                       "fileId":  0,
+                       "pathId":  0
+                   },
+        "label":  {
+                      "fileId":  0,
+                      "pathId":  186413
+                  }
+    },
+    {
+        "object":  204928,
+        "gameObject":  49293,
+        "name":  "Apartment Info",
+        "hierarchy":  "Apartment Info -\u003e Apartment Large -\u003e Floor -\u003e Blueprint -\u003e Main Panel -\u003e Tenement Panel -\u003e Main Panels Padding -\u003e Main Panel content -\u003e Main Panel Size -\u003e Main Panel -\u003e Main -\u003e Game Menu",
+        "rentUI":  {
+                       "fileId":  0,
+                       "pathId":  197286
+                   },
+        "label":  {
+                      "fileId":  0,
+                      "pathId":  186352
+                  }
+    }
+]

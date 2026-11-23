@@ -1,0 +1,98 @@
+﻿[
+    {
+        "file":  "Managed/Assembly-CSharp.dll",
+        "hash":  "C45AE3010158E9C28F2B47CA561F10172133B4EC87D0D33DB13EC5E5C7C3B328"
+    },
+    {
+        "file":  "globalgamemanagers",
+        "hash":  "8312BD571375549E37BB86A15BF9365C5503C2A0574CFAC5E15458695BCA79CE"
+    },
+    {
+        "file":  "globalgamemanagers.assets",
+        "hash":  "3195AC18CCE9141AC0573004FDD00556D13B44824C9B2EE3779F717570EA27B8"
+    },
+    {
+        "file":  "level10",
+        "hash":  "582F5C8FE0178ECF7E7E65AE8C46D40825CBFA7925ADFDFABC15859CBCD99B1A"
+    },
+    {
+        "file":  "resources.assets",
+        "hash":  "04FC5E4A5209AA9A141508BC575423B9CF3B33F138BC3582E66304C15F632B6A"
+    },
+    {
+        "file":  "level101",
+        "hash":  "564AA7BF7DCD9DE6A41A328F66D45BB530702BB6DCCB4A6D5C6E8546211F4F76"
+    },
+    {
+        "file":  "level110",
+        "hash":  "3EDF34E21AD6E13B942067D4745D274FDFCC59A29F3E65FF679AB17956CDE365"
+    },
+    {
+        "file":  "sharedassets0.assets",
+        "hash":  "7CC5CC4A9B6A090D16EA2A5797A92A25A9C8F112C4A8A93FDB307FC965AFB4BD"
+    },
+    {
+        "file":  "level112",
+        "hash":  "ECEA46CA559CC5E6389E76D377A301DBB0B83DF41AD180CCEE882DD79AF105D1"
+    },
+    {
+        "file":  "level117",
+        "hash":  "D41D9F89C4203B0AD6A651C73ABE22B87FAE697EBE773F157598B1142B24DDC7"
+    },
+    {
+        "file":  "level121",
+        "hash":  "671700D64A2CF4D035642145E56F40BE36CED3B9C2D28066C0C87ADDA6A5A07C"
+    },
+    {
+        "file":  "level15",
+        "hash":  "C79AFDFCC5CE60029D457500E89847BCEF28F230974B88066CB4385977E719A8"
+    },
+    {
+        "file":  "level2",
+        "hash":  "558DF5F3589F20988CEEB3897DECD4FD032CB113E96799EC67117A4A1E70DA72"
+    },
+    {
+        "file":  "level20",
+        "hash":  "349344557365D0FA857F1C0F110DD62710149E31E790176387F598F56E1BB77D"
+    },
+    {
+        "file":  "level28",
+        "hash":  "ABB0C65802AC89564F5255A82B568EB9ABAEC9CE6DB29788F660951490F6FB03"
+    },
+    {
+        "file":  "level29",
+        "hash":  "C91C24CC78DF1C9FAEA25043445953722D499050C57B4D1F393FD5379ADAE163"
+    },
+    {
+        "file":  "level37",
+        "hash":  "4B3415E87BD7785254B9C26AD2C8DD7A37E94770B742C1F33ABA659094271C2D"
+    },
+    {
+        "file":  "level4",
+        "hash":  "DB933336300D76378C383874CB206F5022E4611233E382A56CD8B452F9B8CDBE"
+    },
+    {
+        "file":  "level6",
+        "hash":  "DC62A4167456F2D8E3DFCDD09AF3D8257A9D67E4EC390B25717C28F75E083007"
+    },
+    {
+        "file":  "level71",
+        "hash":  "AED440C515CD54F66FB52B05551D06A549E52D9EABDC68A1FC0F303E5D6F9970"
+    },
+    {
+        "file":  "level75",
+        "hash":  "39C0D2C406E41633352EFACC6BC2991A654251B9D742491AAA175C074DA0CDFD"
+    },
+    {
+        "file":  "level8",
+        "hash":  "B63FF6E529D311E76206F74E91CD40330DB234A1E2B2A07E7D9D784B9E7FA8D9"
+    },
+    {
+        "file":  "level85",
+        "hash":  "3802A51ACF1FC198CDDC122C7A8B4D461874579CEA532747321982A96425CB01"
+    },
+    {
+        "file":  "level9",
+        "hash":  "843605A9EF2E0D0C54A8A31C69F8F50A6AD12E9C75D335EF6678CBE4BE5ED4A8"
+    }
+]
