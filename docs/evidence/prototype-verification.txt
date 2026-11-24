@@ -1,9 +1,15 @@
-OSHelp 0.1.2
-2026-11-24T13:45:07.5451141-08:00
+OSHelp 0.2.0
 .NET 10.0.9
-PASS: 10190 assertions
-PASS: source-only staged export builds all four projects with zero warnings/errors
+PASS: 12200 assertions
+PASS: release solution builds all four projects with zero warnings/errors
+PASS: staged source-only export builds all four projects with zero warnings/errors
 PASS: source-only app imports installed game data with an empty cache and passes desktop checks
-PASS: app and launcher file versions are 0.1.2.0
-PASS: included PNG and conversion script reproduce the ICO exactly
+PASS: app and launcher file versions are 0.2.0.0
+PASS: 935 item recipes, 126 furniture blueprints, 1911 item/furniture/group entries, and 170 equipment definitions
+PASS: exact ingredient/output comparisons against every installed item recipe
+PASS: warm crafting cache reuse; zero game bytes hashed; 200 filtered searches in 58 ms
+PASS: empty initial crafting view, typing debounce, both search modes, pagination, sorting, and stale-result suppression
+PASS: food filters include fresh dough; industrial sawdust uses remain non-food; disabled checkbox capture reviewed
+PASS: higher-tier work underway prevents duplicate plans and material bills; persisted profile repair and backups verified
+PASS: original icon artwork hashes match reviewed source assets
 PASS: source/privacy audit; no compiled applications, saves, caches, game files, machine paths, account names, or private keys

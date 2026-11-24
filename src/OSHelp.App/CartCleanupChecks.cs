@@ -55,6 +55,28 @@ internal sealed partial class MainForm
             if (profile.Revision != revision) throw new InvalidOperationException("Empty cleanup should not write a new profile revision.");
             using (var image = new Bitmap(Width, Height)) { DrawToBitmap(image, new(0, 0, Width, Height)); image.Save(Path.Combine(SmokeDirectory!, "Cart-after-cleanup.png")); }
             File.WriteAllText(Path.Combine(SmokeDirectory!, "cart-cleanup.txt"), "PASS: completed rows removed / planned and underway jobs preserved / recorded levels and stock unchanged / save and reload / no return on replanning / disabled when empty / action bar fits at minimum window size.\n");
+
+            var legacy = Profile.Create(catalog, "UI underway balcony repair");
+            var decent = catalog.Upgrades.Single(u => u.Name == "Small-Balcony-3-Decent");
+            var fine = catalog.Upgrades.Single(u => u.Name == "Small-Balcony-4-Fine");
+            var power = catalog.Upgrades.Single(u => u.Name == "Small-Electricity-1-On");
+            legacy.Goals.Add(new() { Apartment = 4, UpgradeId = decent.Id });
+            legacy.Jobs.Add(new() { Key = Planner.Key(4, fine.Id), Apartment = 4, UpgradeId = fine.Id, Status = JobStatus.UnderConstruction,
+                ReadyForPayment = true, RemainingSeconds = 0, Contractor = "Rob Madsen", Consumed = new() { ["game:35010"] = 7 } });
+            foreach (var upgrade in new[] { decent, power }) legacy.Jobs.Add(new() { Key = Planner.Key(4, upgrade.Id), Apartment = 4, UpgradeId = upgrade.Id });
+            legacy.Stock["game:35010"] = 12;
+            string active = JsonSerializer.Serialize(legacy.Jobs[0], Json.Options);
+            store.Save(legacy);
+            SelectProfile(legacy.Id); ShowPage("Shopping Cart");
+            if (profile.Jobs.Count != 1 || jobGrid.Rows.Count != 1 || materialGrid.Rows.Count != 0 || profile.Stock["game:35010"] != 12
+                || JsonSerializer.Serialize(profile.Jobs.Single(), Json.Options) != active || !File.Exists(store.PathFor(profile.Id) + ".bak"))
+                throw new InvalidOperationException("Opening an existing profile must repair a lower planned balcony and its orphaned prerequisites without changing active work or stock.");
+            int repairedRevision = profile.Revision;
+            SelectProfile(legacy.Id);
+            if (profile.Jobs.Count != 1 || profile.Revision != repairedRevision || Planner.Cart(catalog, profile).Count != 0)
+                throw new InvalidOperationException("Underway repair must survive reload without repeatedly rewriting the profile.");
+            using (var image = new Bitmap(Width, Height)) { DrawToBitmap(image, new(0, 0, Width, Height)); image.Save(Path.Combine(SmokeDirectory!, "Cart-underway-balcony-repaired.png")); }
+            File.AppendAllText(Path.Combine(SmokeDirectory!, "cart-cleanup.txt"), "PASS: profile selection repairs lower-tier balcony duplication and orphaned prerequisites / underway payment and consumption details preserved / stock unchanged / saved backup / reload / idempotence.\n");
         }
         finally
         {

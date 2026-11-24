@@ -22,4 +22,5 @@ if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'gold-shop.txt')){Get-Con
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')}
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'tenant-filters.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'tenant-filters.txt')}
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'cart-cleanup.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'cart-cleanup.txt')}
+if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'crafting.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'crafting.txt')}
 'GUI screenshots: '+$CaptureDirectory

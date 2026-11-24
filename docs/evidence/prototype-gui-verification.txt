@@ -1,4 +1,4 @@
-OSHelp 0.1.2
+OSHelp 0.2.0
 Runtime: .NET 10.0.9
 Tenants: 31
 Upgrades: 131
@@ -12,3 +12,5 @@ PASS: weekday 08:00–16:00 / exact 16:00 close / closed Saturday / open-only fi
 PASS: interior shop door / 08:00–18:00 all seven days / exact opening and closing / nearby-player delay / open-only filter.
 PASS: Small/Medium/Large only / multi-size acceptance / all size combinations and rental states / search composition / furniture-only exclusion / state refresh / sort preservation / empty details / minimum window size.
 PASS: completed rows removed / planned and underway jobs preserved / recorded levels and stock unchanged / save and reload / no return on replanning / disabled when empty / action bar fits at minimum window size.
+PASS: profile selection repairs lower-tier balcony duplication and orphaned prerequisites / underway payment and consumption details preserved / stock unchanged / saved backup / reload / idempotence.
+PASS: empty initial page and lazy cache / 300 ms typing debounce / input and output modes / real ingredient groups / success versus failure products / distinct recipe variants / furniture worktables / one-character query / bounded results and show more / global sorting / Food and Non-food filters in both modes / fresh sawdust dough classification / disabled checkbox capture / stale-result suppression / clear / minimum-size controls.

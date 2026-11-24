@@ -11,6 +11,17 @@ $env:DOTNET_CLI_HOME=Join-Path $repository 'local/dotnet'
 $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE='1'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT='1'
 $deploymentLock=$null
+function Install-CraftingCache([string]$DestinationDirectory){
+    $source=Join-Path $repository 'local/crafting-check-data/crafting.json'
+    if(-not(Test-Path -LiteralPath $source)){return}
+    $null=New-Item -ItemType Directory -Force -Path $DestinationDirectory
+    $destination=Join-Path $DestinationDirectory 'crafting.json'
+    $temporary=Join-Path $DestinationDirectory ('crafting.'+[Guid]::NewGuid().ToString('N')+'.tmp')
+    try{
+        [IO.File]::Copy($source,$temporary)
+        if(Test-Path -LiteralPath $destination){[IO.File]::Replace($temporary,$destination,[NullString]::Value)}else{[IO.File]::Move($temporary,$destination)}
+    }finally{if(Test-Path -LiteralPath $temporary){Remove-Item -LiteralPath $temporary}}
+}
 function Set-CurrentRelease([string]$Content){
     $selected=$Content|ConvertFrom-Json
     $target=[IO.Path]::GetFullPath((Join-Path $app $selected.directory))
@@ -53,6 +64,9 @@ try{
         $manifest=[ordered]@{formatVersion=1;releaseId=$id;publishedAt=[DateTimeOffset]::UtcNow.ToString('O');gameRoot=$gameRoot;dataDirectory=(Join-Path $repository 'local/userdata');files=$files}
         [IO.File]::WriteAllText((Join-Path $release 'release.json'),($manifest|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
         $capture=Join-Path $repository ('local/deploy-smoke-'+$id)
+        # Reuse the derived catalog just verified against the installed sources.
+        # The app still validates its fingerprint; profiles are never copied.
+        Install-CraftingCache (Join-Path $repository 'local/deploy-smoke-data')
         & (Join-Path $PSScriptRoot 'Test-PublishedApp.ps1') -Executable (Join-Path $release 'OSHelp.exe') -Repository $release -GameRoot $gameRoot -DataDirectory (Join-Path $repository 'local/deploy-smoke-data') -CaptureDirectory $capture
         $launcher=Join-Path $repository 'artifacts/launcher'
         & dotnet publish src/OSHelp.Launcher/OSHelp.Launcher.csproj -c Release --no-build --no-restore --no-self-contained -o $launcher --nologo
@@ -68,6 +82,7 @@ try{
             Copy-Item -LiteralPath $source -Destination $destination -Force
         }
         Set-CurrentRelease (([ordered]@{formatVersion=1;releaseId=$id;directory=('releases/'+$id)})|ConvertTo-Json)
+        try{Install-CraftingCache (Join-Path $repository 'local/userdata')}catch [IO.IOException]{'Crafting cache will be rebuilt on first search.'}
         'Deployed release: '+$id
         'Stable launcher: '+(Join-Path $app 'OSHelp.exe')
         'Running releases keep working. New launches use this release.'

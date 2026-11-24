@@ -217,7 +217,9 @@ try
     VendorChecks.Run(repository, Check);
     ImportOverwriteChecks.Run(catalog, scratch, Check);
     ProfileActionChecks.Run(catalog, scratch, Check);
+    UnderwayPlanningChecks.Run(catalog, Check);
     TenantDirectoryChecks.Run(catalog, Check);
+    await CraftingChecks.Run(repository, gameRoot, Check);
     SaveImportChecks.Run(catalog, scratch, Check, (action, message) =>
     {
         try { action(); } catch (Exception e) when (e is InvalidDataException or JsonException) { Check(true, message); return; }

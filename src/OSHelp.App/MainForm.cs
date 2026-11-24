@@ -55,7 +55,8 @@ internal sealed partial class MainForm : Form
         heading.Controls.Add(Theme.Button("Import save", (_, _) => ImportGameSave())); heading.Controls.Add(syncLatestButton); heading.Controls.Add(Theme.Button("Import profile", (_, _) => ImportProfile())); heading.Controls.Add(Theme.Button("Export", (_, _) => ExportProfile()));
         Controls.Add(heading);
         var nav = Theme.Flow(DockStyle.Top, 50); nav.BackColor = Theme.C("window");
-        foreach (var name in new[] { "Tenants", "Upgrades", "Shopping Cart", "State", "Vendors", "Data" }) { var page = name; var button = Theme.Button(name.ToUpperInvariant(), (_, _) => ShowPage(page)); navigation[page] = button; nav.Controls.Add(button); }
+        nav.AutoSize = true; nav.AutoSizeMode = AutoSizeMode.GrowAndShrink; nav.MinimumSize = new(0, 50);
+        foreach (var name in new[] { "Tenants", "Upgrades", "Shopping Cart", "Crafting", "State", "Vendors", "Data" }) { var page = name; var button = Theme.Button(name.ToUpperInvariant(), (_, _) => ShowPage(page)); navigation[page] = button; nav.Controls.Add(button); }
         nav.Controls.Add(Theme.Text("Apartment:")); nav.Controls.Add(apartments); Controls.Add(nav);
         Controls.SetChildIndex(heading, Controls.Count - 1);
         status.Text = "Reading installed game data...";
@@ -134,7 +135,9 @@ internal sealed partial class MainForm : Form
         if (p.CatalogFingerprint != catalog.Fingerprint) throw new InvalidDataException("This profile was made with a different game catalog. Its saved plan has been preserved. Export it and create a new profile for this installation before changing construction quantities.");
         ProfileStore.Validate(p);
         foreach (var job in p.Jobs) _ = catalog.Upgrade(job.UpgradeId);
-        if (RentalIncome.RestoreImportedFacts(p, catalog)) store.Save(p);
+        bool changed = RentalIncome.RestoreImportedFacts(p, catalog);
+        changed |= Planner.ReconcileUnderway(catalog, p);
+        if (changed) store.Save(p);
     }
     void Mutate(Action<Profile> change, bool redraw = true)
     {
@@ -196,7 +199,7 @@ internal sealed partial class MainForm : Form
     static void Retain(DataGridView grid, object? tag) { if (tag == null) return; foreach (DataGridViewRow row in grid.Rows) if (Equals(row.Tag, tag)) { grid.CurrentCell = row.Cells[0]; return; } }
     void BuildPages()
     {
-        pages["Tenants"] = BuildTenants(); pages["Upgrades"] = BuildUpgrades(); pages["Shopping Cart"] = BuildCart(); pages["State"] = BuildState(); pages["Vendors"] = BuildVendors(); pages["Data"] = BuildData();
+        pages["Tenants"] = BuildTenants(); pages["Upgrades"] = BuildUpgrades(); pages["Shopping Cart"] = BuildCart(); pages["Crafting"] = BuildCrafting(); pages["State"] = BuildState(); pages["Vendors"] = BuildVendors(); pages["Data"] = BuildData();
         foreach (var page in pages.Values) { page.Dock = DockStyle.Fill; content.Controls.Add(page); }
     }
     void ShowPage(string name)
@@ -205,6 +208,11 @@ internal sealed partial class MainForm : Form
         foreach (var page in pages) page.Value.Visible = page.Key == name;
         foreach (var button in navigation) button.Value.BackColor = Theme.C(button.Key == name ? "button" : "raised");
         pages[name].BringToFront();
+        if (name == "Crafting")
+        {
+            craftingSplit.SplitterDistance = (int)(craftingSplit.Width * .62);
+            if (craftingSearch.Text.Trim().Length > 0 && craftingRenderedRevision != craftingRevision) ScheduleCraftingSearch();
+        }
         if (name == "Vendors") vendorSplit.SplitterDistance = Math.Max(150, (int)(vendorSplit.Height * .42));
         if (pages[name] is DarkSplit split) split.SplitterDistance = name == "Tenants" ? Math.Clamp((int)(split.Width * .47), 500, 850) : name == "Vendors" ? Math.Max(200, (int)(split.Height * .44)) : Math.Max(200, split.Height / 2);
     }
@@ -444,7 +452,7 @@ internal sealed partial class MainForm : Form
             : profile.Name + "\r\n" + string.Join("\r\n", lines.Select(l => $"{l.Remaining,6} to buy / {l.Required,6} required / {l.Have,6} on hand: {catalog.Items[l.ItemKey].Name}"));
         AtomicFile.Write(dialog.FileName, text);
     }
-    static CheckBox Check(string text, bool value) => new() { Text = text, Checked = value, AutoSize = true, ForeColor = Theme.C("text"), BackColor = Theme.C("panel"), Font = Theme.Body, FlatStyle = FlatStyle.Flat, Margin = new(6, 10, 14, 4) };
+    static CheckBox Check(string text, bool value) => new DarkCheckBox { Text = text, Checked = value, AutoSize = true, ForeColor = Theme.C("text"), BackColor = Theme.C("panel"), Font = Theme.Body, FlatStyle = FlatStyle.Flat, Margin = new(6, 10, 14, 4) };
     static DarkCombo FactCombo()
     {
         var combo = Theme.Combo(160); combo.Items.AddRange([new FactChoice(null, "Not recorded"), new FactChoice(false, "Not yet / No"), new FactChoice(true, "Confirmed / Yes")]); combo.SelectedIndex = 0; return combo;
@@ -564,7 +572,7 @@ internal sealed partial class MainForm : Form
             var source = profile.ImportedSave;
             Dialogs.Message(this, "Imported save source", source == null ? "This profile was entered manually." : source.Character + " / " + source.Slot + " / Game " + source.Version + "\r\nSaved: " + source.SaveDate.LocalDateTime.ToString("g") + "\r\nImported: " + source.ImportedAt.LocalDateTime.ToString("g") + "\r\n" + source.Directory + "\r\n\r\nStock sources:\r\n" + string.Join("\r\n", source.StockSources) + "\r\n\r\n" + string.Join("\r\n", source.Files.Select(f => f.File + ": " + f.Hash)));
         }));
-        actions.Controls.Add(Theme.Button("Refresh game catalog", async (_, _) => { if (!Dialogs.Message(this, "Refresh catalog", "Close OSHelp and restart after game data changes. Refresh now will verify and rebuild the catalog; profile quantities are never migrated silently.", true)) return; try { Enabled = false; var progress = new Progress<string>(s => status.Text = s); var updated = await CatalogImport.LoadAsync(repository, gameRoot, dataDirectory, true, progress, cancellation.Token); if (updated.Fingerprint != profile.CatalogFingerprint) throw new InvalidDataException("The refreshed game data differs from this profile. The profile is preserved; create a new profile after restarting."); var vendors = await VendorImport.LoadAsync(repository, gameRoot, dataDirectory, updated, progress, cancellation.Token); catalog = updated; vendorCatalog = vendors; status.Text = "Catalog and vendor schedules rebuilt and verified."; RefreshViews(); } catch (Exception e) { Dialogs.Message(this, "Refresh failed", e.Message); } finally { Enabled = true; } }));
+        actions.Controls.Add(Theme.Button("Refresh game catalog", async (_, _) => { if (!Dialogs.Message(this, "Refresh catalog", "Close OSHelp and restart after game data changes. Refresh now will verify and rebuild the catalog; profile quantities are never migrated silently.", true)) return; try { Enabled = false; var progress = new Progress<string>(s => status.Text = s); var updated = await CatalogImport.LoadAsync(repository, gameRoot, dataDirectory, true, progress, cancellation.Token); if (updated.Fingerprint != profile.CatalogFingerprint) throw new InvalidDataException("The refreshed game data differs from this profile. The profile is preserved; create a new profile after restarting."); var vendors = await VendorImport.LoadAsync(repository, gameRoot, dataDirectory, updated, progress, cancellation.Token); catalog = updated; vendorCatalog = vendors; ResetCraftingCatalog(); status.Text = "Catalog and vendor schedules rebuilt and verified."; RefreshViews(); } catch (Exception e) { Dialogs.Message(this, "Refresh failed", e.Message); } finally { Enabled = true; } }));
         page.Controls.Add(actions); return page;
     }
     async Task SmokeCapture()
@@ -708,6 +716,7 @@ internal sealed partial class MainForm : Form
             profile = store.Load(overwritten.Id); RefreshProfiles(); RefreshViews();
         }
         File.WriteAllText(Path.Combine(SmokeDirectory!, "success.txt"), $"Runtime: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}\nTenants: {catalog.Tenants.Count}\nUpgrades: {catalog.Upgrades.Count}\nApartments: {catalog.Apartments.Count}\nVendors: {vendorCatalog.Vendors.Count}\nVendor search / Saturday 13:30 locked entrance / trader-door overlap / access-only filter / chosen time refresh / all seven weekdays / weekly day selection / region filter / vending filter / invalid time: PASS\nTenant selection / rental annotations / furniture-only exclusion / scene location column and search / current renter and replacement revenue / currency-specific gains and losses / revenue refresh on apartment selection / stock editor / save and reload / facility editor / goal recalculation / Casual preset / shop exclusion / save picker / import review / source selection / imported profile reload / overwrite confirmation and cancellation / unique imported name / previous profile backup: PASS\n");
+        await VerifyCraftingView();
         await VerifyCartCleanup();
         await SmokeProfileActions();
         Close();

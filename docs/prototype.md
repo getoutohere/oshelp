@@ -40,6 +40,8 @@ The Shop and player apartment are excluded from tenant placement. The Shop remai
 
 Add renovations from Tenants or Upgrades, review the work, and confirm it still needs construction. Explicit prerequisite jobs are included. Shared building work is counted once; apartment jobs stay separate.
 
+Work already underway covers requests for the same or a lower tier in the same apartment/facility. For example, a Decent front balcony under construction prevents a second Makeshift balcony bill. Higher future tiers can still be planned. Tenant planning accounts for work underway, but rental eligibility still waits for completion. Opening an existing profile reconciles redundant planned work and prerequisites needed only by that work, saving a backup while preserving construction details, desired goals, and stock.
+
 In **Shopping Cart**, edit **Have** to record current unspent stock. Stock is subtracted once from the combined requirement. Select a material for contributing jobs. Quantities use the game's per-line float multiplication, truncation, and minimum-one rule before aggregation.
 
 - **Start work** records new construction and consumes its bill from recorded stock once. Record completed prerequisites first.
@@ -51,6 +53,20 @@ In **Shopping Cart**, edit **Have** to record current unspent stock. Stock is su
 
 Existing completed renovations can be recorded directly in State, removing satisfied work from the plan. Currency totals are reference amounts; the app does not track a wallet.
 
+## Crafting
+
+Choose **By input** to find recipes that consume an item, or **By output** to find how to make it. The view begins empty. Type at least one non-whitespace character; searches run after a 300 ms pause in typing. Clearing the box immediately clears the results. Item names match without case or accent differences.
+
+Results show the recipe, ingredient amounts, successful products, and compatible workstations. Select a row for ingredient alternatives, additional variant requirements, required equipment add-ons, skill and learned-recipe requirements, and source references. Furniture blueprints are included. All successful products are searched, including byproducts. **Include failure products** is an optional output-search setting; the details always separate successful products from failure products.
+
+Broad searches initially display 100 recipes. **Show more** adds another 100; sorting applies to the complete matching set before this limit. Search modes and text changes preserve your chosen sort. Distinct recipes with the same product remain separate rows because their ingredients or conditions can differ.
+
+**Food** and **Non-food** both start enabled. Food includes successful outputs or possible output alternatives in the game's **Food** or **Dough** categories, covering food preparation as well as finished food. All other recipes count as non-food, including furniture. Ingredients and failure products do not affect this classification. The filters apply in both search modes before sorting and pagination, using cached data. Turning both off gives an empty result list.
+
+Definitions come from the installed game, independently of your profile's inventory and crafting unlocks. Compatible equipment respects recipe categories, required/excluded conditions, and necessary connectable add-ons. World-only equipment includes its scene name. Access, power, placement, learned recipes, and your character's skill still determine what you can craft in game. A recipe without a matching extracted workstation remains visible with that fact stated.
+
+The first search validates and loads a separate crafting cache in the background. If it needs rebuilding, a progress message appears while the interface remains usable. Local deployment prepares this cache in advance. Later searches use in-memory indexes, with no asset reads per query. Changes to source files invalidate the cache; **Data → Refresh game catalog** also forces crafting verification on the next search. Profiles and shopping plans are unaffected.
+
 ## Vendors
 
 The **Vendors** view shows one row per shop, grouping duplicate checkout, furniture, and dialogue menus. Choose a game weekday/time, search or filter, and inspect the full week. A single **Opening hours** column combines the staffed timetable with entrance locks. At Saturday 13:30, the Bazaar General Trader correctly reports **Closed**. The detail panel explains dialogue access and game-progress requirements; source schedules are available under **Source details**. See [the vendor guide](vendors.md).
@@ -59,7 +75,7 @@ The **Vendors** view shows one row per shop, grouping duplicate checkout, furnit
 
 The **Data** page shows source hashes, counts, runtime, and refresh. Source details retain raw fields/pointers; recruitment excerpts include relevant complete conversations and earlier conditions.
 
-Default storage is `oshelp/local/userdata`: `catalog.json`, `settings.json`, and `profiles/*.json`. Writes atomically replace files and retain a `.bak`. Profile leases/revisions prevent competing writers from overwriting changes. Backup recovery requires confirmation. Export profiles before moving/deleting this repository.
+Default storage is `oshelp/local/userdata`: `catalog.json`, `crafting.json`, `settings.json`, and `profiles/*.json`. Writes atomically replace files and retain a `.bak`. Profile leases/revisions prevent competing writers from overwriting changes. Backup recovery requires confirmation. Export profiles before moving/deleting this repository.
 
 Use **Launch.cmd** or **app/OSHelp.exe** for the stable release and **Preview.cmd** for development. Previews keep separate profiles under `local/preview-userdata`. Normal builds leave the stable release untouched. `tools/Deploy.ps1` publishes a tested, complete release directory with its tools/theme/evidence snapshot and switches the stable launcher to it. Existing windows keep running their original version. `tools/Deploy.ps1 -Rollback` selects the preceding version for new launches.
 

@@ -1,8 +1,18 @@
-# OSHelp 0.1.2
+# OSHelp 0.2.0
 
-OSHelp is a Windows desktop companion for **Obenseuer**. Plan tenement renovations, find tenants, keep a materials shopping list, and check vendor opening hours with entrance locks taken into account.
+OSHelp is a Windows desktop companion for **Obenseuer**. Plan tenement renovations, find tenants, keep a materials shopping list, find crafting recipes, and check vendor opening hours with entrance locks taken into account.
 
-**Version 0.1.2 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+**Version 0.2.0 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+
+## Changes in 0.2.0
+
+- Added **Crafting**, with **By input** and **By output** item searches, exact ingredient bills, and compatible workstations. Search starts after the first character with a 300 ms typing delay; the initial view stays empty.
+- Extracts 935 item recipes and 126 furniture blueprints from installed game assets, including ingredient alternatives, additional variant ingredients, workstation conditions, and required add-ons. Successful products and failure products are shown separately.
+- Added **Food** and **Non-food** crafting filters, both enabled by default. Classification includes output alternatives and dough preparation. Sorting is preserved across searches and filters; broad searches show 100 recipes at a time with **Show more**.
+- Added a separate validated crafting cache and in-memory search indexes. Crafting loads in the background on first search; local deployment prepares its cache in advance. Repeated searches perform no asset reads.
+- Fixed duplicate planned renovations when a matching or higher tier is already under construction. Tenant planning reuses that work; existing redundant plans and their unused prerequisites are reconciled when opening a profile, preserving active work and stock.
+- Corrected disabled checkbox label contrast on the dark theme and atomic crafting-cache replacement during repeated deployments.
+- Expanded regression and desktop checks for crafting, cache reuse, filtering, debouncing, sorting, and repair of existing construction plans. Profiles retain their existing format.
 
 ## Changes in 0.1.2
 
@@ -39,8 +49,11 @@ Contributions submitted for inclusion must be offered under these same terms, in
 - Import a game save, then **Sync latest save** to update apartments, renters, construction, and selected material stock while retaining your shopping goals.
 - Manage separate profiles, export shopping lists, and delete profiles with confirmation and a recovery copy.
 - Browse one row per vendor business, with combined hours that account for doors, weekdays, and known access conditions.
+- Find recipes that consume an item or produce it, including furniture construction and ingredient alternatives. Inspect quantities, workstation conditions, required add-ons, and separate success/failure products.
 
 Data comes from the installed assets and reviewed game rules. The shop and player apartment are excluded from tenant rentals. The baseline covers 31 resident definitions, 131 upgrades, and 96 vendor businesses or machine groups; counts describe the verified game build.
+
+Crafting currently covers 935 item recipes and 126 furniture blueprints. Definitions include recipes whose availability depends on learned blueprints, skill, or access to equipment; this view does not filter by your character's crafting unlocks.
 
 ## Requirements
 
@@ -96,6 +109,7 @@ Previews use separate profiles. Run `Deploy.ps1` again to rebuild the selected l
 2. Use **Tenants**, **Upgrades**, and **State** to inspect requirements and record plans. Confirm renovations you still need to build; **Shopping Cart** totals their materials.
 3. Use **Sync latest save** after playing to update the profile from its character's newest manual, automatic, or quick save. The profile name and pending goals are preserved. A manual profile can choose its character on first sync.
 4. Use **Vendors** to choose an in-game weekday and time. Hours account for known entrance locks; quest-dependent access appears in the details.
+5. Use **Crafting**, choose **By input** or **By output**, and type an item name. Select a result for its complete bill and compatible equipment. **Show more** expands broad searches; **Include failure products** optionally finds output produced on failure.
 
 Profiles autosave. **Delete** asks for confirmation and keeps a recovery copy. Deleting the last profile creates an empty playthrough. Game saves are never modified.
 

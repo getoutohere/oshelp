@@ -140,6 +140,9 @@ public static class GameRules
 public static class Planner
 {
     public static string Key(int apartment, string upgrade) => apartment + "|" + upgrade;
+    static Job? UnderwayCovering(Catalog catalog, Profile profile, int scope, IEnumerable<Effect> effects) =>
+        profile.Jobs.FirstOrDefault(j => j.Apartment == scope && j.Status == JobStatus.UnderConstruction
+            && effects.All(required => catalog.Upgrade(j.UpgradeId).Effects.Any(e => e.Category == required.Category && e.Tier >= required.Tier)));
     public static PlanPreview Preview(Catalog catalog, Profile profile, IEnumerable<Goal> goals)
     {
         var jobs = new Dictionary<string, Job>(); var visiting = new HashSet<string>(); var notes = new List<string>();
@@ -150,8 +153,14 @@ public static class Planner
             if (upgrade.Building && !catalog.Applicable(upgrade, 0)) throw new InvalidOperationException("This building upgrade is not assigned to the tenement.");
             if (upgrade.Tier == 0) { if (root) throw new InvalidOperationException("A starting state is not a construction job."); return; }
             string key = Key(scope, id);
-            var existing = profile.Jobs.FirstOrDefault(x => x.Key == key && x.Status == JobStatus.UnderConstruction);
-            if (existing != null) { jobs.TryAdd(key, existing); return; }
+            var existing = profile.Jobs.FirstOrDefault(x => x.Key == key && x.Status == JobStatus.UnderConstruction)
+                ?? UnderwayCovering(catalog, profile, scope, upgrade.Effects);
+            if (existing != null)
+            {
+                jobs.TryAdd(existing.Key, existing);
+                if (root) notes.Add(catalog.ScopeName(scope) + ": " + upgrade.Name + " is covered by " + catalog.Upgrade(existing.UpgradeId).Name + " already underway. Its materials are not added again.");
+                return;
+            }
             if (GameRules.Satisfied(upgrade, target, profile) == true) { if (root) notes.Add(upgrade.Name + " is already met by the recorded levels."); return; }
             if (jobs.ContainsKey(key)) return;
             if (!visiting.Add(key)) throw new InvalidDataException("Cyclic scoped upgrade prerequisites");
@@ -169,6 +178,15 @@ public static class Planner
     public static void Confirm(Catalog catalog, Profile profile, IReadOnlyList<Goal> goals)
     {
         var preview = Preview(catalog, profile, goals); profile.Goals = goals.ToList(); profile.Jobs = preview.Jobs.ToList();
+    }
+    public static bool ReconcileUnderway(Catalog catalog, Profile profile)
+    {
+        if (!profile.Jobs.Any(j => j.Status == JobStatus.Planned
+            && UnderwayCovering(catalog, profile, j.Apartment, catalog.Upgrade(j.UpgradeId).Effects) != null)) return false;
+        // Rebuild from the user's goals so prerequisites needed only by the
+        // redundant job disappear too. Active work, history and stock are retained.
+        Confirm(catalog, profile, profile.Goals.ToArray());
+        return true;
     }
     public static int RemoveCompleted(Profile profile)
     {
@@ -251,10 +269,11 @@ public static class Planner
         {
             var c = Categories.Get(r.Category); var level = profile.Level(c.Key, apartment);
             if (level >= r.Minimum) continue;
+            int scope = c.Building ? 0 : apartment;
+            if (UnderwayCovering(catalog, profile, scope, [new(r.Category, r.Minimum)]) != null) continue;
             var source = c.Building ? catalog.BuildingUpgrades[c.Key] : catalog.ApartmentType(apartment).Upgrades[c.Key];
             var candidates = source.Select(catalog.Upgrade).Where(u => u.Effects.Any(e => e.Category == r.Category && e.Tier >= r.Minimum) && catalog.ContractorsFor(u, c.Building ? 0 : apartment).Any()).OrderBy(u => u.Effects.Single(e => e.Category == r.Category).Tier).ToList();
             if (candidates.Count == 0) throw new InvalidOperationException("No applicable constructible upgrade meets " + c.Name);
-            int scope = c.Building ? 0 : apartment;
             var existing = goals.Where(g => g.Apartment == scope).Select(g => catalog.Upgrade(g.UpgradeId)).FirstOrDefault(u => u.Effects.Any(e => e.Category == r.Category && e.Tier >= r.Minimum));
             if (existing != null) continue;
             goals.RemoveAll(g => g.Apartment == scope && catalog.Upgrade(g.UpgradeId).Effects.Any(e => e.Category == r.Category));

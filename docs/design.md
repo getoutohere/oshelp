@@ -1,6 +1,6 @@
 # OSHelp application design
 
-The implemented **Tenement Planner** is an offline Windows desktop host for a tenant reference, individual renovation bills, and a persistent shopping cart. It reads the installation and writes its own profiles/cache. Its [usage guide](prototype.md) describes the delivered behavior.
+OSHelp is an offline Windows desktop host for tenant requirements, individual renovation bills, a persistent shopping cart, crafting searches, and vendor hours. It reads the installation and writes its own profiles/cache. Its [usage guide](prototype.md) describes the delivered behavior.
 
 ## Platform
 

@@ -69,6 +69,36 @@ internal static class Theme
     }
 }
 
+internal sealed class DarkCheckBox : CheckBox
+{
+    protected override void OnPaint(PaintEventArgs e)
+    {
+        if (Enabled) { base.OnPaint(e); return; }
+        // WinForms' disabled flat checkbox uses system gray text, which can be
+        // nearly black on this theme. Retain native checkbox input/accessibility.
+        e.Graphics.Clear(BackColor);
+        int size = Math.Max(13, 13 * DeviceDpi / 96);
+        var box = new Rectangle(0, Math.Max(0, (Height - size) / 2), size, size);
+        using var fill = new SolidBrush(Theme.C("recess"));
+        using var pen = new Pen(Theme.C("muted"));
+        e.Graphics.FillRectangle(fill, box);
+        e.Graphics.DrawRectangle(pen, box.X, box.Y, box.Width - 1, box.Height - 1);
+        if (CheckState != CheckState.Unchecked)
+        {
+            if (CheckState == CheckState.Indeterminate)
+                e.Graphics.DrawLine(pen, box.Left + 3, box.Top + size / 2, box.Right - 4, box.Top + size / 2);
+            else
+            {
+                pen.Width = Math.Max(1.5f, 1.5f * DeviceDpi / 96);
+                e.Graphics.DrawLines(pen, new Point[] { new(box.Left + size / 5, box.Top + size / 2),
+                    new(box.Left + size * 2 / 5, box.Top + size * 3 / 4), new(box.Left + size * 4 / 5, box.Top + size / 4) });
+            }
+        }
+        TextRenderer.DrawText(e.Graphics, Text, Font, new Rectangle(size + 4, 0, Math.Max(1, Width - size - 4), Height),
+            Theme.C("muted"), TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.NoPadding);
+    }
+}
+
 internal sealed class DarkCombo : Control
 {
     readonly ContextMenuStrip popup = new() { ShowImageMargin = false, ShowCheckMargin = false, Renderer = new DarkMenuRenderer() };
