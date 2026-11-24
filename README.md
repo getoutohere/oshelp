@@ -1,8 +1,15 @@
-# OSHelp 0.1.1
+# OSHelp 0.1.2
 
 OSHelp is a Windows desktop companion for **Obenseuer**. Plan tenement renovations, find tenants, keep a materials shopping list, and check vendor opening hours with entrance locks taken into account.
 
-**Version 0.1.1 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+**Version 0.1.2 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+
+## Changes in 0.1.2
+
+- Added **Small / Medium / Large** tenant filters and **Both / Renting / Not renting** rental filters. Residents who accept multiple sizes appear once under any matching size. Filters combine with search and preserve the selected sort.
+- Added **Remove completed** to Shopping Cart. It saves immediately and clears completed job history while retaining recorded upgrade levels, stock, and unfinished work. The action bar adjusts to the window size.
+- Added an original game-inspired Windows icon for the executable, launcher, and application windows. The source PNG, Windows ICO, generation prompt, and dependency-free ICO conversion script are included; the standard build uses the supplied ICO.
+- Expanded regression and desktop checks for tenant filtering, completed-job cleanup, persistence, and controls at the minimum window size. The source-release audit explicitly permits only the reviewed original icon artwork as binary source.
 
 ## Changes in 0.1.1
 
@@ -26,9 +33,9 @@ Contributions submitted for inclusion must be offered under these same terms, in
 
 ## Features
 
-- Browse tenant requirements, recruitment locations, and current renters. Compare actual rent payments when considering a replacement tenant.
+- Browse tenant requirements, recruitment locations, and current renters. Filter by accepted apartment size and renting status, and compare actual rent payments when considering a replacement tenant.
 - Inspect renovation bills, prerequisites, qualified contractors, prices, and construction times.
-- Plan work across multiple apartments and shared building facilities. The shopping cart counts shared prerequisites once and subtracts your recorded stock.
+- Plan work across multiple apartments and shared building facilities. The shopping cart counts shared prerequisites once, subtracts your recorded stock, and can clear completed job history.
 - Import a game save, then **Sync latest save** to update apartments, renters, construction, and selected material stock while retaining your shopping goals.
 - Manage separate profiles, export shopping lists, and delete profiles with confirmation and a recovery copy.
 - Browse one row per vendor business, with combined hours that account for doors, weekdays, and known access conditions.

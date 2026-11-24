@@ -170,6 +170,12 @@ public static class Planner
     {
         var preview = Preview(catalog, profile, goals); profile.Goals = goals.ToList(); profile.Jobs = preview.Jobs.ToList();
     }
+    public static int RemoveCompleted(Profile profile)
+    {
+        var completed = profile.Jobs.Where(j => j.Status == JobStatus.Completed).Select(j => j.Key).ToHashSet();
+        profile.Goals.RemoveAll(g => completed.Contains(Key(g.Apartment, g.UpgradeId)));
+        return profile.Jobs.RemoveAll(j => j.Status == JobStatus.Completed);
+    }
     public static IReadOnlyList<Goal> AddGoal(Catalog catalog, Profile profile, Upgrade upgrade, int apartment)
     {
         int scope = upgrade.Building ? 0 : apartment;

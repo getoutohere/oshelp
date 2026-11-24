@@ -1,0 +1,10 @@
+Generated using the built-in image generation tool. Original OSHelp artwork;
+no game artwork is included in this asset.
+
+Use case: logo-brand
+Asset type: Windows desktop application icon for OSHelp, a companion planning tool for the gritty Finnish tenement game Obenseuer.
+Primary request: Create one original, highly legible icon: a compact charcoal metal clipboard with an ochre clip, bearing a simple cream apartment-building pictogram (two columns of three square windows); a bold ochre apartment key crosses its lower right corner. The building and key must remain distinct at small sizes. A practical landlord's field tool with a worn industrial character.
+Style/medium: polished hand-painted game UI icon, nearly flat front view, bold geometric silhouette, restrained enamel and brushed metal shading, very subtle edge wear only. Not photorealistic.
+Composition/framing: a single centered symbol filling about 88% of a square canvas, generous thick shapes and clear negative spaces. Straight upright clipboard with softly chamfered corners. Transparent outside the silhouette, crisp alpha edges. No separate backdrop or platform.
+Color palette: charcoal olive #292A27, dark #181917, warm ochre #C09A50 with brighter #E6C271 edges, cream #E2DFD2, a restrained muted blue #214F65 accent.
+Constraints: original OSHelp identity, thematically compatible with Obenseuer's utilitarian dark interfaces but distinctly different from the game's orange point and grey star logo. No letters, numbers, text, border frame, watermark, extra tools, screws, intricate blueprint lines, or tiny surface details. Must read clearly as a small Windows taskbar icon, not a detailed illustration.

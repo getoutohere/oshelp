@@ -6,7 +6,7 @@
     <Deterministic>true</Deterministic>
     <RollForward>LatestMajor</RollForward>
     <NuGetAudit>false</NuGetAudit>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Product>OSHelp</Product>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <DebugType>embedded</DebugType>

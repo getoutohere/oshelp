@@ -158,6 +158,22 @@ try
     Throws<InvalidOperationException>(() => Planner.Start(catalog, p2, job1), "cannot double consume");
     Planner.Complete(catalog, p2, job1);
     Check(p2.Apartment(4).Levels["bathroom"] == 1, "completion updates actual category");
+    var cleanup = ProfileStore.Clone(p2);
+    Planner.Confirm(catalog, cleanup, cleanup.Goals.Append(new Goal { Apartment = 10, UpgradeId = bathroom.Id }).ToArray());
+    Planner.RecordUnderway(catalog, cleanup, cleanup.Jobs.Single(j => j.Apartment == 10));
+    cleanup.Goals.Add(new Goal { Apartment = 4, UpgradeId = bathroom.Id });
+    var cleanupStock = JsonSerializer.Serialize(cleanup.Stock, Json.Options);
+    var cleanupState = JsonSerializer.Serialize(cleanup.Apartments, Json.Options);
+    var outstanding = JsonSerializer.Serialize(cleanup.Jobs.Where(j => j.Status != JobStatus.Completed), Json.Options);
+    var cleanupCart = JsonSerializer.Serialize(Planner.Cart(catalog, cleanup), Json.Options);
+    Check(Planner.RemoveCompleted(cleanup) == 1, "cleanup removes completed history");
+    Check(JsonSerializer.Serialize(cleanup.Jobs, Json.Options) == outstanding, "cleanup preserves planned and underway jobs including their consumption history");
+    Check(JsonSerializer.Serialize(cleanup.Stock, Json.Options) == cleanupStock && JsonSerializer.Serialize(cleanup.Apartments, Json.Options) == cleanupState, "cleanup preserves stock and installed upgrades");
+    Check(JsonSerializer.Serialize(Planner.Cart(catalog, cleanup), Json.Options) == cleanupCart, "cleanup preserves outstanding material requirements");
+    Check(cleanup.Goals.Count == 2 && !cleanup.Goals.Any(g => g.Apartment == 4 && g.UpgradeId == bathroom.Id), "cleanup removes only completed goals in the matching apartment");
+    Planner.Confirm(catalog, cleanup, cleanup.Goals.ToArray());
+    Check(cleanup.Jobs.Count == 2 && cleanup.Jobs.All(j => j.Status != JobStatus.Completed), "cleared history does not return during replanning");
+    Check(Planner.RemoveCompleted(cleanup) == 0, "repeated completed cleanup is a no-op");
     Planner.Confirm(catalog, p2, []);
     Check(Planner.Cart(catalog, p2).Count == 0 && p2.Jobs.Count == 1 && p2.Jobs[0].Status == JobStatus.Completed, "goal removal preserves history only");
 
@@ -201,6 +217,7 @@ try
     VendorChecks.Run(repository, Check);
     ImportOverwriteChecks.Run(catalog, scratch, Check);
     ProfileActionChecks.Run(catalog, scratch, Check);
+    TenantDirectoryChecks.Run(catalog, Check);
     SaveImportChecks.Run(catalog, scratch, Check, (action, message) =>
     {
         try { action(); } catch (Exception e) when (e is InvalidDataException or JsonException) { Check(true, message); return; }

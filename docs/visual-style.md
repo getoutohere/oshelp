@@ -22,6 +22,12 @@ The installed assets also contain font assets named `Erika Ormig SDF`, `Chalkiez
 
 The game's off-white architectural plan is a specific document surface. OSHelp's normal tenant lists and material tables use dark surfaces. Architectural drawings can be considered separately if floor-plan views are added later.
 
+## Application icon
+
+The original [OSHelp icon](../design/oshelp-icon.png) uses a worn charcoal clipboard, a cream apartment symbol, and an ochre key. It follows the application's palette while keeping a silhouette distinct from Obenseuer's logo. It was created with the built-in image generation tool using this [saved prompt](../design/oshelp-icon.prompt.txt); no game artwork is redistributed.
+
+[design/oshelp.ico](../design/oshelp.ico) contains full-alpha frames at 16, 20, 24, 32, 40, 48, 64, 128, and 256 pixels. The app and stable launcher embed it in their executables; application windows use the same embedded resource. Regenerate the ICO from the PNG with `powershell -NoProfile -ExecutionPolicy Bypass -File tools/Convert-AppIcon.ps1`. Building needs no image generator, image editor, or additional package. The source-release audit permits only these two reviewed binary artwork files by SHA-256; update their recorded hashes when deliberately replacing the artwork.
+
 ## Palette
 
 The implementation source of truth is [design/obenseuer-dark.json](../design/obenseuer-dark.json). The following are deliberately selected application tokens, adjusted from the visual references for legibility and consistent control states.
@@ -103,4 +109,4 @@ Regenerate the preview with no external dependencies:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\oshelp\tools\Render-ThemePreview.ps1
 ```
 
-The renderer reads the same palette file and produces local PNG and [SVG previews](assets/theme-preview.svg). Only the illustrative SVG is included in the source release. The concept establishes color and layout direction; it does not establish native-control or DPI behavior before the application is implemented.
+The renderer reads the same palette file and produces local PNG and [SVG previews](assets/theme-preview.svg). Only the illustrative SVG theme preview is included in the source release; local application captures remain excluded. The separate original application icon PNG and ICO are included as described above. The concept establishes color and layout direction; it does not establish native-control or DPI behavior before the application is implemented.

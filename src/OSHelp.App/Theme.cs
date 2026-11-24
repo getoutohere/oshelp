@@ -7,6 +7,14 @@ namespace OSHelp.App;
 internal static class Theme
 {
     static Dictionary<string, Color> colors = [];
+    static readonly Icon appIcon = LoadIcon();
+    static Icon LoadIcon()
+    {
+        using var stream = typeof(Theme).Assembly.GetManifestResourceStream("OSHelp.App.Icon")
+            ?? throw new InvalidOperationException("The application icon resource is missing.");
+        using var icon = new Icon(stream, 32, 32);
+        return (Icon)icon.Clone();
+    }
     public static readonly Font Body = new("Segoe UI", 10.5f);
     public static readonly Font Heading = new("Courier New", 14, FontStyle.Bold);
     public static readonly Font LabelFont = new("Courier New", 10.5f, FontStyle.Bold);
@@ -20,7 +28,7 @@ internal static class Theme
     public static void Apply(Control control)
     {
         control.Font = Body; control.BackColor = C(control is TextBoxBase or ListBox ? "recess" : "panel"); control.ForeColor = C("text");
-        if (control is Form form) { form.BackColor = C("window"); form.Icon = SystemIcons.Application; }
+        if (control is Form form) { form.BackColor = C("window"); form.Icon = appIcon; }
         if (control is Button button) { button.FlatStyle = FlatStyle.Flat; button.UseVisualStyleBackColor = false; button.BackColor = C("button"); button.FlatAppearance.BorderColor = C("accent"); button.FlatAppearance.MouseOverBackColor = C("buttonHover"); button.FlatAppearance.MouseDownBackColor = C("selection"); button.Font = LabelFont; button.AutoSize = true; button.Padding = new(8, 4, 8, 4); }
         if (control is TextBoxBase text) { text.BorderStyle = BorderStyle.FixedSingle; }
         if (control is DataGridView grid) StyleGrid(grid);

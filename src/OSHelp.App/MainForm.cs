@@ -25,7 +25,7 @@ internal sealed partial class MainForm : Form
     DarkViewer upgradeDetails = null!, contributors = null!;
     Label tenantHeading = null!, tenantInfo = null!, tenantResult = null!, cartTotals = null!, stateInfo = null!;
     Label apartmentRental = null!, tenantRevenue = null!, tenantRevenueChange = null!, tenantMonthly = null!, tenantRevenueNote = null!;
-    Button planTenant = null!;
+    Button planTenant = null!, removeCompletedButton = null!;
     DarkCombo recruit = null!, permission = null!, categoryFilter = null!, levelEditor = null!, occupant = null!;
     CheckBox buildingUpgrades = null!, allUpgrades = null!, buildingState = null!;
     DarkNumber resources = null!, money = null!, speed = null!;
@@ -225,7 +225,7 @@ internal sealed partial class MainForm : Form
         var searchPanel = Theme.Panel(DockStyle.Top, 0); searchPanel.Height = 58;
         var searchLabel = Theme.Text("Search names, household, rental status, or location"); searchLabel.Dock = DockStyle.Top; searchLabel.Font = Theme.Body;
         tenantSearch.Dock = DockStyle.Bottom; searchPanel.Controls.Add(tenantSearch); searchPanel.Controls.Add(searchLabel);
-        Attach(left, tenantGrid, searchPanel);
+        Attach(left, tenantGrid, BuildTenantFilters(searchPanel));
         requirementsGrid = Theme.Grid(("name", "Requirement", 27), ("required", "Minimum / rule", 29), ("current", "Profile state", 29), ("met", "Result", 15));
         var header = Theme.Panel(DockStyle.Top); header.Height = 305;
         tenantHeading = Theme.Text("", true); tenantHeading.Dock = DockStyle.Top;
@@ -248,16 +248,18 @@ internal sealed partial class MainForm : Form
     }
     void RefreshTenants()
     {
-        if (tenantGrid == null) return;
+        if (tenantGrid == null || profile == null) return;
         var selected = SelectedTenant?.Id; bool old = refreshing; refreshing = true;
         tenantGrid.Rows.Clear();
-        foreach (var t in catalog.Tenants.OrderBy(t => t.Name).Where(t => (t.Name + " " + string.Join(" ", t.Household.Select(h => h.Name)) + " " + t.LocationHint + " " + TenantRentalStatus.Label(catalog, profile, t)).Contains(tenantSearch.Text, StringComparison.CurrentCultureIgnoreCase)))
+        var sizes = Enumerable.Range(0, tenantSizes.Length).Where(i => tenantSizes[i].Checked);
+        foreach (var t in TenantDirectory.Filter(catalog, profile, sizes, (TenantRentalFilter)Math.Max(0, tenantRental.SelectedIndex), tenantSearch.Text))
         {
             var rented = TenantRentalStatus.Apartments(catalog, profile, t).Count > 0;
             AddRow(tenantGrid, t, t.Name, string.Join(" / ", t.Sizes.Select(GameRules.SizeName)), TenantRentalStatus.Label(catalog, profile, t).Replace(" · ", "\r\n", StringComparison.Ordinal), t.LocationHint);
             tenantGrid.Rows[^1].Cells["rental"].Style.ForeColor = Theme.C(rented ? "success" : "muted");
             if (rented) tenantGrid.Rows[^1].Cells["name"].Style.ForeColor = Theme.C("success");
         }
+        if (tenantSort is { } sort) tenantGrid.Sort(tenantGrid.Columns[sort.Column], sort.Direction);
         foreach (DataGridViewRow row in tenantGrid.Rows) if ((row.Tag as Tenant)?.Id == selected) { tenantGrid.CurrentCell = row.Cells[0]; break; }
         refreshing = old; RenderTenant();
     }
@@ -364,9 +366,12 @@ internal sealed partial class MainForm : Form
         var split = Split(true); var top = Theme.Panel(); var lower = Theme.Panel(); split.Panel1.Controls.Add(top); split.Panel2.Controls.Add(lower);
         jobGrid = Theme.Grid(("target", "Target", 17), ("job", "Confirmed construction", 48), ("status", "Status", 20), ("role", "Reason", 15));
         var actions = Theme.Flow(DockStyle.Bottom, 56);
+        actions.AutoSize = true; actions.AutoSizeMode = AutoSizeMode.GrowAndShrink; actions.MinimumSize = new(0, 56);
         actions.Controls.Add(Theme.Button("Remove goal", (_, _) => Guard(RemoveGoal)));
         actions.Controls.Add(Theme.Button("Start / consume stock", (_, _) => Guard(() => TransitionJob(false))));
         actions.Controls.Add(Theme.Button("Record completed", (_, _) => Guard(() => TransitionJob(true))));
+        removeCompletedButton = Theme.Button("Remove completed", (_, _) => Guard(RemoveCompletedJobs));
+        actions.Controls.Add(removeCompletedButton);
         actions.Controls.Add(Theme.Button("Already underway", (_, _) => Guard(() =>
         {
             if (SelectedJob is not { } selected) return;
@@ -403,9 +408,17 @@ internal sealed partial class MainForm : Form
         long final = profile.Jobs.Where(j => j.Status != JobStatus.Completed).Sum(j => (long)GameRules.Price(catalog.Upgrade(j.UpgradeId).FinalRm, profile.MoneyMultiplier));
         cartTotals.Text = $"{profile.Jobs.Count(j => j.Status == JobStatus.Planned)} planned jobs / {lines.Count} materials / Start: {(profile.IgnoreCosts ? 0 : start):N0} OC / Final: {(profile.IgnoreCosts ? 0 : final):N0} RM\r\nHave means current unspent stock; it is deducted once across all planned jobs.";
         if (lines.Count == 0) contributors.Text = "No outstanding materials. Add work from Tenants or Upgrades. Under-construction and completed jobs do not require materials again.";
+        removeCompletedButton.Enabled = profile.Jobs.Any(j => j.Status == JobStatus.Completed);
         refreshing = old; RenderContributors();
     }
     void RenderContributors() { if (contributors != null && materialGrid?.CurrentRow?.Tag is CartLine line) contributors.Text = catalog.Items[line.ItemKey].Name + "\r\n" + line.ItemKey + "\r\n\r\n" + string.Join("\r\n\r\n", line.Contributors); }
+    void RemoveCompletedJobs()
+    {
+        if (!profile.Jobs.Any(j => j.Status == JobStatus.Completed)) return;
+        int removed = 0;
+        Mutate(p => removed = Planner.RemoveCompleted(p));
+        status.Text = $"Removed {removed} completed job{(removed == 1 ? "" : "s")} / Saved {profile.Name}";
+    }
     void RemoveGoal()
     {
         if (SelectedJob is not { } job) return;
@@ -569,6 +582,7 @@ internal sealed partial class MainForm : Form
         if (tenantHeading.Text != aleksi.Name.ToUpper(CultureInfo.CurrentCulture)) throw new InvalidOperationException("Tenant selection did not update its detail view.");
         await Task.Delay(250);
         if (status.Text.StartsWith("Checking", StringComparison.Ordinal) || status.Text.StartsWith("Verifying", StringComparison.Ordinal)) throw new InvalidOperationException("Queued startup progress replaced the ready status.");
+        await VerifyTenantFilters();
         foreach (var page in pages.Keys)
         {
             ShowPage(page); await Task.Delay(100);
@@ -694,6 +708,7 @@ internal sealed partial class MainForm : Form
             profile = store.Load(overwritten.Id); RefreshProfiles(); RefreshViews();
         }
         File.WriteAllText(Path.Combine(SmokeDirectory!, "success.txt"), $"Runtime: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}\nTenants: {catalog.Tenants.Count}\nUpgrades: {catalog.Upgrades.Count}\nApartments: {catalog.Apartments.Count}\nVendors: {vendorCatalog.Vendors.Count}\nVendor search / Saturday 13:30 locked entrance / trader-door overlap / access-only filter / chosen time refresh / all seven weekdays / weekly day selection / region filter / vending filter / invalid time: PASS\nTenant selection / rental annotations / furniture-only exclusion / scene location column and search / current renter and replacement revenue / currency-specific gains and losses / revenue refresh on apartment selection / stock editor / save and reload / facility editor / goal recalculation / Casual preset / shop exclusion / save picker / import review / source selection / imported profile reload / overwrite confirmation and cancellation / unique imported name / previous profile backup: PASS\n");
+        await VerifyCartCleanup();
         await SmokeProfileActions();
         Close();
     }

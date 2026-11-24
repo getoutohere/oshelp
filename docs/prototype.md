@@ -20,6 +20,8 @@ State can be imported or entered manually. Use **Sync latest save** to pick up s
 
 ## Find tenants and renovations
 
+The Tenants list has **Small**, **Medium**, and **Large** size toggles, all enabled by default. A resident appears once if they accept any enabled size; small/medium applicants appear under either individual size. Turning all three off gives an empty list. **Rental status** offers **Both**, **Renting**, and **Not renting**, based on the selected profile's recorded occupants. Furniture-only placements, the shop, and the player apartment do not count as active rentals. Profiles with unrecorded occupancy have no confirmed renters. Size and rental filters combine with search, retain the chosen table sort, and update when profile state changes.
+
 **Tenants** includes all resident definitions. Select a resident/apartment for every required facility, recorded level, unmet conditions, and the game's first facility rejection. Recruitment eligibility and landlord permission are separate gates. Open the source/recruitment details to read extracted dialogue text, conditions, scripts, and callbacks. Record recruitment eligibility when those conditions are met in your game.
 
 **Rental status** marks current tenants as **Already renting**, with their apartment number, using the selected profile's imported or recorded occupancy. Furniture-only placements are excluded. A blank playthrough shows **Not recorded** until occupancy is known. **Offer location** gives the recruitment area from actual scene NPC placements; search also matches locations and rental status. The detail panel repeats both fields, and Source + recruitment includes the scene/object evidence. These are recruitment locations; a recruited tenant may now be living in your building. See [tenant location evidence](tenant-locations.md).
@@ -43,6 +45,7 @@ In **Shopping Cart**, edit **Have** to record current unspent stock. Stock is su
 - **Start work** records new construction and consumes its bill from recorded stock once. Record completed prerequisites first.
 - **Already underway** records construction started before tracking it in OSHelp. It removes the outstanding bill without consuming current stock again.
 - **Complete work** updates facility levels and retains history. It records your confirmation; it does not run a timer or make in-game payments.
+- **Remove completed** clears completed job history from the current profile and saves immediately. Recorded upgrade levels, material stock, planned jobs, and work underway are preserved. The button is disabled when there is no completed history.
 - **Remove goal** removes future work and recalculates dependencies. Shared work remains while another goal needs it.
 - Export CSV/text. **Record all stock available** explicitly confirms possession of outstanding materials.
 

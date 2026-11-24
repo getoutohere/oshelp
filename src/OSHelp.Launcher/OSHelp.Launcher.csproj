@@ -3,5 +3,6 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>OSHelp.Launcher</AssemblyName>
+    <ApplicationIcon>../../design/oshelp.ico</ApplicationIcon>
   </PropertyGroup>
 </Project>

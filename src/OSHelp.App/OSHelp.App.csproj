@@ -5,6 +5,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>OSHelp</AssemblyName>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>../../design/oshelp.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup><ProjectReference Include="../OSHelp.Core/OSHelp.Core.csproj" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="../../design/oshelp.ico" LogicalName="OSHelp.App.Icon" /></ItemGroup>
 </Project>

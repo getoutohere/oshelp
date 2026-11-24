@@ -20,4 +20,6 @@ if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'vendor-sort.txt')){Get-C
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'profile-actions.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'profile-actions.txt')}
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'gold-shop.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'gold-shop.txt')}
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')}
+if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'tenant-filters.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'tenant-filters.txt')}
+if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'cart-cleanup.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'cart-cleanup.txt')}
 'GUI screenshots: '+$CaptureDirectory
