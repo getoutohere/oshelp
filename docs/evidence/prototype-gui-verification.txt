@@ -1,3 +1,4 @@
+OSHelp 0.1.1
 Runtime: .NET 10.0.9
 Tenants: 31
 Upgrades: 131
@@ -6,3 +7,6 @@ Vendors: 135
 Vendor search / Saturday 13:30 locked entrance / trader-door overlap / access-only filter / chosen time refresh / all seven weekdays / weekly day selection / region filter / vending filter / invalid time: PASS
 Tenant selection / rental annotations / furniture-only exclusion / scene location column and search / current renter and replacement revenue / currency-specific gains and losses / revenue refresh on apartment selection / stock editor / save and reload / facility editor / goal recalculation / Casual preset / shop exclusion / save picker / import review / source selection / imported profile reload / overwrite confirmation and cancellation / unique imported name / previous profile backup: PASS
 PASS: every vendor column in both directions across all seven days, time, empty search, region/type/open filters and profile refresh; selection and sort glyph preserved; weekly table sort and day selection preserved.
+PASS: first-time character linking / latest save sync / renamed profile identity / selected stock sources / in-place revision and backup / older-save confirmation and cancellation / delete confirmation and cancellation / remaining profile selection / last profile replacement / controls at minimum window size.
+PASS: weekday 08:00–16:00 / exact 16:00 close / closed Saturday / open-only filter / inaccessible balcony doors excluded.
+PASS: interior shop door / 08:00–18:00 all seven days / exact opening and closing / nearby-player delay / open-only filter.

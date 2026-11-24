@@ -1,5 +1,5 @@
 {
-  "FormatVersion": 2,
+  "FormatVersion": 4,
   "FilesScanned": 250,
   "Inputs": [
     {
@@ -4451,118 +4451,6 @@
             "level112:301001.UnLock",
             "level112:286662",
             "level112:301001.Lock"
-          ]
-        },
-        {
-          "Name": "Bazaar \u00B7 outdoors \u2192 Bazaar \u00B7 Gold Shop",
-          "Source": "level112:305621",
-          "Scene": "",
-          "Hours": {
-            "Days": [
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ]
-            ]
-          },
-          "InitiallyLocked": false,
-          "Notes": [],
-          "Evidence": [
-            "level112:305621 \u2192 Interior Bazaar Gold Shop"
-          ]
-        },
-        {
-          "Name": "Bazaar \u00B7 outdoors \u2192 Bazaar \u00B7 Gold Shop",
-          "Source": "level112:305627",
-          "Scene": "",
-          "Hours": {
-            "Days": [
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ],
-              [
-                {
-                  "Start": 0,
-                  "End": 1440
-                }
-              ]
-            ]
-          },
-          "InitiallyLocked": false,
-          "Notes": [],
-          "Evidence": [
-            "level112:305627 \u2192 Interior Bazaar Gold Shop"
           ]
         }
       ],
@@ -19313,7 +19201,70 @@
           ]
         }
       ],
-      "InternalAccess": [],
+      "InternalAccess": [
+        {
+          "Name": "Internal shop door: Mobelmann Door",
+          "Source": "level10:72730",
+          "Scene": "",
+          "Hours": {
+            "Days": [
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ],
+              [
+                {
+                  "Start": 480,
+                  "End": 1080
+                }
+              ]
+            ]
+          },
+          "InitiallyLocked": false,
+          "Notes": [
+            "Closing waits until the player is 4 m away."
+          ],
+          "Evidence": [
+            "level10:64826",
+            "level10:64825",
+            "level10:72730.UnlockOpen",
+            "level10:64824",
+            "level10:72730.LockAndClose"
+          ]
+        }
+      ],
       "Notes": [
         "Open this shop through the operator\u0027s dialogue."
       ],

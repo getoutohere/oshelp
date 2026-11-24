@@ -18,4 +18,6 @@ if($process.ExitCode -ne 0 -or (Test-Path -LiteralPath (Join-Path $CaptureDirect
 Get-Content -LiteralPath (Join-Path $CaptureDirectory 'success.txt')
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'vendor-sort.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'vendor-sort.txt')}
 if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'profile-actions.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'profile-actions.txt')}
+if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'gold-shop.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'gold-shop.txt')}
+if(Test-Path -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')){Get-Content -LiteralPath (Join-Path $CaptureDirectory 'mobelmann.txt')}
 'GUI screenshots: '+$CaptureDirectory

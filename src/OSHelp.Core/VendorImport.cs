@@ -23,6 +23,11 @@ public sealed class VendorRecord
 public static class VendorImport
 {
     public static readonly string[] VendorClasses = ["Trade", "TradeSpecial", "FurnitureShop", "TrainShop", "MarketShop", "VendingMachine"];
+    static bool EntrypointHas(VendorRecord door, string word) => door.Fields.String("OtherEntrypoint")
+        .Split(['_', '-', ' '], StringSplitOptions.RemoveEmptyEntries).Contains(word, StringComparer.OrdinalIgnoreCase);
+    static string Canonical(string name) => new(name.Normalize(System.Text.NormalizationForm.FormD)
+        .Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant).ToArray());
+    static IEnumerable<string> NameWords(string name) => System.Text.RegularExpressions.Regex.Matches(name, @"[\p{L}\p{Nd}]+").Select(m => Canonical(m.Value));
     sealed record Effect(string Target, string Kind, bool Open, List<string> Evidence, List<string> Notes);
     sealed record Control(string Target, string Kind, VendorHours Hours, List<string> Evidence, List<string> Notes);
 
@@ -178,6 +183,10 @@ public static class VendorImport
             if (menuTalks.Count > 0) { vendor.Notes.Add("Open this shop through the operator's dialogue."); vendor.Evidence.AddRange(menuTalks.Select(t => t.Key + " dialogue menu")); }
             else if (f.Bool("interactDisabled") || isTrade && !f.Bool("isInteractable")) vendor.Notes.Add("Requires interaction to be enabled by game state.");
             var incoming = rows.Where(d => row.Scene.StartsWith("Interior ", StringComparison.Ordinal) && d.Class == "DoorChangelevel" && !d.Test && !Background(d) && d.Enabled && d.Active && d.Fields.String("OtherLevel") == row.Scene).ToList();
+            // A named main entrance establishes the shop's public route. Gold shop's
+            // two balcony transitions are unreachable from the street; their unlocked
+            // defaults must not turn its weekday front-door schedule into 24-hour access.
+            if (incoming.Any(d => EntrypointHas(d, "main"))) incoming.RemoveAll(d => EntrypointHas(d, "balcony"));
             foreach (var door in incoming)
             {
                 var gates = controls.Where(c => c.Kind == "Door" && c.Target == door.Key).Concat(ObjectControls(door)).ToList();
@@ -190,8 +199,12 @@ public static class VendorImport
             }
             // A physical shop door can be in the same scene as its vendor. Join
             // exact named shop groups, independently of scene-change entrances.
-            static string Canonical(string name) => new(name.Where(char.IsLetterOrDigit).Select(char.ToLowerInvariant).ToArray());
             var shopNames = row.Hierarchy.Split(" -> ").Append(vendor.Name).Select(Canonical).Where(n => n.Length > 7 && n is not "vendingmachine" and not "furnitureshop").ToHashSet();
+            // A room can use the proprietor's surname while the menu lives under
+            // their NPC hierarchy (Möbelmann / Möbelmann Furnitures / Hank Möbelmann).
+            // Require that name in BOTH the public shop title and actual operator;
+            // matching an arbitrary nearby NPC or a generic "Furniture" group is unsafe.
+            shopNames.UnionWith(NameWords(vendor.Name).Where(n => n.Length > 6).Intersect(NameWords(vendor.Operator)));
             var localDoors = rows.Where(d => d.File == row.File && d.Class == "Door" && !d.Test && !Background(d) && d.Hierarchy.Split(" -> ").Select(Canonical).Any(shopNames.Contains)).ToList();
             foreach (var door in localDoors)
             {
@@ -210,8 +223,8 @@ public static class VendorImport
         var validation = catalog.FileValidation ??= new GameFileValidation(gameRoot, dataDirectory);
         var cached = Path.Combine(dataDirectory, "vendors.json"); var baseline = Path.Combine(repository, "docs/evidence/vendors.json");
         VendorCatalog? data = File.Exists(cached) ? Json.Read<VendorCatalog>(cached) : File.Exists(baseline) ? Json.Read<VendorCatalog>(baseline) : null;
-        if (data is { FormatVersion: not 2 } && File.Exists(baseline)) data = Json.Read<VendorCatalog>(baseline);
-        bool matches = data is { FormatVersion: 2 };
+        if (data?.FormatVersion != VendorCatalog.CurrentFormatVersion && File.Exists(baseline)) data = Json.Read<VendorCatalog>(baseline);
+        bool matches = data?.FormatVersion == VendorCatalog.CurrentFormatVersion;
         if (data != null)
         {
             var sources = Directory.EnumerateFiles(Path.Combine(gameRoot, "Obenseuer_Data")).Select(Path.GetFileName).Where(f => f!.EndsWith(".assets", StringComparison.Ordinal) || System.Text.RegularExpressions.Regex.IsMatch(f, "^level[0-9]+$")).ToHashSet();

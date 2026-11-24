@@ -6,7 +6,7 @@ internal static class VendorChecks
     public static void Run(string repository, Action<bool, string> check)
     {
         var data = Json.Read<VendorCatalog>(Path.Combine(repository, "docs/evidence/vendors.json"));
-        check(data.FormatVersion == 2 && data.FilesScanned == 250 && data.Inputs.Count == 253, "vendor catalog covers all installed asset/scene files with hashes");
+        check(data.FormatVersion == VendorCatalog.CurrentFormatVersion && data.FilesScanned == 250 && data.Inputs.Count == 253, "vendor catalog covers all installed asset/scene files with hashes and current entrance rules");
         check(data.Vendors.Count == 135 && data.Vendors.Select(v => v.Id).Distinct().Count() == 135, "all 135 actual vendor/menu placements have unique source identities");
         var rawDirectory = Path.Combine(repository, "local/vendor-research");
         if (File.Exists(Path.Combine(rawDirectory, "vendor-records.json")) && File.Exists(Path.Combine(rawDirectory, "vendor-extra-records.json")))
@@ -33,10 +33,30 @@ internal static class VendorChecks
         check(general.Trading!.Contains(5, 810) && general.Status(5, 810) == "Entrance closed", "Saturday 13:30 regression: trading component open but shop door locked");
         check(general.Status(5, 420) == "Trader closed" && general.Status(5, 480) == "Within access hours" && general.Status(5, 719) == "Within access hours" && general.Status(5, 720) == "Entrance closed", "opening inclusive, noon closing exclusive");
         check(general.Entrances[0].Evidence.Contains("level112:305626.UnLock") && general.Entrances[0].Evidence.Contains("level112:305626.Lock"), "both lock and unlock callbacks resolve to the same actual door");
+        var gold = data.Vendors.Single(v => v.Id == "level88:38963");
+        check(gold.Entrances.Count == 1 && gold.Entrances[0].Source == "level112:301001", "gold shop includes the street entrance only, excluding inaccessible balcony doors");
+        check(gold.Entrances[0].Evidence.Contains("level112:301001.UnLock") && gold.Entrances[0].Evidence.Contains("level112:301001.Lock"), "gold shop hours trace paired actions to the actual front door");
+        for (int day = 0; day < 7; day++)
+        {
+            check(gold.Accessible!.Format(day) == (day < 5 ? "08:00–16:00" : "Closed"), "gold shop exact weekly street-access hours, day " + day);
+            foreach (var minute in new[] { 0, 479, 480, 959, 960, 1439 })
+                check(gold.Accessible.Contains(day, minute) == (day < 5 && minute >= 480 && minute < 960), "gold shop exact opening/closing boundary, day " + day + " minute " + minute);
+        }
         check(data.Vendors.Single(v => v.Id == "level93:39179").Accessible!.Format(5) == "10:00–16:00", "Bakery dialogue/vending menu uses external entrance hours");
         check(data.Vendors.Single(v => v.Id == "level2:188361").Trading!.Format(5) == "12:00–20:00", "Teuvo's no-auto-close Trade receives its actor activation timetable");
         check(data.Vendors.Single(v => v.Id == "level12:41423").Accessible!.Format(5) == "10:00–16:00", "alternate Mr. Bag actor paths are unioned, not intersected into permanent closure");
         check(data.Vendors.Single(v => v.Id == "level118:116850").InternalAccess.Any(d => d.Source == "level118:127901") && data.Vendors.Single(v => v.Id == "level118:116850").Accessible!.Format(5) == "08:00–22:00", "physical internal shop door included separately from scene-change entrance");
+        var mobelmann = data.Vendors.Single(v => v.Id == "level10:64799");
+        var mobelmannDoor = mobelmann.InternalAccess.Single(d => d.Source == "level10:72730");
+        check(mobelmannDoor.Evidence.Contains("level10:72730.UnlockOpen") && mobelmannDoor.Evidence.Contains("level10:72730.LockAndClose") && mobelmannDoor.Evidence.Contains("level10:64826"), "Möbelmann's room door joins the proprietor-named shop to its exact clock and lock/unlock callbacks");
+        check(mobelmannDoor.Notes.Contains("Closing waits until the player is 4 m away."), "Möbelmann's player-proximity closing delay is retained");
+        for (int day = 0; day < 7; day++)
+        {
+            check(mobelmann.Accessible!.Format(day) == "08:00–18:00", "Möbelmann interior door applies every day, day " + day);
+            foreach (int minute in new[] { 0, 479, 480, 1079, 1080, 1439 })
+                check(mobelmann.Accessible.Contains(day, minute) == (minute >= 480 && minute < 1080), "Möbelmann opening/closing boundaries, day " + day + " minute " + minute);
+        }
+        check(data.Vendors.Single(v => v.Id == "level10:64793").InternalAccess.All(d => d.Source != "level10:72730"), "Möbelmann's door must not restrict the unrelated Svamppatrullen trader in Deekula C");
         check(data.Vendors.Single(v => v.Id == "level101:42291").Operator == "Anneli Tuoppi" && data.Vendors.Single(v => v.Id == "level101:42328").Operator == "Jooseppi Tuoppi", "dialogue menu operator takes precedence over shared vending ownership");
         check(!data.Vendors.Any(v => v.Id == "level111:629359") && data.Vendors.Single(v => v.Id == "level111:649879").Notes.Any(n => n.StartsWith("Inactive", StringComparison.Ordinal)), "test train shop excluded and actual inactive shop annotated");
         using var source = JsonDocument.Parse("""
@@ -57,6 +77,10 @@ internal static class VendorChecks
         VendorListing Shop(string source) => directory.Single(v => v.Sources.Any(s => s.Id == source));
         check(directory.SelectMany(v => v.Sources).Select(v => v.Id).Order().SequenceEqual(data.Vendors.Select(v => v.Id).Order()), "shop grouping retains each raw source exactly once");
         var combinedGeneral = Shop("level77:40294");
+        check(Enumerable.Range(0, 7).All(d => Shop("level10:64799").OpeningHours!.Format(d) == "08:00–18:00") && Shop("level10:64799").Status(0, 1080) == "Closed", "Möbelmann directory hours intersect its internal shop door with building access");
+        var combinedGold = Shop("level88:38963");
+        check(Enumerable.Range(0, 7).All(d => combinedGold.OpeningHours!.Format(d) == (d < 5 ? "08:00–16:00" : "Closed")), "gold shop directory never promotes inaccessible balcony doors to 24-hour opening");
+        check(combinedGold.Status(0, 480) == "Open" && combinedGold.Status(0, 960) == "Closed" && combinedGold.Status(5, 720) == "Closed", "gold shop directory status follows weekday front-door hours");
         var hardware = Shop("level2:188941");
         check(hardware.Name == "Hardware Stall" && hardware.Operator == "Henning Torskvær", "public storage label names Henning's hardware stall");
         check(hardware.OpeningHours!.Format(1) == "12:00–18:00" && hardware.Status(1, 720) == "Open" && hardware.Status(1, 719) == "Closed" && hardware.Status(1, 1080) == "Closed", "reported hardware stall Tuesday noon regression and exact boundaries");

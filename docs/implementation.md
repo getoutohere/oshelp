@@ -26,6 +26,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/Build.ps1 -Verify -Smo
 
 ## Verification
 
+Version 0.1.1 corrects Gold Shop and Möbelmann vendor access through naming-based entrance filtering and internal-door association. Vendor cache format 4 causes older extracted vendor catalogs to fall back to the updated, source-validated baseline. This leaves the planning fingerprint and existing profiles unchanged. The [vendor guide](vendors.md#extraction-and-calculation) documents the heuristics and their limits; asset byte decoding and general geometric reachability are unchanged.
+
 Startup validation uses `GameFileValidation`, shared across the four importers. `local/userdata/game-file-hashes.json` stores SHA-256 values with length, UTC modification/creation ticks, absolute game-data root, and Steam build ID. Only metadata is read for unchanged files. A new installation, changed Steam build, missing/malformed cache, or changed metadata causes content hashing. The complete vendor asset-file inventory is still checked, so added/removed scenes trigger extraction. Missing inputs fail validation. Hash reads exclude concurrent writes/replacements, honor cancellation, and compare metadata before/after reading. The cache is saved atomically; profile and save-import integrity hashes still read actual contents.
 
 **Refresh game catalog** creates a session that ignores persisted hash entries, reads every referenced input, and rebuilds extracted catalogs. Shared inputs are hashed once per session. This also verifies edits made while preserving file timestamps. Existing catalog fingerprints and profile/cart identities are unchanged.

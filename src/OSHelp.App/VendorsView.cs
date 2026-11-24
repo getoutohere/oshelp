@@ -120,6 +120,9 @@ internal sealed partial class MainForm
             if (v.Inactive) text.AppendLine().AppendLine("Available after the shop is unlocked in the game.");
             else if (v.Conditional) text.AppendLine().AppendLine("Availability also depends on game progress or access requirements.");
             if (v.ActiveSources.Any(s => s.Notes.Contains("Open this shop through the operator's dialogue."))) text.AppendLine().AppendLine("Talk to the operator to shop.");
+            foreach (var note in v.ActiveSources.SelectMany(s => s.Entrances.Concat(s.InternalAccess)).SelectMany(e => e.Notes)
+                .Where(n => n.StartsWith("Closing waits until the player is ", StringComparison.Ordinal)).Distinct())
+                text.AppendLine().AppendLine(note.Replace("Closing waits until the player is ", "Closing may wait until you are ", StringComparison.Ordinal));
             vendorNotes.Text = text.ToString();
         }
         finally { refreshing = old; }

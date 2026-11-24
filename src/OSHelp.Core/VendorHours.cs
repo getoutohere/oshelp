@@ -90,7 +90,8 @@ public sealed class Vendor
 }
 public sealed class VendorCatalog
 {
-    public int FormatVersion { get; set; } = 2;
+    public const int CurrentFormatVersion = 4;
+    public int FormatVersion { get; set; } = CurrentFormatVersion;
     public int FilesScanned { get; set; }
     public List<InputHash> Inputs { get; set; } = [];
     public List<Vendor> Vendors { get; set; } = [];

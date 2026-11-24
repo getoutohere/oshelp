@@ -584,6 +584,18 @@ internal sealed partial class MainForm : Form
         vendorWeek.CurrentCell = vendorWeek.Rows[0].Cells[0]; await Task.Delay(100); if (vendorDay.SelectedIndex != 0) throw new InvalidOperationException("Weekly schedule selection did not change the chosen day.");
         vendorRegion.SelectedIndex = 2; vendorSearch.Text = "Alco"; if (vendorGrid.Rows.Count != 1) throw new InvalidOperationException("Alco checkout/trader duplicates were not merged.");
         vendorSearch.Text = "Bar Bizarre"; if (vendorGrid.Rows.Count != 1 || !SelectedVendor!.Operator.Contains("Anneli") || !SelectedVendor.Operator.Contains("Jooseppi")) throw new InvalidOperationException("Shared shop operators were not combined.");
+        vendorSearch.Text = "Gold Shop"; vendorDay.SelectedIndex = 0; vendorTime.Text = "08:00";
+        if (vendorGrid.Rows.Count != 1 || SelectedVendor?.Operator != "Torsten Dvergsson" || vendorGrid.Rows[0].Cells["hours"].Value?.ToString() != "08:00–16:00" || vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Open" || SelectedVendor.Sources.Single().Entrances.Count != 1)
+            throw new InvalidOperationException("Gold shop must use its street entrance hours and omit inaccessible balconies.");
+        vendorTime.Text = "16:00";
+        if (vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Closed") throw new InvalidOperationException("Gold shop must close at 16:00.");
+        vendorDay.SelectedIndex = 5; vendorTime.Text = "12:00";
+        if (vendorGrid.Rows[0].Cells["hours"].Value?.ToString() != "Closed" || vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Closed") throw new InvalidOperationException("Gold shop must be closed on Saturday.");
+        using (var image = new Bitmap(Width, Height)) { DrawToBitmap(image, new(0, 0, Width, Height)); image.Save(Path.Combine(SmokeDirectory!, "Vendors-Gold-weekend-closed.png")); }
+        vendorOpenOnly.Checked = true;
+        if (vendorGrid.Rows.Count != 0) throw new InvalidOperationException("Open-only filter included the closed gold shop.");
+        vendorOpenOnly.Checked = false;
+        File.WriteAllText(Path.Combine(SmokeDirectory!, "gold-shop.txt"), "PASS: weekday 08:00–16:00 / exact 16:00 close / closed Saturday / open-only filter / inaccessible balcony doors excluded.\n");
         vendorSearch.Text = "Welhö"; if (vendorGrid.Rows.Count != 1) throw new InvalidOperationException("Alternate stock menus were not merged.");
         vendorRegion.SelectedIndex = 1; vendorDay.SelectedIndex = 1; vendorTime.Text = "12:00"; vendorSearch.Text = "Hardware Stall";
         if (vendorGrid.Rows.Count != 1 || SelectedVendor?.Operator != "Henning Torskvær" || vendorGrid.Rows[0].Cells["name"].Value?.ToString() != "Hardware Stall" || vendorGrid.Rows[0].Cells["hours"].Value?.ToString() != "12:00–18:00" || vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Open") throw new InvalidOperationException("Hardware Stall must be searchable by its public name and open Tuesday at noon.");
@@ -591,6 +603,24 @@ internal sealed partial class MainForm : Form
         vendorOpenOnly.Checked = true; if (vendorGrid.Rows.Count != 1) throw new InvalidOperationException("Open-only filter hid the hardware stall at Tuesday noon.");
         vendorSearch.Text = "Henning's shop"; if (vendorGrid.Rows.Count != 1) throw new InvalidOperationException("Original hardware trader name is no longer searchable.");
         vendorOpenOnly.Checked = false;
+        vendorSearch.Text = "Hank";
+        foreach (int day in Enumerable.Range(0, 7))
+        {
+            vendorDay.SelectedIndex = day; vendorTime.Text = "08:00";
+            if (vendorGrid.Rows.Count != 1 || SelectedVendor?.Name != "Möbelmann Furnitures" || vendorGrid.Rows[0].Cells["hours"].Value?.ToString() != "08:00–18:00" || vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Open")
+                throw new InvalidOperationException("Möbelmann must use its interior door's 08:00–18:00 hours every day.");
+        }
+        vendorTime.Text = "07:59";
+        if (vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Closed") throw new InvalidOperationException("Möbelmann opened before 08:00.");
+        vendorTime.Text = "17:59";
+        if (vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Open") throw new InvalidOperationException("Möbelmann closed before 18:00.");
+        vendorTime.Text = "18:00";
+        if (vendorGrid.Rows[0].Cells["status"].Value?.ToString() != "Closed" || !vendorNotes.Text.Contains("4 m") || !vendorNotes.Text.Contains("Closing may wait")) throw new InvalidOperationException("Möbelmann must close at 18:00 and explain the proximity delay.");
+        using (var image = new Bitmap(Width, Height)) { DrawToBitmap(image, new(0, 0, Width, Height)); image.Save(Path.Combine(SmokeDirectory!, "Vendors-Mobelmann-interior-door.png")); }
+        vendorOpenOnly.Checked = true;
+        if (vendorGrid.Rows.Count != 0) throw new InvalidOperationException("Open-only filter included Möbelmann after its interior door closes.");
+        vendorOpenOnly.Checked = false;
+        File.WriteAllText(Path.Combine(SmokeDirectory!, "mobelmann.txt"), "PASS: interior shop door / 08:00–18:00 all seven days / exact opening and closing / nearby-player delay / open-only filter.\n");
         vendorSearch.Text = ""; vendorRegion.SelectedIndex = 3;
         if (vendorGrid.Rows.Count == 0 || vendorGrid.Rows.Cast<DataGridViewRow>().Any(r => !(r.Tag as VendorListing)!.InRegion("Mines"))) throw new InvalidOperationException("Vendor location filter failed.");
         vendorRegion.SelectedIndex = 0; vendorKind.SelectedIndex = 2;

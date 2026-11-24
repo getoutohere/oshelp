@@ -1,8 +1,17 @@
-# OSHelp 0.1
+# OSHelp 0.1.1
 
 OSHelp is a Windows desktop companion for **Obenseuer**. Plan tenement renovations, find tenants, keep a materials shopping list, and check vendor opening hours with entrance locks taken into account.
 
-**Version 0.1 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+**Version 0.1.1 is distributed as source only. Build it locally using your own installed copy of Obenseuer.** Compiled applications, game assemblies, decompiled game source, personal saves, and profiles are not included.
+
+## Changes in 0.1.1
+
+- Corrected Gold Shop hours to **Monday–Friday 08:00–16:00; closed weekends**, excluding inaccessible balcony transitions from its entrances.
+- Corrected Möbelmann Furnitures to **08:00–18:00 every day** by linking its interior shop door. Details explain that closing can wait while the player is nearby.
+- Updated vendor-cache compatibility so existing installations pick up these corrections automatically. Profiles and shopping plans are preserved.
+- Added regression and desktop checks for both shops, exact closing times, and the open-only filter.
+
+The schedules and lock callbacks come from game assets. Door-to-shop associations still use naming heuristics; these fixes do not add geometric reachability checks. See [vendor calculation and limitations](docs/vendors.md#extraction-and-calculation).
 
 ## License
 
